@@ -105,6 +105,17 @@ header a:hover { text-decoration: underline; }
 .sub-item button:hover { background: var(--primary); border-color: var(--primary); color: #fff; }
 .sub-item button.copied { background: var(--green); border-color: var(--green); color: #fff; }
 
+/* Client grid */
+.client-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .6rem; }
+.client-item {
+  display: block; background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: .85rem 1rem;
+  text-decoration: none; transition: all .2s;
+}
+.client-item:hover { border-color: var(--primary); background: var(--primary-dim); }
+.client-name { color: var(--text); font-size: .85rem; font-weight: 600; }
+.client-meta { color: var(--muted); font-size: .72rem; margin-top: .2rem; }
+
 /* Filter bar */
 .toolbar { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
 .search-box {
@@ -201,6 +212,25 @@ footer a:hover { color: var(--primary); }
 </div>
 
 <div class="card">
+  <h2>Desktop Clients</h2>
+  <div class="client-grid">
+    <a class="client-item" href="https://github.com/clash-verge-rev/clash-verge-rev/releases/latest" target="_blank">
+      <div class="client-name">Clash Verge Rev</div>
+      <div class="client-meta">Windows / macOS / Linux</div>
+    </a>
+    <a class="client-item" href="https://github.com/chen08209/FlClash/releases/latest" target="_blank">
+      <div class="client-name">FlClash</div>
+      <div class="client-meta">Windows / macOS / Linux / Android</div>
+    </a>
+    <a class="client-item" href="https://github.com/LibNyanpasu/clash-nyanpasu/releases/latest" target="_blank">
+      <div class="client-name">Clash Nyanpasu</div>
+      <div class="client-meta">Windows / macOS / Linux</div>
+    </a>
+  </div>
+  <p style="color:var(--muted);font-size:.76rem;margin-top:.8rem">Install any client above, then import the subscription URL.</p>
+</div>
+
+<div class="card">
   <h2>Node Directory</h2>
   <div class="toolbar">
     <button class="filter-btn active" onclick="setFilter('all', this)">All<span class="count">332</span></button>
@@ -220,7 +250,7 @@ footer a:hover { color: var(--primary); }
 </div>
 
 <footer>
-  Last update: 2026-07-03 11:04 CST &middot; Powered by <a href="https://github.com/haonL-7/clash-nodes">GitHub Actions</a>
+  Last update: 2026-07-03 11:11 CST &middot; Powered by <a href="https://github.com/haonL-7/clash-nodes">GitHub Actions</a>
 </footer>
 </div>
 
