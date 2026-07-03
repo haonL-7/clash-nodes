@@ -306,7 +306,9 @@ footer a:hover {{ color: var(--primary); }}
 </div>
 
 <footer>
-  Last update: {now} &middot; Powered by <a href="https://github.com/haonL-7/clash-nodes">GitHub Actions</a>
+  Short link: <a href="https://haonl-7.github.io">haonl-7.github.io</a> &middot;
+  Last update: {now} &middot;
+  Powered by <a href="https://github.com/haonL-7/clash-nodes">GitHub Actions</a>
 </footer>
 </div>
 
