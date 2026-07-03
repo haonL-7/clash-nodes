@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clash 免费节点 - 每日更新</title>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--accent:#58a6ff;--green:#3fb950;--red:#f85149;--purple:#a371f7}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh}
+.container{max-width:960px;margin:0 auto;padding:2rem 1rem}
+header{text-align:center;margin-bottom:2rem}
+header h1{font-size:1.75rem;margin-bottom:.25rem}
+header p{color:var(--muted);font-size:.9rem}
+a{color:var(--accent);text-decoration:none}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.75rem;margin-bottom:1.5rem}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.2rem;text-align:center;transition:transform .15s}
+.stat:hover{transform:translateY(-2px)}
+.stat .num{font-size:2rem;font-weight:700}
+.stat .label{color:var(--muted);font-size:.8rem;margin-top:.25rem}
+.c-total{color:var(--green)}.c-jp{color:var(--red)}.c-us{color:var(--accent)}.c-fr{color:var(--purple)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1rem}
+.card h2{font-size:1.05rem;margin-bottom:.75rem}
+.sub-row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.sub-row input{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:.6rem .8rem;font-size:.82rem;color:var(--accent);font-family:monospace;min-width:240px}
+.sub-row button{background:var(--accent);color:#fff;border:none;border-radius:6px;padding:.6rem 1.2rem;cursor:pointer;font-size:.85rem;white-space:nowrap;font-weight:500}
+.sub-row button:hover{opacity:.85}
+.sub-row button.copied{background:var(--green)}
+.filter-bar{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.filter-bar button{background:var(--card);border:1px solid var(--border);color:var(--text);padding:.35rem .9rem;border-radius:20px;cursor:pointer;font-size:.8rem;transition:all .15s}
+.filter-bar button:hover{border-color:var(--muted)}
+.filter-bar button.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.table-wrap{max-height:520px;overflow-y:auto;border-radius:6px}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th,td{padding:.45rem .75rem;text-align:left;border-bottom:1px solid var(--border)}
+th{color:var(--muted);font-weight:500;position:sticky;top:0;background:var(--card);z-index:1}
+tr:hover td{background:rgba(255,255,255,.02)}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.7rem;font-weight:600}
+.badge.jp{background:rgba(248,81,73,.15);color:var(--red)}
+.badge.us{background:rgba(88,166,255,.15);color:var(--accent)}
+.badge.fr{background:rgba(163,113,247,.15);color:var(--purple)}
+.badge.other{background:rgba(139,148,158,.15);color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:.75rem;margin-top:2rem;padding-bottom:1rem}
+#toast{position:fixed;top:1rem;right:1rem;background:var(--green);color:#fff;padding:.6rem 1.2rem;border-radius:8px;font-size:.85rem;opacity:0;transition:opacity .3s;pointer-events:none;z-index:99}
+#toast.show{opacity:1}
+</style>
+</head>
+<body>
+<div id="toast">✅ 已复制订阅地址</div>
+<div class="container">
+<header><h1>🛰️ Clash 免费节点</h1><p>每日自动更新 &middot; 数据来源 <a href="https://yoyapai.com">yoyapai.com</a></p></header>
+
+<div class="stats">
+<div class="stat"><div class="num c-total">332</div><div class="label">📡 总节点</div></div>
+<div class="stat"><div class="num c-jp">10</div><div class="label">🇯🇵 日本</div></div>
+<div class="stat"><div class="num c-us">92</div><div class="label">🇺🇸 美国</div></div>
+<div class="stat"><div class="num c-fr">11</div><div class="label">🇫🇷 法国</div></div>
+</div>
+
+<div class="card">
+<h2>📋 订阅地址</h2>
+<div class="sub-row">
+<input id="subUrl" value="https://raw.githubusercontent.com/haonL-7/clash-nodes/main/latest.yaml" readonly onclick="this.select()">
+<button id="copyBtn" onclick="doCopy()">📋 复制</button>
+</div>
+<p style="color:var(--muted);font-size:.78rem;margin-top:.6rem">💡 填入 Clash / Shadowrocket 订阅即可每日自动更新</p>
+</div>
+
+<div class="card">
+<h2>🌐 节点列表 <span id="shownCount" style="color:var(--muted);font-weight:400;font-size:.85rem"></span></h2>
+<div class="filter-bar">
+<button class="active" onclick="filter('all')">全部</button>
+<button onclick="filter('jp')">🇯🇵 日本</button>
+<button onclick="filter('us')">🇺🇸 美国</button>
+<button onclick="filter('fr')">🇫🇷 法国</button>
+<button onclick="filter('other')">🌍 其他</button>
+</div>
+<div class="table-wrap">
+<table><thead><tr><th style="width:70%">节点名称</th><th>地区</th></tr></thead>
+<tbody id="tbody"></tbody></table>
+</div>
+</div>
+
+<footer>最后更新: 2026-07-03 10:49 CST &middot; Powered by <a href="https://github.com/haonL-7/clash-nodes">GitHub Actions</a></footer>
+</div>
+
+<script>
+var NODES=[{"n": "美國+CloudFlare节点丨yoyapai.com", "r": "us"}, {"n": "FR法國丨yoyapai.com", "r": "fr"}, {"n": "🇺🇸US美國丨yoyapai.com", "r": "us"}, {"n": "🇺🇸US美國丨yoyapai.com_1", "r": "us"}, {"n": "FR法國丨yoyapai.com_1", "r": "fr"}, {"n": "US美國丨yoyapai.com", "r": "us"}, {"n": "🇺🇸美國CloudFlare节点丨yoyapai.com", "r": "us"}, {"n": "FR法國丨yoyapai.com_2", "r": "fr"}, {"n": "FR法國丨yoyapai.com_3", "r": "fr"}, {"n": "FR法國丨yoyapai.com_4", "r": "fr"}, {"n": "🇺🇸US美國丨yoyapai.com_2", "r": "us"}, {"n": "FR法國丨yoyapai.com_5", "r": "fr"}, {"n": "🇱🇹LT立陶宛丨yoyapai.com", "r": "other"}, {"n": "FR法國丨yoyapai.com_6", "r": "fr"}, {"n": "美國節點丨yoyapai.com", "r": "us"}, {"n": "美國節點丨yoyapai.com_1", "r": "us"}, {"n": "🇫🇮 荷蘭丨yoyapai.com", "r": "other"}, {"n": "🇺🇸US美國丨yoyapai.com_3", "r": "us"}, {"n": "美國節點丨yoyapai.com_2", "r": "us"}, {"n": "美國丨yoyapai.com", "r": "us"}, {"n": "🇺🇸 US美國丨yoyapai.com", "r": "us"}, {"n": "美國節點丨yoyapai.com_3", "r": "us"}, {"n": "美國丨yoyapai.com_1", "r": "us"}, {"n": "美國丨yoyapai.com_2", "r": "us"}, {"n": "美國丨yoyapai.com_3", "r": "us"}, {"n": "美國丨yoyapai.com_4", "r": "us"}, {"n": "美國節點丨yoyapai.com_4", "r": "us"}, {"n": "美國節點丨yoyapai.com_5", "r": "us"}, {"n": "美國丨yoyapai.com_5", "r": "us"}, {"n": "美國丨yoyapai.com_6", "r": "us"}, {"n": "美國丨yoyapai.com_7", "r": "us"}, {"n": "美國丨yoyapai.com_8", "r": "us"}, {"n": "🇱🇹LT立陶宛丨yoyapai.com_1", "r": "other"}, {"n": "🇺🇸 US美國丨yoyapai.com_1", "r": "us"}, {"n": "🇺🇸 US美國丨yoyapai.com_2", "r": "us"}, {"n": "委內瑞拉丨yoyapai.com", "r": "other"}, {"n": "美國節點丨yoyapai.com_6", "r": "us"}, {"n": "美國丨yoyapai.com_9", "r": "us"}, {"n": "🇺🇸US美國丨yoyapai.com_4", "r": "us"}, {"n": "🇭🇺HU匈牙利丨yoyapai.com", "r": "other"}, {"n": "🇨🇭CH瑞士丨yoyapai.com", "r": "other"}, {"n": "🇭🇺HU匈牙利丨yoyapai.com_1", "r": "other"}, {"n": "🇭🇺HU匈牙利丨yoyapai.com_2", "r": "other"}, {"n": "🇨🇭CH瑞士丨yoyapai.com_1", "r": "other"}, {"n": "🇭🇺HU匈牙利丨yoyapai.com_3", "r": "other"}, {"n": "🇭🇺HU匈牙利丨yoyapai.com_4", "r": "other"}, {"n": "美國+CloudFlare节点丨yoyapai.com_1", "r": "us"}, {"n": "美國+CloudFlare节点丨yoyapai.com_2", "r": "us"}, {"n": "🇭🇺HU匈牙利丨yoyapai.com_5", "r": "other"}, {"n": "俄羅斯節點丨yoyapai.com", "r": "other"}, {"n": "俄羅斯丨yoyapai.com", "r": "other"}, {"n": "俄羅斯丨yoyapai.com_1", "r": "other"}, {"n": "俄羅斯節點丨yoyapai.com_1", "r": "other"}, {"n": "亞太地區", "r": "other"}, {"n": "美國節點", "r": "us"}, {"n": "美國", "r": "us"}, {"n": "英國節點", "r": "other"}, {"n": "美國節點_1", "r": "us"}, {"n": "德國節點", "r": "other"}, {"n": "英國", "r": "other"}, {"n": "烏克蘭節點丨yoyapai.com", "r": "other"}, {"n": "英國節點_1", "r": "other"}, {"n": "英國_1", "r": "other"}, {"n": "美國_1", "r": "us"}, {"n": "英國節點_2", "r": "other"}, {"n": "德國", "r": "other"}, {"n": "美國節點_2", "r": "us"}, {"n": "英國節點_3", "r": "other"}, {"n": "英國丨yoyapai.com", "r": "other"}, {"n": "英國_2", "r": "other"}, {"n": "俄羅斯丨yoyapai.com_2", "r": "other"}, {"n": "美國節點_3", "r": "us"}, {"n": "美國節點_4", "r": "us"}, {"n": "俄羅斯丨yoyapai.com_3", "r": "other"}, {"n": "德國節點_1", "r": "other"}, {"n": "美國節點_5", "r": "us"}, {"n": "俄羅斯節點丨yoyapai.com_2", "r": "other"}, {"n": "英國節點_4", "r": "other"}, {"n": "亞太地區_1", "r": "other"}, {"n": "香港節點", "r": "other"}, {"n": "美國節點_6", "r": "us"}, {"n": "荷蘭節點丨yoyapai.com", "r": "other"}, {"n": "韩国+KT电信", "r": "other"}, {"n": "香港節點_1", "r": "other"}, {"n": "韩国+KT电信_1", "r": "other"}, {"n": "香港節點_2", "r": "other"}, {"n": "美國丨yoyapai.com_10", "r": "us"}, {"n": "美國丨yoyapai.com_11", "r": "us"}, {"n": "美國節點_7", "r": "us"}, {"n": "🇺🇸 US美國丨yoyapai.com_3", "r": "us"}, {"n": "新加坡丨yoyapai.com", "r": "other"}, {"n": "英國_3", "r": "other"}, {"n": "日本節點", "r": "jp"}, {"n": "英國丨yoyapai.com_1", "r": "other"}, {"n": "烏克蘭丨yoyapai.com", "r": "other"}, {"n": "德國丨yoyapai.com", "r": "other"}, {"n": "丹麥丨yoyapai.com", "r": "other"}, {"n": "臺灣節點丨yoyapai.com", "r": "other"}, {"n": "美國節點_8", "r": "us"}, {"n": "🇰🇷KR南朝鮮丨yoyapai.com", "r": "other"}, {"n": "🇰🇷KR韓國節點丨yoyapai.com", "r": "other"}, {"n": "🇳🇱NL荷蘭丨yoyapai.com", "r": "other"}, {"n": "意大利節點🇮🇹IT丨yoyapai.com", "r": "other"}, {"n": "🇳🇱NL荷蘭丨yoyapai.com_1", "r": "other"}, {"n": "🇳🇱NL荷蘭丨yoyapai.com_2", "r": "other"}, {"n": "荷蘭節點丨yoyapai.com_1", "r": "other"}, {"n": "美国 加利福尼亚州圣何塞", "r": "us"}, {"n": "丹麥丨yoyapai.com_1", "r": "other"}, {"n": "中國臺灣丨yoyapai.com", "r": "other"}, {"n": "韓國丨yoyapai.com", "r": "other"}, {"n": "韓國丨yoyapai.com_1", "r": "other"}, {"n": "美國丨yoyapai.com_12", "r": "us"}, {"n": "保加利亞丨yoyapai.com", "r": "other"}, {"n": "烏克蘭丨yoyapai.com_1", "r": "other"}, {"n": "美國丨yoyapai.com_13", "r": "us"}, {"n": "美國丨yoyapai.com_14", "r": "us"}, {"n": "保加利亞丨yoyapai.com_1", "r": "other"}, {"n": "保加利亞丨yoyapai.com_2", "r": "other"}, {"n": "美國節點_9", "r": "us"}, {"n": "美國節點_10", "r": "us"}, {"n": "美國節點_11", "r": "us"}, {"n": "德國節點丨yoyapai.com", "r": "other"}, {"n": "德國丨yoyapai.com_1", "r": "other"}, {"n": "英國丨yoyapai.com_2", "r": "other"}, {"n": "香港丨yoyapai.com", "r": "other"}, {"n": "亞太地區_2", "r": "other"}, {"n": "亞太地區_3", "r": "other"}, {"n": "香港", "r": "other"}, {"n": "亞太地區_4", "r": "other"}, {"n": "亞太地區_5", "r": "other"}, {"n": "香港_1", "r": "other"}, {"n": "歐盟丨yoyapai.com", "r": "other"}, {"n": "俄羅斯丨yoyapai.com_4", "r": "other"}, {"n": "美国+亚利桑那州斯科茨代尔市丨yoyapai.com", "r": "us"}, {"n": "歐盟丨yoyapai.com_1", "r": "other"}, {"n": "俄羅斯丨yoyapai.com_5", "r": "other"}, {"n": "美国+亚利桑那州斯科茨代尔市丨yoyapai.com_1", "r": "us"}, {"n": "臺灣省丨yoyapai.com", "r": "other"}, {"n": "亞太地區丨yoyapai.com", "r": "other"}, {"n": "臺灣省丨yoyapai.com_1", "r": "other"}, {"n": "亞太地區丨yoyapai.com_1", "r": "other"}, {"n": "俄羅斯", "r": "other"}, {"n": "美國節點丨yoyapai.com_7", "r": "us"}, {"n": "荷蘭丨yoyapai.com", "r": "other"}, {"n": "荷蘭丨yoyapai.com_1", "r": "other"}, {"n": "英國節點_5", "r": "other"}, {"n": "德國節點丨yoyapai.com_1", "r": "other"}, {"n": "台湾省台北市丨yoyapai.com", "r": "other"}, {"n": "俄羅斯丨yoyapai.com_6", "r": "other"}, {"n": "日本節點丨yoyapai.com", "r": "jp"}, {"n": "美國+CloudFlare节点丨yoyapai.com_3", "r": "us"}, {"n": "俄羅斯節點丨yoyapai.com_3", "r": "other"}, {"n": "香港節點丨yoyapai.com", "r": "other"}, {"n": "香港節點丨yoyapai.com_1", "r": "other"}, {"n": "臺灣節點丨yoyapai.com_1", "r": "other"}, {"n": "日本節點丨yoyapai.com_1", "r": "jp"}, {"n": "英國節點丨yoyapai.com", "r": "other"}, {"n": "法國丨yoyapai.com", "r": "fr"}, {"n": "荷蘭丨yoyapai.com_2", "r": "other"}, {"n": "法國丨yoyapai.com_1", "r": "fr"}, {"n": "美國_2", "r": "us"}, {"n": "英國_4", "r": "other"}, {"n": "英國_5", "r": "other"}, {"n": "德國_1", "r": "other"}, {"n": "俄羅斯丨yoyapai.com_7", "r": "other"}, {"n": "俄羅斯丨yoyapai.com_8", "r": "other"}, {"n": "俄羅斯丨yoyapai.com_9", "r": "other"}, {"n": "美國節點丨yoyapai.com_8", "r": "us"}, {"n": "日本節點丨yoyapai.com_2", "r": "jp"}, {"n": "俄羅斯丨yoyapai.com_10", "r": "other"}, {"n": "瑞士丨yoyapai.com", "r": "other"}, {"n": "英國節點丨yoyapai.com_1", "r": "other"}, {"n": "亞太地區丨yoyapai.com_2", "r": "other"}, {"n": "保加利亞丨yoyapai.com_3", "r": "other"}, {"n": "巴西聖保羅丨yoyapai.com", "r": "other"}, {"n": "美國_3", "r": "us"}, {"n": "土耳其丨yoyapai.com", "r": "other"}, {"n": "德國丨yoyapai.com_2", "r": "other"}, {"n": "烏克蘭丨yoyapai.com_2", "r": "other"}, {"n": "美國丨yoyapai.com_15", "r": "us"}, {"n": "美國丨yoyapai.com_16", "r": "us"}, {"n": "美國丨yoyapai.com_17", "r": "us"}, {"n": "荷蘭丨yoyapai.com_3", "r": "other"}, {"n": "澳大利亞丨yoyapai.com", "r": "other"}, {"n": "澳大利亞丨yoyapai.com_1", "r": "other"}, {"n": "澳大利亞丨yoyapai.com_2", "r": "other"}, {"n": "澳大利亞丨yoyapai.com_3", "r": "other"}, {"n": "土耳其丨yoyapai.com_1", "r": "other"}, {"n": "土耳其丨yoyapai.com_2", "r": "other"}, {"n": "土耳其丨yoyapai.com_3", "r": "other"}, {"n": "土耳其丨yoyapai.com_4", "r": "other"}, {"n": "瑞典節點丨yoyapai.com", "r": "other"}, {"n": "瑞典節點丨yoyapai.com_1", "r": "other"}, {"n": "瑞典節點丨yoyapai.com_2", "r": "other"}, {"n": "瑞典節點丨yoyapai.com_3", "r": "other"}, {"n": "羅馬尼亞節點丨yoyapai.com", "r": "other"}, {"n": "羅馬尼亞節點丨yoyapai.com_1", "r": "other"}, {"n": "德國丨yoyapai.com_3", "r": "other"}, {"n": "德國丨yoyapai.com_4", "r": "other"}, {"n": "荷蘭節點丨yoyapai.com_2", "r": "other"}, {"n": "荷蘭節點丨yoyapai.com_3", "r": "other"}, {"n": "荷蘭節點丨yoyapai.com_4", "r": "other"}, {"n": "美國CloudFlare节点丨yoyapai.com", "r": "us"}, {"n": "美國南卡羅來納州丨yoyapai.com", "r": "us"}, {"n": "捷克丨yoyapai.com", "r": "other"}, {"n": "荷蘭丨yoyapai.com_4", "r": "other"}, {"n": "德國法蘭克福丨yoyapai.com", "r": "other"}, {"n": "羅馬尼亞丨yoyapai.com", "r": "other"}, {"n": "羅馬尼亞丨yoyapai.com_1", "r": "other"}, {"n": "羅馬尼亞丨yoyapai.com_2", "r": "other"}, {"n": "羅馬尼亞丨yoyapai.com_3", "r": "other"}, {"n": "瑞典丨yoyapai.com", "r": "other"}, {"n": "瑞典丨yoyapai.com_1", "r": "other"}, {"n": "烏克蘭丨yoyapai.com_3", "r": "other"}, {"n": "土耳其丨yoyapai.com_5", "r": "other"}, {"n": "土耳其丨yoyapai.com_6", "r": "other"}, {"n": "瑞典丨yoyapai.com_2", "r": "other"}, {"n": "瑞典丨yoyapai.com_3", "r": "other"}, {"n": "美國南卡羅來納州丨yoyapai.com_1", "r": "us"}, {"n": "荷蘭節點丨yoyapai.com_5", "r": "other"}, {"n": "荷蘭節點丨yoyapai.com_6", "r": "other"}, {"n": "荷蘭節點丨yoyapai.com_7", "r": "other"}, {"n": "韓國丨yoyapai.com_2", "r": "other"}, {"n": "巴西聖保羅丨yoyapai.com_1", "r": "other"}, {"n": "巴西聖保羅丨yoyapai.com_2", "r": "other"}, {"n": "土耳其", "r": "other"}, {"n": "土耳其_1", "r": "other"}, {"n": "羅馬尼亞丨yoyapai.com_4", "r": "other"}, {"n": "羅馬尼亞丨yoyapai.com_5", "r": "other"}, {"n": "法國節點", "r": "fr"}, {"n": "美國丨yoyapai.com_18", "r": "us"}, {"n": "土耳其丨yoyapai.com_7", "r": "other"}, {"n": "土耳其丨yoyapai.com_8", "r": "other"}, {"n": "巴西聖保羅", "r": "other"}, {"n": "丹麥", "r": "other"}, {"n": "斯洛文尼亞丨yoyapai.com", "r": "other"}, {"n": "羅馬尼亞丨yoyapai.com_6", "r": "other"}, {"n": "羅馬尼亞丨yoyapai.com_7", "r": "other"}, {"n": "瑞典節點丨yoyapai.com_4", "r": "other"}, {"n": "瑞典節點丨yoyapai.com_5", "r": "other"}, {"n": "土耳其節點丨yoyapai.com", "r": "other"}, {"n": "土耳其節點丨yoyapai.com_1", "r": "other"}, {"n": "荷蘭丨yoyapai.com_5", "r": "other"}, {"n": "荷蘭丨yoyapai.com_6", "r": "other"}, {"n": "亞太地區_6", "r": "other"}, {"n": "🇺🇸US美國丨yoyapai.com_5", "r": "us"}, {"n": "🇺🇸US美國丨yoyapai.com_6", "r": "us"}, {"n": "🇺🇸US美國丨yoyapai.com_7", "r": "us"}, {"n": "🇺🇸US美國丨yoyapai.com_8", "r": "us"}, {"n": "🇺🇸US美國丨yoyapai.com_9", "r": "us"}, {"n": "🇺🇸US美國丨yoyapai.com_10", "r": "us"}, {"n": "JP日本丨yoyapai.com", "r": "jp"}, {"n": "🇺🇸US美國丨yoyapai.com_11", "r": "us"}, {"n": "US美國丨yoyapai.com_1", "r": "us"}, {"n": "US美國丨yoyapai.com_2", "r": "us"}, {"n": "US美國丨yoyapai.com_3", "r": "us"}, {"n": "US美國丨yoyapai.com_4", "r": "us"}, {"n": "US美國丨yoyapai.com_5", "r": "us"}, {"n": "JP日本丨yoyapai.com_1", "r": "jp"}, {"n": "免費節點", "r": "other"}, {"n": "免費節點丨yoyapai.com", "r": "other"}, {"n": "美國丨yoyapai.com_19", "r": "us"}, {"n": "美國丨yoyapai.com_20", "r": "us"}, {"n": "NL荷蘭丨yoyapai.com", "r": "other"}, {"n": "NL荷兰+阿姆斯特丹丨yoyapai.com", "r": "other"}, {"n": "歐盟丨yoyapai.com_2", "r": "other"}, {"n": "日本東京丨yoyapai.com", "r": "jp"}, {"n": "香港丨yoyapai.com_1", "r": "other"}, {"n": "日本丨yoyapai.com", "r": "jp"}, {"n": "日本東京丨yoyapai.com_1", "r": "jp"}, {"n": "日本東京丨yoyapai.com_2", "r": "jp"}, {"n": "挪威奧斯陸丨yoyapai.com", "r": "other"}, {"n": "美國明尼蘇達州明尼阿波利斯丨yoyapai.com", "r": "us"}, {"n": "美國加利福尼亞州洛杉磯丨yoyapai.com", "r": "us"}, {"n": "美國丨yoyapai.com德克薩斯州休斯頓丨yoyapai.com", "r": "us"}, {"n": "加拿大丨yoyapai.com不列顛哥倫比亞省溫哥華丨yoyapai.com", "r": "other"}, {"n": "加拿大丨yoyapai.com安大略省多倫多丨yoyapai.com", "r": "other"}, {"n": "荷蘭丨yoyapai.com赫爾辛基丨yoyapai.com", "r": "other"}, {"n": "德國丨yoyapai.com黑森州法蘭克福丨yoyapai.com", "r": "other"}, {"n": "巴西丨yoyapai.com庫裏奇巴", "r": "other"}, {"n": "澳大利亞丨yoyapai.com_4", "r": "other"}, {"n": "AU澳大利亞丨yoyapai.com", "r": "other"}, {"n": "BE比利時丨yoyapai.com", "r": "other"}, {"n": "BE比利時丨yoyapai.com_1", "r": "other"}, {"n": "BR巴西丨yoyapai.com", "r": "other"}, {"n": "CA加拿大丨yoyapai.com", "r": "other"}, {"n": "CA加拿大丨yoyapai.com_1", "r": "other"}, {"n": "CA加拿大丨yoyapai.com_2", "r": "other"}, {"n": "FI荷蘭丨yoyapai.com", "r": "other"}, {"n": "IN印度丨yoyapai.com", "r": "other"}, {"n": "IR伊朗丨yoyapai.com", "r": "other"}, {"n": "IT意大利丨yoyapai.com", "r": "other"}, {"n": "NO挪威丨yoyapai.com", "r": "other"}, {"n": "SE瑞典丨yoyapai.com", "r": "other"}, {"n": "US美國丨yoyapai.com_6", "r": "us"}, {"n": "KR韓國丨yoyapai.com", "r": "other"}, {"n": "CA加拿大丨yoyapai.com_3", "r": "other"}, {"n": "CA加拿大丨yoyapai.com_4", "r": "other"}, {"n": "免費節點丨yoyapai.com_1", "r": "other"}, {"n": "美國節點丨yoyapai.com_9", "r": "us"}, {"n": "IR伊朗丨yoyapai.com_1", "r": "other"}, {"n": "🇺🇸US美國丨yoyapai.com_12", "r": "us"}, {"n": "🇭🇺HU匈牙利丨yoyapai.com_6", "r": "other"}, {"n": "IR伊朗丨yoyapai.com_2", "r": "other"}, {"n": "免費節點丨yoyapai.com_2", "r": "other"}, {"n": "美國節點丨yoyapai.com_10", "r": "us"}, {"n": "美國丨yoyapai.com_21", "r": "us"}, {"n": "免費節點丨yoyapai.com_3", "r": "other"}, {"n": "🇱🇹LT立陶宛丨yoyapai.com_2", "r": "other"}, {"n": "🇺🇸 US美國丨yoyapai.com_4", "r": "us"}, {"n": "羅馬尼亞丨yoyapai.com_8", "r": "other"}, {"n": "🇳🇱 荷蘭丨yoyapai.com", "r": "other"}, {"n": "意大利丨yoyapai.com", "r": "other"}, {"n": "瑞典丨yoyapai.com_4", "r": "other"}, {"n": "美國丨yoyapai.com_22", "r": "us"}, {"n": "美國喬治亞州亞特蘭大丨yoyapai.com", "r": "us"}, {"n": "法國丨yoyapai.com_2", "r": "fr"}, {"n": "🇷🇴羅馬尼亞丨yoyapai.com", "r": "other"}, {"n": "🇨🇭CH瑞士丨yoyapai.com_2", "r": "other"}, {"n": "美國丨yoyapai.com_23", "r": "us"}, {"n": "美國丨yoyapai.com_24", "r": "us"}, {"n": "🇷🇺 RU俄羅斯丨yoyapai.com", "r": "other"}, {"n": "🚀 节点选择", "r": "other"}, {"n": "♻️ 自动选择", "r": "other"}, {"n": "🌍 国外媒体", "r": "other"}, {"n": "📲 电报信息", "r": "other"}, {"n": "Ⓜ️ 微软服务", "r": "other"}, {"n": "🍎 苹果服务", "r": "other"}, {"n": "🎯 全球直连", "r": "other"}, {"n": "🛑 全球拦截", "r": "other"}, {"n": "🍃 应用净化", "r": "other"}, {"n": "🐟 漏网之鱼", "r": "other"}];
+var BADGES={jp:'<span class="badge jp">🇯🇵 日本</span>',us:'<span class="badge us">🇺🇸 美国</span>',fr:'<span class="badge fr">🇫🇷 法国</span>',other:'<span class="badge other">🌍 其他</span>'};
+function render(f){var h='',c=0;NODES.forEach(function(n){if(f!=='all'&&n.r!==f)return;h+='<tr><td>'+esc(n.n)+'</td><td>'+(BADGES[n.r]||BADGES.other)+'</td></tr>';c++});document.getElementById('tbody').innerHTML=h;document.getElementById('shownCount').textContent='('+c+' 个节点)'}
+function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function filter(f){document.querySelectorAll('.filter-bar button').forEach(function(b){b.classList.remove('active')});event.target.classList.add('active');render(f)}
+function doCopy(){var i=document.getElementById('subUrl');i.select();i.setSelectionRange(0,99999);navigator.clipboard.writeText(i.value).then(function(){var t=document.getElementById('toast');t.classList.add('show');var b=document.getElementById('copyBtn');b.textContent='✅ 已复制';b.classList.add('copied');setTimeout(function(){t.classList.remove('show');b.textContent='📋 复制';b.classList.remove('copied')},2000)})}
+render('all');
+</script>
+</body>
+</html>
