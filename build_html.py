@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """从 latest.yaml 生成 index.html"""
 import json, datetime, re
+from datetime import timezone, timedelta
 
 # 移除节点名中的 emoji（只匹配 emoji Unicode 块，不误伤 CJK 文字）
 def strip_emoji(s):
@@ -51,7 +52,7 @@ us_cnt = sum(1 for n in nodes if n["r"] == "us")
 fr_cnt = sum(1 for n in nodes if n["r"] == "fr")
 other_cnt = total - jp_cnt - us_cnt - fr_cnt
 nodes_json = json.dumps(nodes, ensure_ascii=False)
-now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M CST")
+now = datetime.datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M CST")
 
 html = f'''<!DOCTYPE html>
 <html lang="zh">

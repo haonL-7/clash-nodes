@@ -1,27 +1,33 @@
-# Clash 订阅每日更新
+# Clash Nodes — Free Proxy Subscription
 
-每天自动从 [yoyapai.com](https://yoyapai.com) 抓取最新免费节点，输出固定链接。
+Daily auto-updated free proxy nodes from [yoyapai.com](https://yoyapai.com).
 
-## 订阅地址
+## Usage
 
-```
-https://raw.githubusercontent.com/<你的用户名>/<仓库名>/main/latest.yaml
-```
-
-如果 raw.githubusercontent.com 访问不了，用 jsDelivr CDN：
+Add this URL to Clash / Shadowrocket / Stash:
 
 ```
-https://cdn.jsdelivr.net/gh/<你的用户名>/<仓库名>@main/latest.yaml
+https://cdn.jsdelivr.net/gh/haonL-7/clash-nodes@main/latest.yaml
 ```
 
-## 原理
+Alternative (GitHub raw):
 
-- GitHub Actions 每天北京时间 11:07 自动运行
-- 从 yoyapai.com 分类页抓取最新文章
-- 提取文章中的 Clash YAML 订阅链接
-- 下载并提交到仓库
-- 你只需在 Clash / Shadowrocket 中订阅固定 URL 即可
+```
+https://raw.githubusercontent.com/haonL-7/clash-nodes/main/latest.yaml
+```
 
-## 手动运行
+## Web Dashboard
 
-在 GitHub 仓库页面 → Actions → Daily Node Update → Run workflow
+Browse the node directory: **[haonl-7.github.io/clash-nodes](https://haonl-7.github.io/clash-nodes/)**
+
+## How it works
+
+- GitHub Actions runs daily at ~11:07 CST
+- Scrapes the latest post from yoyapai.com
+- Downloads the Clash YAML subscription
+- Generates a static web dashboard
+- Commits & pushes back to this repo
+
+## Manual trigger
+
+Repo page → Actions → Daily Node Update → Run workflow
