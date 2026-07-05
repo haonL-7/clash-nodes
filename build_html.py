@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """从 latest.yaml 生成 index.html"""
-import json, datetime, re
+import json, datetime, re, os
 from datetime import timezone, timedelta
 
 def strip_emoji(s):
@@ -16,27 +16,50 @@ def strip_emoji(s):
         "]+", flags=re.UNICODE)
     return emoji_pat.sub('', s).strip()
 
+# Count per source (only actual proxies, not proxy-groups)
+import yaml
+def count_source(path):
+    if not os.path.exists(path): return 0
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            doc = yaml.safe_load(f)
+        if doc and isinstance(doc, dict) and "proxies" in doc:
+            return len(doc["proxies"])
+    except:
+        pass
+    return 0
+
+src_counts = {
+    "yoyapai": count_source("sources/yoyapai.yaml"),
+    "freeSub": count_source("sources/freeSub.yaml"),
+    "free-vpn": count_source("sources/free-vpn.yaml"),
+    "awesome-vpn": count_source("sources/awesome-vpn.yaml"),
+}
+raw_total = sum(src_counts.values())
+
 with open("latest.yaml", "r", encoding="utf-8") as f:
     lines = f.readlines()
 
 nodes = []
 for line in lines:
     if line.strip().startswith("- name:"):
-        name = strip_emoji(line.replace("  - name: ", "").strip())
+        name = strip_emoji(line.replace("  - name: ", "").replace("- name: ", "").strip())
         r = "other"
         nl = name.lower()
-        if any(k in nl for k in ["日本","jp","japan","tokyo","osaka"]):
+        if any(k in nl for k in ["日本","jp","japan","tokyo","osaka","東京","大阪"]):
             r = "jp"
-        elif any(k in nl for k in ["美国","美國","usa","united states"]):
+        elif any(k in nl for k in ["美国","美國","usa","united states","california","san jose","new york","seattle","chicago","texas","atlanta","minnesota","arizona"]):
             r = "us"
-        elif any(k in nl for k in ["法国","法國","france"]):
+        elif any(k in nl for k in ["法国","法國","france","french","paris","fr"]):
             r = "fr"
         nodes.append({"n": name, "r": r})
 
-total, jp_cnt = len(nodes), sum(1 for n in nodes if n["r"] == "jp")
+total = len(nodes)
+jp_cnt = sum(1 for n in nodes if n["r"] == "jp")
 us_cnt = sum(1 for n in nodes if n["r"] == "us")
 fr_cnt = sum(1 for n in nodes if n["r"] == "fr")
 other_cnt = total - jp_cnt - us_cnt - fr_cnt
+dupes = raw_total - total
 nodes_json = json.dumps(nodes, ensure_ascii=False)
 now = datetime.datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M CST")
 
@@ -369,10 +392,15 @@ footer a:hover {{ color: var(--primary); }}
 </header>
 
 <div class="stats">
-  <div class="stat total entrance entrance-d1"><div class="num total" data-target="{total}">0</div><div class="label">Total</div></div>
-  <div class="stat jp entrance entrance-d2"><div class="num jp" data-target="{jp_cnt}">0</div><div class="label">Japan</div></div>
-  <div class="stat us entrance entrance-d3"><div class="num us" data-target="{us_cnt}">0</div><div class="label">US</div></div>
-  <div class="stat fr entrance entrance-d4"><div class="num fr" data-target="{fr_cnt}">0</div><div class="label">France</div></div>
+  <div class="stat total entrance entrance-d1"><div class="num total">{total}</div><div class="label">Merged</div></div>
+  <div class="stat jp entrance entrance-d2"><div class="num jp">{src_counts.get("yoyapai",0)}</div><div class="label">yoyapai</div></div>
+  <div class="stat us entrance entrance-d3"><div class="num us">{src_counts.get("freeSub",0)}</div><div class="label">freeSub</div></div>
+  <div class="stat fr entrance entrance-d4"><div class="num fr">{src_counts.get("free-vpn",0)}</div><div class="label">free-vpn</div></div>
+</div>
+<div class="stats" style="margin-top:-0.6rem">
+  <div class="stat entrance" style="max-width:140px"><div class="num" style="color:#a78bfa">{src_counts.get("awesome-vpn",0)}</div><div class="label">awesome-vpn</div></div>
+  <div class="stat entrance" style="max-width:140px"><div class="num" style="color:var(--text-dim)">{raw_total}</div><div class="label">Raw Total</div></div>
+  <div class="stat entrance" style="max-width:140px"><div class="num" style="color:var(--amber)">{dupes}</div><div class="label">Dupes</div></div>
 </div>
 
 <div class="card entrance entrance-d1">
