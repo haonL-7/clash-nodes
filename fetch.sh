@@ -2,47 +2,81 @@
 set -euo pipefail
 
 echo "=== $(date -u +'%Y-%m-%d %H:%M UTC') ==="
+echo "Clash Nodes — Multi-Source Aggregation"
+echo ""
 
-# ── 第一步：从分类页抓取最新文章链接 ──
+mkdir -p sources
+
+# ── Source 1: yoyapai.com ──
+echo "[1/5] yoyapai.com"
 CATEGORY_URL="https://yoyapai.com/category/mianfeijiedian"
-echo "[1/4] 抓取分类页: $CATEGORY_URL"
-
 POST_PATH=$(curl -sL --connect-timeout 15 "$CATEGORY_URL" 2>&1 \
   | grep -oP 'href="https://yoyapai\.com/\d+"' \
   | head -1 \
   | grep -oP '/\d+')
 
-if [ -z "$POST_PATH" ]; then
-  echo "❌ 未找到文章链接，退出"
+if [ -n "$POST_PATH" ]; then
+  POST_URL="https://yoyapai.com${POST_PATH}"
+  RAW=$(curl -sL --connect-timeout 15 "$POST_URL" 2>&1)
+  YAML_URL=$(echo "$RAW" | sed 's/&#47;/\//g' | grep -oP 'https?://[^"<> ]*\.yaml[^"<> ]*' | head -1)
+  if [ -n "$YAML_URL" ]; then
+    curl -sL --connect-timeout 15 "$YAML_URL" -o sources/yoyapai.yaml
+    echo "  OK: $(grep -c 'name:' sources/yoyapai.yaml 2>/dev/null || echo 0) proxies"
+  else
+    echo "  SKIP: no YAML URL found"
+  fi
+else
+  echo "  SKIP: no post found"
+fi
+
+# ── Source 2: Ruk1ng001/freeSub ──
+echo "[2/5] Ruk1ng001/freeSub"
+URLS=(
+  "https://gh-proxy.com/raw.githubusercontent.com/Ruk1ng001/freeSub/main/clash.yaml"
+  "https://raw.githubusercontent.com/Ruk1ng001/freeSub/main/clash.yaml"
+)
+for url in "${URLS[@]}"; do
+  if curl -sL --connect-timeout 15 "$url" -o sources/freeSub.yaml 2>/dev/null; then
+    if grep -q 'proxies:\|name:' sources/freeSub.yaml 2>/dev/null; then
+      echo "  OK: $(grep -c 'name:' sources/freeSub.yaml 2>/dev/null || echo 0) proxies"
+      break
+    fi
+  fi
+  echo "  Retry with next URL..."
+done
+
+# ── Source 3: Au1rxx/free-vpn-subscriptions ──
+echo "[3/5] Au1rxx/free-vpn-subscriptions"
+curl -sL --connect-timeout 15 \
+  "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml" \
+  -o sources/free-vpn.yaml 2>/dev/null || echo "  SKIP: download failed"
+echo "  OK: $(grep -c 'name:' sources/free-vpn.yaml 2>/dev/null || echo 0) proxies"
+
+# ── Source 4: awesome-vpn/awesome-vpn ──
+echo "[4/5] awesome-vpn/awesome-vpn"
+curl -sL --connect-timeout 15 \
+  "https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/clash.yaml" \
+  -o sources/awesome-vpn.yaml 2>/dev/null || echo "  SKIP: download failed"
+echo "  OK: $(grep -c 'name:' sources/awesome-vpn.yaml 2>/dev/null || echo 0) proxies"
+
+# ── Source 5: Jsnzkpg/Jsnzkpg ──
+echo "[5/5] Jsnzkpg/Jsnzkpg"
+curl -sL --connect-timeout 15 \
+  "https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/main/clash.yaml" \
+  -o sources/Jsnzkpg.yaml 2>/dev/null || echo "  SKIP: download failed"
+echo "  OK: $(grep -c 'name:' sources/Jsnzkpg.yaml 2>/dev/null || echo 0) proxies"
+
+# ── Merge all sources ──
+echo ""
+echo "[merge] Combining all sources..."
+python3 merge_yaml.py
+
+# ── Check result ──
+if ! grep -q 'proxies:' latest.yaml 2>/dev/null; then
+  echo "FATAL: merge failed, latest.yaml is invalid"
   exit 1
 fi
 
-POST_URL="https://yoyapai.com${POST_PATH}"
-echo "    最新文章: $POST_URL"
-
-# ── 第二步：从文章页抓取 Clash YAML 链接 ──
-echo "[2/4] 提取订阅链接..."
-RAW=$(curl -sL --connect-timeout 15 "$POST_URL" 2>&1)
-YAML_URL=$(echo "$RAW" | sed 's/&#47;/\//g' | grep -oP 'https?://[^"<> ]*\.yaml[^"<> ]*' | head -1)
-
-if [ -z "$YAML_URL" ]; then
-  echo "❌ 未找到 YAML 链接，退出"
-  exit 1
-fi
-echo "    找到: $YAML_URL"
-
-# ── 第三步：下载 YAML ──
-echo "[3/4] 下载配置..."
-curl -sL --connect-timeout 15 "$YAML_URL" -o latest.yaml
-
-# 校验：确保下载的是有效的 Clash 配置文件
-if ! grep -q 'mixed-port\|proxies:' latest.yaml 2>/dev/null; then
-  echo "❌ 下载内容无效（非 Clash 配置），退出"
-  exit 1
-fi
-
-# ── 第四步：生成网页（解析 YAML + 渲染 HTML） ──
-echo "[4/4] 生成网页..."
-python3 build_html.py
-
-echo "✅ 完成！latest.yaml + index.html 已更新"
+TOTAL=$(grep -c 'name:' latest.yaml 2>/dev/null || echo 0)
+echo ""
+echo "Done: latest.yaml ($TOTAL unique proxies)"

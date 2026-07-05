@@ -365,7 +365,7 @@ footer a:hover {{ color: var(--primary); }}
 <div class="container">
 <header class="entrance">
   <h1>Clash Nodes</h1>
-  <p class="subtitle" data-i18n="subtitle">Free proxy subscription &mdash; auto-updated daily via <a href="https://yoyapai.com" target="_blank">yoyapai.com</a></p>
+  <p class="subtitle" data-i18n="subtitle">Free proxy subscription &mdash; daily aggregation from public sources</p>
 </header>
 
 <div class="stats">
@@ -433,6 +433,13 @@ footer a:hover {{ color: var(--primary); }}
   <a href="https://haonl-7.github.io">haonl-7.github.io</a> &middot;
   <span data-i18n="updated">Last update</span>: {now} &middot;
   <span data-i18n="powered">Powered by</span> <a href="https://github.com/haonL-7/clash-nodes">GitHub Actions</a>
+  <br><span style="font-size:.65rem;opacity:.7">Data from public sources:
+    <a href="https://yoyapai.com" target="_blank">yoyapai</a> &middot;
+    <a href="https://github.com/Ruk1ng001/freeSub" target="_blank">freeSub</a> &middot;
+    <a href="https://github.com/Au1rxx/free-vpn-subscriptions" target="_blank">free-vpn</a> &middot;
+    <a href="https://github.com/awesome-vpn/awesome-vpn" target="_blank">awesome-vpn</a> &middot;
+    <a href="https://github.com/Jsnzkpg/Jsnzkpg" target="_blank">Jsnzkpg</a>
+  </span>
 </footer>
 </div>
 
@@ -440,7 +447,7 @@ footer a:hover {{ color: var(--primary); }}
 /* ── i18n ── */
 var LANG = {{
   en: {{
-    subtitle: 'Free proxy subscription &mdash; auto-updated daily via <a href="https://yoyapai.com" target="_blank">yoyapai.com</a>',
+    subtitle: 'Free proxy subscription &mdash; daily aggregation from public sources. Also try: <a href="https://yoyapai.com" target="_blank">yoyapai</a> &middot; <a href="https://github.com/Ruk1ng001/freeSub" target="_blank">freeSub</a> &middot; <a href="https://github.com/Au1rxx/free-vpn-subscriptions" target="_blank">free-vpn</a> &middot; <a href="https://github.com/awesome-vpn/awesome-vpn" target="_blank">awesome-vpn</a> &middot; <a href="https://github.com/Jsnzkpg/Jsnzkpg" target="_blank">Jsnzkpg</a>',
     sub_title: 'Subscription URLs',
     copy: 'Copy',
     copied: 'Copied',
@@ -462,7 +469,7 @@ var LANG = {{
     badge_other: 'Other'
   }},
   zh: {{
-    subtitle: '免费代理订阅 &mdash; 每日自动更新，数据来源 <a href="https://yoyapai.com" target="_blank">yoyapai.com</a>',
+    subtitle: '免费代理订阅 &mdash; 每日自动聚合公开数据。推荐来源：<a href="https://yoyapai.com" target="_blank">yoyapai</a> &middot; <a href="https://github.com/Ruk1ng001/freeSub" target="_blank">freeSub</a> &middot; <a href="https://github.com/Au1rxx/free-vpn-subscriptions" target="_blank">free-vpn</a> &middot; <a href="https://github.com/awesome-vpn/awesome-vpn" target="_blank">awesome-vpn</a> &middot; <a href="https://github.com/Jsnzkpg/Jsnzkpg" target="_blank">Jsnzkpg</a>',
     sub_title: '订阅地址',
     copy: '复制',
     copied: '已复制',
