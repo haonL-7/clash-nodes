@@ -364,6 +364,11 @@ footer a:hover {{ color: var(--primary); }}
 .entrance-d2 {{ animation-delay: .12s; }}
 .entrance-d3 {{ animation-delay: .19s; }}
 .entrance-d4 {{ animation-delay: .26s; }}
+
+#tsparticles {{ position:fixed;inset:0;z-index:2;pointer-events:none;transition:opacity .6s ease; }}
+#tsparticles.fading {{ opacity:0; }}
+[data-theme="light"] #tsparticles {{ opacity:.5; }}
+body {{ transition: background .8s ease; }}
 </style>
 </head>
 <body>
@@ -643,6 +648,59 @@ function animateCounters() {{
 applyLang();
 render();
 animateCounters();
+</script>
+
+<div id="tsparticles"></div>
+<script src="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tsparticles/engine@4/tsparticles.engine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tsparticles/slim@4/tsparticles.slim.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-stars@4/tsparticles.preset.stars.bundle.min.js"></script>
+<script>
+/* ── Water (Three.js) + Particles (tsParticles) ── */
+(function(){{
+
+// ── WebGL Water ──
+var wc=document.createElement('canvas');
+wc.style.cssText='position:fixed;inset:0;z-index:1;pointer-events:none;transition:opacity .6s ease';
+document.body.appendChild(wc);
+var obs=new MutationObserver(function(ms){{ms.forEach(function(m){{if(m.attributeName==='data-theme')wc.style.opacity=document.documentElement.getAttribute('data-theme')==='light'?'0':'1'}});}});
+obs.observe(document.documentElement,{{attributes:true}});
+
+if(typeof THREE!=='undefined'){{
+var renderer=new THREE.WebGLRenderer({{canvas:wc,alpha:true,antialias:true}});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+var scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(45,1,.1,100);
+camera.position.set(0,.5,2.8);camera.lookAt(0,.5,0);
+var geo=new THREE.PlaneGeometry(8,4,100,50);geo.rotateX(-Math.PI/2);
+var mat=new THREE.ShaderMaterial({{
+  uniforms:{{uTime:{{value:0}},uColor1:{{value:new THREE.Color('#0a3060')}},uColor2:{{value:new THREE.Color('#041830')}},uHigh:{{value:new THREE.Color('#6098d0')}}}},
+  vertexShader:'uniform float uTime;varying vec3 vP;varying vec2 vU;void main(){{vec3 p=position;float w=sin(p.x*3.5+uTime*1.2)*.12;w+=cos(p.x*5.8-uTime*.9+p.z*2.)*.08;w+=sin(p.x*9.1+uTime*1.5+p.z*4.1)*.05;w+=cos(p.x*14.-uTime*2.)*.03;p.y+=w;vP=p;vU=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.);}}',
+  fragmentShader:'uniform float uTime;uniform vec3 uColor1,uColor2,uHigh;varying vec3 vP;varying vec2 vU;void main(){{float d=1.-vU.y;vec3 col=mix(uColor1,uColor2,d);float wave=sin(vP.x*10.+uTime*1.3)*.5+.5;col+=pow(wave,20.)*.15*uHigh;float beam=exp(-abs(vP.x)*2.5);float rip=sin(vP.x*8.-uTime*2.+vP.y*20.)*.5+.5;col+=beam*rip*(1.-d)*.15*uHigh;col+=pow(1.-vU.y,3.)*.08*uHigh;float alpha=smoothstep(0.,.4,vU.y)*.92;gl_FragColor=vec4(col,alpha);}}',
+  transparent:true,depthWrite:false
+}});
+var water=new THREE.Mesh(geo,mat);scene.add(water);
+function rs(){{var w=window.innerWidth,h=window.innerHeight;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();water.position.y=-.25;water.scale.set(1,1,.55);}}
+window.addEventListener('resize',rs);rs();
+function rn(ts){{mat.uniforms.uTime.value=ts*.001;renderer.render(scene,camera);requestAnimationFrame(rn);}}
+requestAnimationFrame(rn);
+}}
+
+// ── Particles (stars / bubbles) ──
+if(typeof tsParticles!=='undefined'){{
+(async function(){{
+await loadSlim(tsParticles);await loadStarsPreset(tsParticles);
+var pc=document.getElementById('tsparticles');
+var darkCfg={{preset:'stars',background:{{color:'transparent'}},particles:{{number:{{value:150}},color:{{value:['#fff','#c8dfff','#ffe8cc','#adf']}},opacity:{{value:{{min:.15,max:.9}},animation:{{enable:true,speed:2,sync:false}}}},size:{{value:{{min:.5,max:2.8}}}},move:{{enable:true,speed:.1,direction:'none',random:true}}}},fullScreen:{{enable:true,zIndex:2}}}};
+var lightCfg={{background:{{color:'transparent'}},particles:{{number:{{value:38}},color:{{value:['rgba(255,255,255,.22)','rgba(240,245,255,.18)','rgba(220,235,255,.16)','rgba(200,220,250,.2)','rgba(245,250,255,.14)','rgba(190,215,245,.12)']}},shape:{{type:'circle'}},opacity:{{value:.25,animation:{{enable:true,speed:.4,sync:false,min:.08,max:.35}}}},size:{{value:{{min:8,max:55}},animation:{{enable:true,speed:1.2,sync:false,min:6,max:60}}}},move:{{enable:true,speed:.2,direction:'top',random:true,straight:false,outModes:{{default:'out'}}}},stroke:{{width:1.5,color:'rgba(255,255,255,.2)',opacity:.5}}}},fullScreen:{{enable:true,zIndex:2}}}};
+var cur=document.documentElement.getAttribute('data-theme')||'dark';
+var ct=await tsParticles.load({{id:'tsparticles',options:cur==='light'?lightCfg:darkCfg}});
+function upd(){{var t=document.documentElement.getAttribute('data-theme')||'dark';pc.classList.add('fading');setTimeout(function(){{ct.options.load(t==='light'?lightCfg:darkCfg);ct.refresh();pc.classList.remove('fading');}},400);}}
+new MutationObserver(function(ms){{ms.forEach(function(m){{if(m.attributeName==='data-theme')upd();}});}}).observe(document.documentElement,{{attributes:true}});
+var orig=toggleTheme;toggleTheme=function(){{orig();upd();}};
+}})();
+}}
+
+}})();
 </script>
 </body>
 </html>'''
