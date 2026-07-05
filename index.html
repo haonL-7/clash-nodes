@@ -142,8 +142,8 @@ header a { color: var(--primary); text-decoration: none; font-weight: 500; }
 header a:hover { text-decoration: underline; }
 
 /* ── Stats ── */
-.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; margin-bottom: 1.5rem; }
-@media (max-width: 600px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+.stats { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; margin-bottom: 1.5rem; }
+.stats .stat { flex: 1 1 110px; max-width: 160px; }
 
 .stat {
   background: var(--surface-glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
@@ -331,11 +331,9 @@ footer a:hover { color: var(--primary); }
   <div class="stat jp entrance entrance-d2"><div class="num jp">284</div><div class="label">yoyapai</div></div>
   <div class="stat us entrance entrance-d3"><div class="num us">140</div><div class="label">freeSub</div></div>
   <div class="stat fr entrance entrance-d4"><div class="num fr">127</div><div class="label">free-vpn</div></div>
-</div>
-<div class="stats" style="margin-top:-0.6rem">
-  <div class="stat entrance" style="max-width:140px"><div class="num" style="color:#a78bfa">183</div><div class="label">awesome-vpn</div></div>
-  <div class="stat entrance" style="max-width:140px"><div class="num" style="color:var(--text-dim)">734</div><div class="label">Raw Total</div></div>
-  <div class="stat entrance" style="max-width:140px"><div class="num" style="color:var(--amber)">96</div><div class="label">Dupes</div></div>
+  <div class="stat entrance"><div class="num" style="color:#a78bfa">183</div><div class="label">awesome-vpn</div></div>
+  <div class="stat entrance"><div class="num" style="color:var(--text-dim)">734</div><div class="label">Raw Total</div></div>
+  <div class="stat entrance"><div class="num" style="color:var(--amber)">96</div><div class="label">Dupes</div></div>
 </div>
 
 <div class="card entrance entrance-d1">
@@ -394,7 +392,7 @@ footer a:hover { color: var(--primary); }
 
 <footer>
   <a href="https://haonl-7.github.io">haonl-7.github.io</a> &middot;
-  <span data-i18n="updated">Last update</span>: 2026-07-05 14:35 CST &middot;
+  <span data-i18n="updated">Last update</span>: 2026-07-05 15:18 CST &middot;
   <span data-i18n="powered">Powered by</span> <a href="https://github.com/haonL-7/clash-nodes">GitHub Actions</a>
   <br><span style="font-size:.65rem;opacity:.7">Data from public sources:
     <a href="https://yoyapai.com" target="_blank">yoyapai</a> &middot;

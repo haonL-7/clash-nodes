@@ -207,8 +207,8 @@ header a {{ color: var(--primary); text-decoration: none; font-weight: 500; }}
 header a:hover {{ text-decoration: underline; }}
 
 /* ── Stats ── */
-.stats {{ display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; margin-bottom: 1.5rem; }}
-@media (max-width: 600px) {{ .stats {{ grid-template-columns: repeat(2, 1fr); }} }}
+.stats {{ display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; margin-bottom: 1.5rem; }}
+.stats .stat {{ flex: 1 1 110px; max-width: 160px; }}
 
 .stat {{
   background: var(--surface-glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
@@ -396,11 +396,9 @@ footer a:hover {{ color: var(--primary); }}
   <div class="stat jp entrance entrance-d2"><div class="num jp">{src_counts.get("yoyapai",0)}</div><div class="label">yoyapai</div></div>
   <div class="stat us entrance entrance-d3"><div class="num us">{src_counts.get("freeSub",0)}</div><div class="label">freeSub</div></div>
   <div class="stat fr entrance entrance-d4"><div class="num fr">{src_counts.get("free-vpn",0)}</div><div class="label">free-vpn</div></div>
-</div>
-<div class="stats" style="margin-top:-0.6rem">
-  <div class="stat entrance" style="max-width:140px"><div class="num" style="color:#a78bfa">{src_counts.get("awesome-vpn",0)}</div><div class="label">awesome-vpn</div></div>
-  <div class="stat entrance" style="max-width:140px"><div class="num" style="color:var(--text-dim)">{raw_total}</div><div class="label">Raw Total</div></div>
-  <div class="stat entrance" style="max-width:140px"><div class="num" style="color:var(--amber)">{dupes}</div><div class="label">Dupes</div></div>
+  <div class="stat entrance"><div class="num" style="color:#a78bfa">{src_counts.get("awesome-vpn",0)}</div><div class="label">awesome-vpn</div></div>
+  <div class="stat entrance"><div class="num" style="color:var(--text-dim)">{raw_total}</div><div class="label">Raw Total</div></div>
+  <div class="stat entrance"><div class="num" style="color:var(--amber)">{dupes}</div><div class="label">Dupes</div></div>
 </div>
 
 <div class="card entrance entrance-d1">
