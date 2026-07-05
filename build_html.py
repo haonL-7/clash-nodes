@@ -68,7 +68,15 @@ html = f'''<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clash Nodes</title>
+<meta name="description" content="Free Clash proxy subscription aggregation — daily updated nodes from public sources. Copy subscription URL, browse 600+ proxy nodes by region.">
+<meta name="keywords" content="clash,proxy,free,vpn,subscription,nodes,v2ray,shadowsocks,trojan,mihomo,clash meta">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Clash Nodes — Free Proxy Subscription">
+<meta property="og:description" content="Daily-updated free proxy nodes from public sources. One-click copy, 600+ nodes, region filter.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://haonl-7.github.io/clash-nodes/">
+<link rel="canonical" href="https://haonl-7.github.io/clash-nodes/">
+<title>Clash Nodes — Free Proxy Subscription</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
