@@ -21,7 +21,7 @@ with open("latest.yaml", "r", encoding="utf-8") as f:
 
 nodes = []
 for line in lines:
-    if line.startswith("  - name:"):
+    if line.strip().startswith("- name:"):
         name = strip_emoji(line.replace("  - name: ", "").strip())
         r = "other"
         nl = name.lower()
