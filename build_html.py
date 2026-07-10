@@ -22,52 +22,26 @@ def get_yoyapai_url():
         return yamls[0] if yamls else None
     except: return None
 
-def to_uri(p):
-    """Convert proxy dict to shareable URI (vless:// trojan:// ss://)"""
-    name = p.get('name', 'node')
-    server = p.get('server', '') or ''
-    port = p.get('port', 443)
-    ptype = (p.get('type', '') or '').lower()
-    params = []
-
-    if ptype == 'vless':
-        uid = p.get('uuid', '') or ''
-        if p.get('tls'): params.append('security=tls')
-        sni = p.get('servername', '') or p.get('sni', '') or ''
-        if sni: params.append('sni=' + sni)
-        if p.get('network') == 'ws':
-            params.append('type=ws')
-            ws = p.get('ws-opts', {}) or {}
-            if isinstance(ws, dict) and ws.get('path'):
-                params.append('path=' + ws['path'])
-            if isinstance(ws, dict) and isinstance(ws.get('headers'), dict) and ws['headers'].get('Host'):
-                params.append('host=' + ws['headers']['Host'])
-        if p.get('skip-cert-verify'): params.append('allowInsecure=1')
-        qs = '?' + '&'.join(params) if params else ''
-        return f"vless://{uid}@{server}:{port}{qs}#{name}" if uid else None
-
-    if ptype == 'trojan':
-        pw = p.get('password', '') or ''
-        sni = p.get('sni', '') or p.get('servername', '') or ''
-        if sni: params.append('sni=' + sni)
-        if p.get('skip-cert-verify'): params.append('allowInsecure=1')
-        qs = '?' + '&'.join(params) if params else ''
-        return f"trojan://{pw}@{server}:{port}{qs}#{name}" if pw else None
-
-    if ptype == 'ss':
-        method = p.get('cipher', '') or 'aes-256-gcm'
-        pw = p.get('password', '') or ''
-        import base64
-        b64 = base64.b64encode(f"{method}:{pw}".encode()).decode()
-        return f"ss://{b64}@{server}:{port}#{name}" if pw else None
-
-    if ptype == 'vmess':
-        return None  # too complex for URI
-
-    return None
+def to_config(p):
+    """Convert proxy dict to YAML config snippet for direct paste."""
+    lines = ['  - name: ' + (p.get('name', 'node') or 'node')]
+    for k in ('server', 'port', 'type', 'uuid', 'password', 'cipher', 'network',
+              'servername', 'sni', 'tls', 'udp', 'skip-cert-verify', 'client-fingerprint'):
+        if k in p and p[k] is not None:
+            v = p[k]
+            if isinstance(v, bool): v = str(v).lower()
+            lines.append(f'    {k}: {v}')
+    if 'ws-opts' in p and isinstance(p['ws-opts'], dict):
+        lines.append('    ws-opts:')
+        ws = p['ws-opts']
+        if 'path' in ws: lines.append(f'      path: {ws["path"]}')
+        if isinstance(ws.get('headers'), dict) and 'Host' in ws['headers']:
+            lines.append('      headers:')
+            lines.append(f'        Host: {ws["headers"]["Host"]}')
+    return '\n'.join(lines)
 
 def load_proxies(label):
-    """Load proxies from source file. Returns list of (uri, name, type)"""
+    """Load proxies from source file. Returns list of (config, name, type)"""
     path = f'sources/{label}.yaml'
     if not os.path.exists(path): return []
     try:
@@ -78,9 +52,9 @@ def load_proxies(label):
         for p in proxies:
             if not isinstance(p, dict): continue
             if (p.get('type') or '').lower() in ('http', 'socks5'): continue
-            uri = to_uri(p)
-            if uri:
-                result.append({'uri': uri, 'name': p.get('name', '?'), 'type': p.get('type', '?')})
+            cfg = to_config(p)
+            if cfg:
+                result.append({'config': cfg, 'name': p.get('name', '?'), 'type': p.get('type', '?')})
         return result
     except Exception as e:
         print(f"  [{label}] parse error: {e}")
@@ -322,7 +296,8 @@ for idx, (label, url, tag) in enumerate(sources):
 '''
 
     for ni, node in enumerate(nodes):
-        html += f'    <div class="node-row" onclick="copyURI(\'{node["uri"].replace(chr(39), chr(92)+chr(39))}\', this)" title="Click to copy"><span class="node-type">{node["type"]}</span><span class="node-name">{node["name"][:60]}</span></div>\n'
+        esc = node["config"].replace('\\', '\\\\').replace("'", "\\'").replace('\n', '\\n')
+        html += f'    <div class="node-row" onclick="copyConfig(\'{esc}\', this)" title="Click to copy config"><span class="node-type">{node["type"]}</span><span class="node-name">{node["name"][:60]}</span></div>\n'
 
     html += '  </div>\n</div>\n'
 
@@ -357,11 +332,12 @@ function doCopy(id, btn) {{
     }}, 1800);
   }});
 }}
-function copyURI(uri, row) {{
-  navigator.clipboard.writeText(uri).then(function() {{
+function copyConfig(text, row) {{
+  text = text.replace(/\\\\n/g, '\\n');
+  navigator.clipboard.writeText(text).then(function() {{
     row.classList.add('copied');
     setTimeout(function() {{ row.classList.remove('copied'); }}, 600);
-    document.getElementById('toast').textContent = 'Copied! Paste into client';
+    document.getElementById('toast').textContent = 'Config copied! Paste into client';
     document.getElementById('toast').classList.add('show');
     setTimeout(function() {{ document.getElementById('toast').classList.remove('show'); }}, 1500);
   }});
