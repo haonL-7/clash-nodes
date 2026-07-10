@@ -527,6 +527,17 @@ body {{ transition: background .8s ease; }}
 <div class="card entrance entrance-d2">
   <h2 data-i18n="clients_title">Download Client</h2>
   <div class="dl-grid">
+    <!-- Clash Nodes -->
+    <a class="dl-item" href="https://haonl-7.github.io/clash-nodes-app/src/" target="_blank">
+      <div class="dl-icon" style="color:#00d4aa">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </div>
+      <div class="dl-info">
+        <div class="dl-name">Clash Nodes</div>
+        <div class="dl-meta">Subscription aggregator &middot; PWA</div>
+      </div>
+      <div class="dl-btn" style="background:#00d4aa">Open</div>
+    </a>
     <!-- Windows -->
     <a class="dl-item" href="https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v2.5.1/Clash.Verge_2.5.1_x64-setup.exe" target="_blank">
       <div class="dl-icon">
