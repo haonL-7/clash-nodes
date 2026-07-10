@@ -5,15 +5,20 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      - name: Build website
+        run: python build_html.py
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
