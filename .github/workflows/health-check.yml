@@ -1,0 +1,33 @@
+name: Node Health Check
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'  # every 2 hours at even hours UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      - name: Run health check
+        run: python health_check.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet latest.yaml; then
+            echo "No change in node availability, skip."
+            exit 0
+          fi
+          git add latest.yaml
+          git commit -m "health: $(date -u +%Y-%m-%dT%H:%MZ) $(grep -c 'name:' latest.yaml || echo 0) nodes alive"
+          git push
