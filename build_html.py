@@ -23,8 +23,9 @@ def get_yoyapai_url():
     except: return None
 
 def to_config(p):
-    """Convert proxy dict to YAML config snippet for direct paste."""
-    lines = ['  - name: ' + (p.get('name', 'node') or 'node')]
+    """Convert proxy dict to minimal Clash YAML suitable for cmfa direct paste."""
+    lines = ['proxies:']
+    lines.append('  - name: ' + (p.get('name', 'node') or 'node'))
     for k in ('server', 'port', 'type', 'uuid', 'password', 'cipher', 'network',
               'servername', 'sni', 'tls', 'udp', 'skip-cert-verify', 'client-fingerprint'):
         if k in p and p[k] is not None:
