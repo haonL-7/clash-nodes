@@ -129,6 +129,41 @@ header h1 {{ font-size: 2rem; font-weight: 900; letter-spacing: -.03em; }}
 .tag-daily {{ background: rgba(52,211,153,0.12); color: var(--green); }}
 .tag-stable {{ background: rgba(136,153,184,0.1); color: var(--text-dim); }}
 
+/* ── Tutorial ── */
+.step {{
+  display: flex; gap: 1rem; margin-bottom: 1.2rem;
+  padding: .8rem; border-radius: var(--radius-sm);
+  background: rgba(0,0,0,0.15); border: 1px solid transparent;
+  transition: border-color .2s;
+}}
+.step:hover {{ border-color: var(--border-glass); }}
+.step-num {{
+  flex-shrink: 0; width: 28px; height: 28px;
+  background: var(--primary); color: #fff; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .8rem; font-weight: 800;
+}}
+.step-body {{ flex:1; min-width: 0; }}
+.step-body strong {{ color: var(--text); font-size: .82rem; }}
+.step-body p {{ color: var(--text-dim); font-size: .74rem; margin-top: .2rem; line-height: 1.6; }}
+.step-body em {{ color: var(--primary); font-style: normal; font-weight: 500; }}
+
+.dl-links {{ display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .4rem; }}
+.dl-link {{
+  display: flex; flex-direction: column; padding: .5rem .75rem;
+  background: rgba(0,0,0,0.2); border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm); text-decoration: none; transition: all .2s;
+  min-width: 120px;
+}}
+.dl-link:hover {{ border-color: var(--primary); background: rgba(107,140,255,0.06); }}
+.dl-os {{ color: var(--text-muted); font-size: .62rem; text-transform: uppercase; letter-spacing: .05em; }}
+.dl-name {{ color: var(--text); font-size: .76rem; font-weight: 600; }}
+
+@media (max-width: 600px) {{
+  .step {{ flex-direction: column; gap: .4rem; }}
+  .dl-links {{ flex-direction: column; }}
+}}
+
 footer {{ text-align: center; color: var(--text-muted); font-size: .7rem; margin-top: 2rem; padding-bottom: 1.5rem; }}
 footer a {{ color: var(--text-dim); text-decoration: none; font-weight: 500; }}
 footer a:hover {{ color: var(--primary); }}
@@ -203,12 +238,52 @@ footer a:hover {{ color: var(--primary); }}
 </div>
 
 <div class="card entrance entrance-d1">
-  <h2>How to Use</h2>
-  <div style="color:var(--text-dim);font-size:.76rem;line-height:1.8">
-    1. Install a client: <a href="https://github.com/chen08209/FlClash/releases/latest" target="_blank" style="color:var(--primary)">FlClash</a> (Win) or <a href="https://github.com/clash-verge-rev/clash-verge-rev/releases/latest" target="_blank" style="color:var(--primary)">Clash Verge Rev</a><br>
-    2. Copy any URL above → paste into client → download<br>
-    3. Turn on System Proxy, pick a node.<br>
-    4. Not working? Try another source.
+  <h2>Tutorial</h2>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <strong>Download a client</strong>
+      <p>Pick one for your platform:</p>
+      <div class="dl-links">
+        <a href="https://github.com/chen08209/FlClash/releases/latest" target="_blank" class="dl-link">
+          <span class="dl-os">Windows</span>
+          <span class="dl-name">FlClash</span>
+        </a>
+        <a href="https://github.com/clash-verge-rev/clash-verge-rev/releases/latest" target="_blank" class="dl-link">
+          <span class="dl-os">Win/Mac/Linux</span>
+          <span class="dl-name">Clash Verge Rev</span>
+        </a>
+        <a href="https://github.com/chen08209/FlClash/releases/latest" target="_blank" class="dl-link">
+          <span class="dl-os">Android</span>
+          <span class="dl-name">FlClash (APK)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <strong>Import a subscription</strong>
+      <p>Open the client → <em>Profiles</em> or <em>Config</em> tab → <em>+</em> → <em>URL</em> → paste any link from above → click <em>Download</em>. The client will fetch the latest nodes automatically.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <strong>Enable proxy & select a node</strong>
+      <p>Toggle <em>System Proxy</em> ON. Go to the <em>Proxies</em> tab, click any node name to connect. Try a few — free nodes vary in speed.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <strong>Troubleshooting</strong>
+      <p>All nodes timeout? Try another source URL — not every source works for every network. If yoyapai's link is dead (it changes daily), refresh this page for the latest URL. Still stuck? Try a different client.</p>
+    </div>
   </div>
 </div>
 
