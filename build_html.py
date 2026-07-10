@@ -337,23 +337,57 @@ function setFilter(f, btn) {{
 
 function setSearch(q) {{ curSearch = q; render(); }}
 
+function toURI(data) {{
+  var name = encodeURIComponent(data.name || 'node');
+  var type = data.type || '';
+  var server = data.server || '';
+  var port = data.port || 443;
+  var params = [];
+
+  if (type === 'vless') {{
+    var uuid = data.uuid || '';
+    // Build params
+    if (data.tls) {{ params.push('security=tls'); }}
+    if (data.servername || data.sni) {{ params.push('sni=' + encodeURIComponent(data.servername || data.sni)); }}
+    if (data.network === 'ws') {{
+      params.push('type=ws');
+      var ws = data['ws-opts'] || {{}};
+      if (typeof ws === 'object' && ws.path) params.push('path=' + encodeURIComponent(ws.path));
+      if (typeof ws === 'object' && ws.headers && ws.headers.Host) params.push('host=' + encodeURIComponent(ws.headers.Host));
+    }}
+    if (data['skip-cert-verify']) params.push('allowInsecure=1');
+    return 'vless://' + uuid + '@' + server + ':' + port + '?' + params.join('&') + '#' + name;
+  }}
+
+  if (type === 'trojan') {{
+    var pw = data.password || '';
+    if (data.sni || data.servername) params.push('sni=' + encodeURIComponent(data.sni || data.servername));
+    if (data['skip-cert-verify']) params.push('allowInsecure=1');
+    return 'trojan://' + encodeURIComponent(pw) + '@' + server + ':' + port + '?' + params.join('&') + '#' + name;
+  }}
+
+  if (type === 'ss') {{
+    // shadowsocks: ss://base64(method:password@server:port)#name
+    var method = data.cipher || 'aes-256-gcm';
+    var pw2 = data.password || '';
+    var b64 = btoa(method + ':' + pw2);
+    return 'ss://' + b64 + '@' + server + ':' + port + '#' + name;
+  }}
+
+  // Fallback: raw YAML snippet
+  var lines = [];
+  for (var k in data) {{ if (k !== 'name') {{ var v = data[k]; if (typeof v === 'object') v = JSON.stringify(v); lines.push('  ' + k + ': ' + v); }} }}
+  return '- name: ' + (data.name || '') + '\\n' + lines.join('\\n');
+}}
+
 function copyNode(idx, row) {{
   var node = ALL_NODES[idx];
-  var data = node.d;
-  // Build a clean config snippet
-  var lines = [];
-  for (var k in data) {{
-    if (k === 'name') continue;
-    var v = data[k];
-    if (typeof v === 'object') v = JSON.stringify(v);
-    lines.push('  ' + k + ': ' + v);
-  }}
-  var text = '- name: ' + data.name + '\\n' + lines.join('\\n');
-  navigator.clipboard.writeText(text).then(function() {{
+  var uri = toURI(node.d);
+  navigator.clipboard.writeText(uri).then(function() {{
     row.classList.add('copied');
     setTimeout(function() {{ row.classList.remove('copied'); }}, 600);
     var toast = document.getElementById('toast');
-    toast.textContent = '✓ Copied: ' + data.name;
+    toast.textContent = 'Copied! Paste into client';
     toast.classList.add('show');
     setTimeout(function() {{ toast.classList.remove('show'); }}, 1500);
   }});
