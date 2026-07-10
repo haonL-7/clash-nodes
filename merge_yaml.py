@@ -84,8 +84,30 @@ def manual_parse(content):
         proxies.append(dict(current))
     return {"proxies": proxies}
 
+def dedup_key(p):
+    """Generate dedup key: prefer UUID > server:port > servername > name"""
+    uuid = p.get("uuid", "") or ""
+    server = p.get("server", "") or ""
+    port = str(p.get("port", "")) if p.get("port") else ""
+    sni = p.get("servername", "") or ""
+    name = p.get("name", "") or ""
+    # Best: UUID (unique service identity)
+    if uuid and len(uuid) > 4:
+        return "uuid:" + uuid.strip().lower()
+    # Good: server:port (network endpoint)
+    if server and port:
+        return f"srv:{server.strip().lower()}:{port}"
+    # OK: server alone
+    if server:
+        return "srv:" + server.strip().lower()
+    # Fallback: servername (SNI)
+    if sni and len(sni) > 4:
+        return "sni:" + sni.strip().lower()
+    # Last resort: name
+    return "name:" + name.strip().lower()
+
 def merge_all(files_and_labels):
-    """Merge proxies from multiple sources, deduplicate by name."""
+    """Merge proxies from multiple sources, smart dedup by UUID/server/SNI."""
     seen = set()
     merged = []
     stats = {}
@@ -99,15 +121,14 @@ def merge_all(files_and_labels):
             name = p.get("name", "")
             if not name:
                 continue
-            # Clean name for dedup key
-            key = name.strip().lower()
+            key = dedup_key(p)
             if key not in seen:
                 seen.add(key)
                 merged.append(p)
                 added += 1
         stats[label] = {"total": len(proxies), "added": added}
         if proxies:
-            print(f"  [{label}] {added} new (from {len(proxies)} total)")
+            print(f"  [{label}] {added} new (from {len(proxies)} total, {len(proxies)-added} dupes)")
 
     return merged, stats
 
