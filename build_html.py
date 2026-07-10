@@ -211,33 +211,6 @@ footer a:hover {{ color: var(--primary); }}
 </header>
 
 <div class="card entrance entrance-d1">
-  <h2>Subscription URLs</h2>
-  <p style="color:var(--text-muted);font-size:.72rem;margin-bottom:.8rem">Copy a URL, paste into FlClash / Clash Verge / cmfa. Try each source — not all nodes work.</p>
-  <div class="sub-list">
-    <div class="sub-item">
-      <label>yoyapai <span class="tag tag-daily">daily</span></label>
-      <input id="sub0" value="{'[unavailable]' if not yoyapai_url else yoyapai_url}" readonly onclick="this.select()">
-      <button onclick="doCopy('sub0', this)">Copy</button>
-    </div>
-    <div class="sub-item">
-      <label>freeSub <span class="tag tag-stable">stable</span></label>
-      <input id="sub1" value="https://raw.githubusercontent.com/Ruk1ng001/freeSub/main/clash.yaml" readonly onclick="this.select()">
-      <button onclick="doCopy('sub1', this)">Copy</button>
-    </div>
-    <div class="sub-item">
-      <label>free-vpn <span class="tag tag-stable">stable</span></label>
-      <input id="sub2" value="https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml" readonly onclick="this.select()">
-      <button onclick="doCopy('sub2', this)">Copy</button>
-    </div>
-    <div class="sub-item">
-      <label>awesome <span class="tag tag-stable">stable</span></label>
-      <input id="sub3" value="https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/clash.yaml" readonly onclick="this.select()">
-      <button onclick="doCopy('sub3', this)">Copy</button>
-    </div>
-  </div>
-</div>
-
-<div class="card entrance entrance-d1">
   <h2>Tutorial</h2>
 
   <div class="step">
@@ -265,8 +238,8 @@ footer a:hover {{ color: var(--primary); }}
   <div class="step">
     <div class="step-num">2</div>
     <div class="step-body">
-      <strong>Import a subscription</strong>
-      <p>Open the client → <em>Profiles</em> or <em>Config</em> tab → <em>+</em> → <em>URL</em> → paste any link from above → click <em>Download</em>. The client will fetch the latest nodes automatically.</p>
+      <strong>Copy a subscription link below</strong>
+      <p>Scroll down → click <em>Copy</em> on any source → paste into client → <em>Profiles</em> → <em>+</em> → <em>URL</em> → <em>Download</em>.</p>
     </div>
   </div>
 
@@ -282,7 +255,34 @@ footer a:hover {{ color: var(--primary); }}
     <div class="step-num">4</div>
     <div class="step-body">
       <strong>Troubleshooting</strong>
-      <p>All nodes timeout? Try another source URL — not every source works for every network. If yoyapai's link is dead (it changes daily), refresh this page for the latest URL. Still stuck? Try a different client.</p>
+      <p>All nodes timeout? Try another source. yoyapai link dead? Refresh this page for the latest. Still stuck? Try a different client.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card entrance entrance-d1">
+  <h2>Subscription URLs</h2>
+  <p style="color:var(--text-muted);font-size:.72rem;margin-bottom:.8rem">Copy a URL, paste into your client. Try each — not all work on every network.</p>
+  <div class="sub-list">
+    <div class="sub-item">
+      <label>yoyapai <span class="tag tag-daily">daily</span></label>
+      <input id="sub0" value="{'[unavailable]' if not yoyapai_url else yoyapai_url}" readonly onclick="this.select()">
+      <button onclick="doCopy('sub0', this)">Copy</button>
+    </div>
+    <div class="sub-item">
+      <label>freeSub <span class="tag tag-stable">stable</span></label>
+      <input id="sub1" value="https://raw.githubusercontent.com/Ruk1ng001/freeSub/main/clash.yaml" readonly onclick="this.select()">
+      <button onclick="doCopy('sub1', this)">Copy</button>
+    </div>
+    <div class="sub-item">
+      <label>free-vpn <span class="tag tag-stable">stable</span></label>
+      <input id="sub2" value="https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml" readonly onclick="this.select()">
+      <button onclick="doCopy('sub2', this)">Copy</button>
+    </div>
+    <div class="sub-item">
+      <label>awesome <span class="tag tag-stable">stable</span></label>
+      <input id="sub3" value="https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/clash.yaml" readonly onclick="this.select()">
+      <button onclick="doCopy('sub3', this)">Copy</button>
     </div>
   </div>
 </div>
