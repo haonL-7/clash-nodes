@@ -55,6 +55,27 @@ for line in lines:
             r = "fr"
         nodes.append({"n": name, "r": r})
 
+# Get latest yoyapai URL for subscription card
+def get_yoyapai_url():
+    try:
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False; ctx.verify_mode = ssl.CERT_NONE
+        UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/131'
+        req = urllib.request.Request('https://yoyapai.com/category/mianfeijiedian', headers={'User-Agent': UA})
+        html = urllib.request.urlopen(req, context=ctx, timeout=10).read().decode('utf-8', errors='ignore')
+        import re
+        posts = re.findall(r'href=\"https://yoyapai\.com/(\d+)\"', html)
+        if not posts: return 'https://freenode.yoyapai.com/latest.yaml'
+        req2 = urllib.request.Request(f'https://yoyapai.com/{posts[0]}', headers={'User-Agent': UA})
+        html2 = urllib.request.urlopen(req2, context=ctx, timeout=10).read().decode('utf-8', errors='ignore')
+        html2 = html2.replace('&#47;', '/')
+        yamls = re.findall(r'https?://[^\"<>\s]+\.yaml[^\"<>\s]*', html2)
+        return yamls[0] if yamls else 'https://freenode.yoyapai.com/latest.yaml'
+    except:
+        return 'https://freenode.yoyapai.com/latest.yaml'
+
+yoyapai_url = get_yoyapai_url()
+
 total = len(nodes)
 jp_cnt = sum(1 for n in nodes if n["r"] == "jp")
 us_cnt = sum(1 for n in nodes if n["r"] == "us")
@@ -427,17 +448,28 @@ body {{ transition: background .8s ease; }}
 </div>
 
 <div class="card entrance entrance-d1">
-  <h2 data-i18n="sub_title">Subscription URLs</h2>
+  <h2 data-i18n="sub_title">Free Proxy Sources</h2>
+  <p style="color:var(--text-muted);font-size:.72rem;margin-bottom:.6rem">Pick a source, paste into your client. Try each — not all nodes work.</p>
   <div class="sub-list">
     <div class="sub-item">
-      <label>GitHub</label>
-      <input id="sub-raw" value="https://raw.githubusercontent.com/haonL-7/clash-nodes/main/latest.yaml" readonly onclick="this.select()">
-      <button onclick="doCopy('sub-raw', this)" data-i18n="copy">Copy</button>
+      <label>yoyapai</label>
+      <input id="sub-yoyapai" value="{yoyapai_url}" readonly onclick="this.select()">
+      <button onclick="doCopy('sub-yoyapai', this)" data-i18n="copy">Copy</button>
     </div>
     <div class="sub-item">
-      <label>CDN</label>
-      <input id="sub-cdn" value="https://cdn.jsdelivr.net/gh/haonL-7/clash-nodes@main/latest.yaml" readonly onclick="this.select()">
-      <button onclick="doCopy('sub-cdn', this)" data-i18n="copy">Copy</button>
+      <label>freeSub</label>
+      <input id="sub-freesub" value="https://raw.githubusercontent.com/Ruk1ng001/freeSub/main/clash.yaml" readonly onclick="this.select()">
+      <button onclick="doCopy('sub-freesub', this)" data-i18n="copy">Copy</button>
+    </div>
+    <div class="sub-item">
+      <label>free-vpn</label>
+      <input id="sub-freevpn" value="https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml" readonly onclick="this.select()">
+      <button onclick="doCopy('sub-freevpn', this)" data-i18n="copy">Copy</button>
+    </div>
+    <div class="sub-item">
+      <label>awesome</label>
+      <input id="sub-awesome" value="https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/clash.yaml" readonly onclick="this.select()">
+      <button onclick="doCopy('sub-awesome', this)" data-i18n="copy">Copy</button>
     </div>
   </div>
 </div>
