@@ -3,48 +3,6 @@
 import json, datetime, re, os, urllib.request, ssl
 from datetime import timezone, timedelta
 
-def fetch_aihot():
-    """Get latest AI HOT selected items. Returns list of dicts or [] on failure."""
-    try:
-        ctx = ssl.create_default_context()
-        ctx.check_hostname = False
-        ctx.verify_mode = ssl.CERT_NONE
-        req = urllib.request.Request(
-            'https://aihot.virxact.com/api/public/items?mode=selected&take=6',
-            headers={'User-Agent': 'Mozilla/5.0 Chrome/124 aihot-skill/0.2.0'}
-        )
-        resp = urllib.request.urlopen(req, context=ctx, timeout=10)
-        data = json.loads(resp.read())
-        items = []
-        for item in data.get('items', [])[:6]:
-            ts = item.get('publishedAt', '')
-            # Convert to Beijing time shorthand
-            try:
-                dt = datetime.datetime.fromisoformat(ts.replace('Z', '+00:00'))
-                bj = dt.astimezone(timezone(timedelta(hours=8)))
-                now = datetime.datetime.now(timezone(timedelta(hours=8)))
-                diff = now - bj
-                if diff.days == 0:
-                    ts_str = f'{bj.hour:02d}:{bj.minute:02d}'
-                elif diff.days == 1:
-                    ts_str = '昨天'
-                else:
-                    ts_str = f'{bj.month}/{bj.day}'
-            except:
-                ts_str = ''
-            items.append({
-                'title': (item.get('title') or '')[:80],
-                'source': item.get('source', ''),
-                'url': item.get('url', ''),
-                'time': ts_str,
-                'category': item.get('category', ''),
-            })
-        return items
-    except Exception as e:
-        print(f'AI HOT fetch: {e}')
-        return []
-
-aihot_items = fetch_aihot()
 
 def strip_emoji(s):
     emoji_pat = re.compile("["
@@ -341,34 +299,6 @@ header a:hover {{ text-decoration: underline; }}
 }}
 .dl-item:hover .dl-btn {{ box-shadow: 0 4px 16px rgba(107,140,255,0.3); }}
 
-/* ── AI HOT list ── */
-.aihot-list {{ display: flex; flex-direction: column; gap: .35rem; }}
-.aihot-item {{
-  display: flex; align-items: center; gap: .55rem;
-  padding: .5rem .65rem; border-radius: var(--radius-sm);
-  text-decoration: none; transition: background .2s;
-  border: 1px solid transparent;
-}}
-.aihot-item:hover {{ background: rgba(107,140,255,0.04); border-color: var(--border-glass); }}
-.aihot-cat {{
-  flex-shrink: 0; font-size: .6rem; font-weight: 700; padding: 2px 7px;
-  border-radius: 3px; text-transform: uppercase; letter-spacing: .04em;
-  white-space: nowrap;
-}}
-.cat-ai-models {{ background: rgba(0,212,170,0.12); color: #00d4aa; }}
-.cat-ai-products {{ background: rgba(91,140,255,0.12); color: #5b8cff; }}
-.cat-industry {{ background: rgba(245,158,11,0.12); color: #f59e0b; }}
-.cat-paper {{ background: rgba(167,139,250,0.12); color: #a78bfa; }}
-.cat-tip {{ background: rgba(255,140,66,0.1); color: #ff8c42; }}
-.aihot-title {{
-  flex:1; font-size: .76rem; color: var(--text); font-weight: 500;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0;
-}}
-.aihot-meta {{ flex-shrink: 0; font-size: .64rem; color: var(--text-muted); white-space: nowrap; }}
-@media (max-width: 600px) {{
-  .aihot-item {{ flex-wrap: wrap; gap: .3rem; }}
-  .aihot-meta {{ font-size: .6rem; }}
-}}
 
 /* ── Toolbar ── */
 .toolbar {{ display: flex; gap: .4rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }}
@@ -510,18 +440,6 @@ body {{ transition: background .8s ease; }}
       <button onclick="doCopy('sub-cdn', this)" data-i18n="copy">Copy</button>
     </div>
   </div>
-</div>
-
-<div class="card entrance entrance-d2">
-  <h2>AI HOT &mdash; Latest</h2>
-  <div class="aihot-list">
-''' + (''.join([f'''    <a class="aihot-item" href="{i['url']}" target="_blank">
-      <span class="aihot-cat cat-{i['category']}">{i['category']}</span>
-      <span class="aihot-title">{i['title']}</span>
-      <span class="aihot-meta">{i['source']} &middot; {i['time']}</span>
-    </a>''' for i in aihot_items]) if aihot_items else '    <div class="empty-state">AI 动态暂不可用</div>') + '''
-  </div>
-  <p style="color:var(--text-muted);font-size:.66rem;margin-top:.7rem;font-weight:500;">Data from <a href="https://aihot.virxact.com" target="_blank" style="color:var(--primary)">aihot.virxact.com</a> &mdash; daily AI news for builders.</p>
 </div>
 
 <div class="card entrance entrance-d2">

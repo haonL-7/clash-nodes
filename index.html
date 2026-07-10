@@ -233,34 +233,6 @@ header a:hover { text-decoration: underline; }
 }
 .dl-item:hover .dl-btn { box-shadow: 0 4px 16px rgba(107,140,255,0.3); }
 
-/* ── AI HOT list ── */
-.aihot-list { display: flex; flex-direction: column; gap: .35rem; }
-.aihot-item {
-  display: flex; align-items: center; gap: .55rem;
-  padding: .5rem .65rem; border-radius: var(--radius-sm);
-  text-decoration: none; transition: background .2s;
-  border: 1px solid transparent;
-}
-.aihot-item:hover { background: rgba(107,140,255,0.04); border-color: var(--border-glass); }
-.aihot-cat {
-  flex-shrink: 0; font-size: .6rem; font-weight: 700; padding: 2px 7px;
-  border-radius: 3px; text-transform: uppercase; letter-spacing: .04em;
-  white-space: nowrap;
-}
-.cat-ai-models { background: rgba(0,212,170,0.12); color: #00d4aa; }
-.cat-ai-products { background: rgba(91,140,255,0.12); color: #5b8cff; }
-.cat-industry { background: rgba(245,158,11,0.12); color: #f59e0b; }
-.cat-paper { background: rgba(167,139,250,0.12); color: #a78bfa; }
-.cat-tip { background: rgba(255,140,66,0.1); color: #ff8c42; }
-.aihot-title {
-  flex:1; font-size: .76rem; color: var(--text); font-weight: 500;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0;
-}
-.aihot-meta { flex-shrink: 0; font-size: .64rem; color: var(--text-muted); white-space: nowrap; }
-@media (max-width: 600px) {
-  .aihot-item { flex-wrap: wrap; gap: .3rem; }
-  .aihot-meta { font-size: .6rem; }
-}
 
 /* ── Toolbar ── */
 .toolbar { display: flex; gap: .4rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
@@ -405,38 +377,6 @@ body { transition: background .8s ease; }
 </div>
 
 <div class="card entrance entrance-d2">
-  <h2>AI HOT &mdash; Latest</h2>
-  <div class="aihot-list">
-    <a class="aihot-item" href="https://github.com/anthropics/claude-code/releases/tag/v2.1.206" target="_blank">
-      <span class="aihot-cat cat-ai-products">ai-products</span>
-      <span class="aihot-title">Claude Code v2.1.206 发布</span>
-      <span class="aihot-meta">Claude Code：GitHub Releases（RSS） &middot; 09:45</span>
-    </a>    <a class="aihot-item" href="https://research.google/blog/sensorfm-towards-a-general-intelligence-and-interface-for-wearable-health-data" target="_blank">
-      <span class="aihot-cat cat-ai-models">ai-models</span>
-      <span class="aihot-title">Google Research 推出 SensorFM：面向可穿戴健康数据的通用基础模型</span>
-      <span class="aihot-meta">Google Research：Blog（网页） &middot; 08:20</span>
-    </a>    <a class="aihot-item" href="https://github.com/JustVugg/colibri" target="_blank">
-      <span class="aihot-cat cat-ai-products">ai-products</span>
-      <span class="aihot-title">Show HN： 如何在我的低配置电脑上运行 GLM-5.2</span>
-      <span class="aihot-meta">Hacker News 热门（buzzing.cc 中文翻译） &middot; 06:18</span>
-    </a>    <a class="aihot-item" href="https://techcrunch.com/2026/07/09/elon-musk-praises-mythos-fable-promises-not-to-cut-off-anthropic" target="_blank">
-      <span class="aihot-cat cat-industry">industry</span>
-      <span class="aihot-title">Elon Musk称赞Anthropic并承诺不切断其算力</span>
-      <span class="aihot-meta">TechCrunch：AI（RSS） &middot; 05:57</span>
-    </a>    <a class="aihot-item" href="https://techcrunch.com/2026/07/09/can-ai-answer-the-3-trillion-question" target="_blank">
-      <span class="aihot-cat cat-tip">tip</span>
-      <span class="aihot-title">AI 能否回答 3 万亿美元的问题？</span>
-      <span class="aihot-meta">TechCrunch：AI（RSS） &middot; 05:47</span>
-    </a>    <a class="aihot-item" href="https://www.pangram.com/blog/ai-in-your-feed" target="_blank">
-      <span class="aihot-cat cat-tip">tip</span>
-      <span class="aihot-title">社交媒体AI生成内容泛滥：LinkedIn超过40%长文为AI写作</span>
-      <span class="aihot-meta">Hacker News 热门（buzzing.cc 中文翻译） &middot; 05:46</span>
-    </a>
-  </div>
-  <p style="color:var(--text-muted);font-size:.66rem;margin-top:.7rem;font-weight:500;">Data from <a href="https://aihot.virxact.com" target="_blank" style="color:var(--primary)">aihot.virxact.com</a> &mdash; daily AI news for builders.</p>
-</div>
-
-<div class="card entrance entrance-d2">
   <h2 data-i18n="clients_title">Download Client</h2>
   <div class="dl-grid">
     <!-- Windows -->
@@ -479,11 +419,11 @@ body { transition: background .8s ease; }
 <div class="card entrance entrance-d3">
   <h2 data-i18n="nodes_title">Node Directory</h2>
   <div class="toolbar">
-    <button class="filter-btn active" onclick="setFilter('all', this)"><span data-i18n="all">All</span><span class="count">{total}</span></button>
-    <button class="filter-btn" onclick="setFilter('jp', this)">Japan<span class="count">{jp_cnt}</span></button>
-    <button class="filter-btn" onclick="setFilter('us', this)">US<span class="count">{us_cnt}</span></button>
-    <button class="filter-btn" onclick="setFilter('fr', this)">France<span class="count">{fr_cnt}</span></button>
-    <button class="filter-btn" onclick="setFilter('other', this)"><span data-i18n="other">Other</span><span class="count">{other_cnt}</span></button>
+    <button class="filter-btn active" onclick="setFilter('all', this)"><span data-i18n="all">All</span><span class="count">341</span></button>
+    <button class="filter-btn" onclick="setFilter('jp', this)">Japan<span class="count">4</span></button>
+    <button class="filter-btn" onclick="setFilter('us', this)">US<span class="count">61</span></button>
+    <button class="filter-btn" onclick="setFilter('fr', this)">France<span class="count">16</span></button>
+    <button class="filter-btn" onclick="setFilter('other', this)"><span data-i18n="other">Other</span><span class="count">260</span></button>
     <input class="search-box" type="text" data-i18n-placeholder="search" oninput="setSearch(this.value)">
   </div>
   <div class="table-wrap">
@@ -497,7 +437,7 @@ body { transition: background .8s ease; }
 
 <footer>
   <a href="https://haonl-7.github.io">haonl-7.github.io</a> &middot;
-  <span data-i18n="updated">Last update</span>: {now} &middot;
+  <span data-i18n="updated">Last update</span>: 2026-07-10 10:32 CST &middot;
   <span data-i18n="powered">Powered by</span> <a href="https://github.com/haonL-7/clash-nodes">GitHub Actions</a>
   <br><span style="font-size:.65rem;opacity:.7">Data from public sources:
     <a href="https://yoyapai.com" target="_blank">yoyapai</a> &middot;
@@ -511,8 +451,8 @@ body { transition: background .8s ease; }
 
 <script>
 /* ── i18n ── */
-var LANG = {{
-  en: {{
+var LANG = {
+  en: {
     subtitle: 'Free proxy subscription &mdash; daily aggregation from public sources. Also try: <a href="https://yoyapai.com" target="_blank">yoyapai</a> &middot; <a href="https://github.com/Ruk1ng001/freeSub" target="_blank">freeSub</a> &middot; <a href="https://github.com/Au1rxx/free-vpn-subscriptions" target="_blank">free-vpn</a> &middot; <a href="https://github.com/awesome-vpn/awesome-vpn" target="_blank">awesome-vpn</a> &middot; <a href="https://github.com/Jsnzkpg/Jsnzkpg" target="_blank">Jsnzkpg</a>',
     sub_title: 'Subscription URLs',
     copy: 'Copy',
@@ -533,8 +473,8 @@ var LANG = {{
     badge_us: 'United States',
     badge_fr: 'France',
     badge_other: 'Other'
-  }},
-  zh: {{
+  },
+  zh: {
     subtitle: '免费代理订阅 &mdash; 每日自动聚合公开数据。推荐来源：<a href="https://yoyapai.com" target="_blank">yoyapai</a> &middot; <a href="https://github.com/Ruk1ng001/freeSub" target="_blank">freeSub</a> &middot; <a href="https://github.com/Au1rxx/free-vpn-subscriptions" target="_blank">free-vpn</a> &middot; <a href="https://github.com/awesome-vpn/awesome-vpn" target="_blank">awesome-vpn</a> &middot; <a href="https://github.com/Jsnzkpg/Jsnzkpg" target="_blank">Jsnzkpg</a>',
     sub_title: '订阅地址',
     copy: '复制',
@@ -555,130 +495,130 @@ var LANG = {{
     badge_us: '美国',
     badge_fr: '法国',
     badge_other: '其他'
-  }}
-}};
+  }
+};
 
 var curLang = localStorage.getItem('lang') || 'en';
 
-function t(key) {{ return (LANG[curLang] || LANG['en'])[key] || key; }}
+function t(key) { return (LANG[curLang] || LANG['en'])[key] || key; }
 
-function applyLang() {{
+function applyLang() {
   document.documentElement.lang = curLang;
   document.getElementById('langLabel').textContent = curLang === 'zh' ? 'EN' : '中文';
 
-  document.querySelectorAll('[data-i18n]').forEach(function(el) {{
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
     var key = el.getAttribute('data-i18n');
-    if (el.tagName === 'INPUT' && key === 'search') {{
+    if (el.tagName === 'INPUT' && key === 'search') {
       el.placeholder = t('search');
-    }} else if (key === 'subtitle') {{
+    } else if (key === 'subtitle') {
       el.innerHTML = t('subtitle');
-    }} else {{
+    } else {
       el.textContent = t(key);
-    }}
-  }});
+    }
+  });
 
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {{
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
     el.placeholder = t(el.getAttribute('data-i18n-placeholder'));
-  }});
+  });
 
-  if (curLang === 'zh') {{
+  if (curLang === 'zh') {
     document.querySelector('[data-i18n="search"]').placeholder = t('search');
-  }}
+  }
 
   // Client hint (no data-i18n on p, handled separately)
   var hint = document.querySelector('.card:nth-of-type(2) p');
   if (hint) hint.textContent = t('clients_hint');
-}}
+}
 
-function toggleLang() {{
+function toggleLang() {
   curLang = curLang === 'en' ? 'zh' : 'en';
   localStorage.setItem('lang', curLang);
   applyLang();
   // Re-render badges
-  BADGES = {{
+  BADGES = {
     jp: '<span class="badge jp">' + t('badge_jp') + '</span>',
     us: '<span class="badge us">' + t('badge_us') + '</span>',
     fr: '<span class="badge fr">' + t('badge_fr') + '</span>',
     other: '<span class="badge other">' + t('badge_other') + '</span>'
-  }};
+  };
   render();
-}}
+}
 
 /* ── Theme ── */
-(function() {{
+(function() {
   var saved = localStorage.getItem('theme') || 'dark';
   document.documentElement.setAttribute('data-theme', saved);
-}})();
-function toggleTheme() {{
+})();
+function toggleTheme() {
   var el = document.documentElement;
   var cur = el.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
   el.setAttribute('data-theme', cur);
   localStorage.setItem('theme', cur);
-}}
+}
 
 /* ── Nodes ── */
-var NODES = {nodes_json};
-var BADGES = {{
+var NODES = [{"n": "US美國丨yoyapai.com", "r": "us"}, {"n": "US美國丨yoyapai.com_2", "r": "us"}, {"n": "法國丨yoyapai.com", "r": "fr"}, {"n": "US美國丨yoyapai.com_6", "r": "us"}, {"n": "美國丨yoyapai.com_2", "r": "us"}, {"n": "委內瑞拉丨yoyapai.com", "r": "other"}, {"n": "新加坡丨yoyapai.com", "r": "other"}, {"n": "英國", "r": "other"}, {"n": "日本節點", "r": "jp"}, {"n": "英國丨yoyapai.com", "r": "other"}, {"n": "烏克蘭丨yoyapai.com", "r": "other"}, {"n": "德國丨yoyapai.com", "r": "other"}, {"n": "丹麥丨yoyapai.com", "r": "other"}, {"n": "臺灣節點丨yoyapai.com", "r": "other"}, {"n": "NL荷蘭丨yoyapai.com", "r": "other"}, {"n": "意大利節點IT丨yoyapai.com", "r": "other"}, {"n": "NL荷蘭丨yoyapai.com_2", "r": "other"}, {"n": "荷蘭節點丨yoyapai.com", "r": "other"}, {"n": "美国 加利福尼亚州圣何塞", "r": "us"}, {"n": "丹麥丨yoyapai.com_1", "r": "other"}, {"n": "中國臺灣丨yoyapai.com", "r": "other"}, {"n": "韓國丨yoyapai.com", "r": "other"}, {"n": "韓國丨yoyapai.com_1", "r": "other"}, {"n": "美國丨yoyapai.com_15", "r": "us"}, {"n": "保加利亞丨yoyapai.com", "r": "other"}, {"n": "烏克蘭丨yoyapai.com_1", "r": "other"}, {"n": "美國丨yoyapai.com_16", "r": "us"}, {"n": "美國丨yoyapai.com_17", "r": "us"}, {"n": "保加利亞丨yoyapai.com_2", "r": "other"}, {"n": "德國節點丨yoyapai.com", "r": "other"}, {"n": "香港丨yoyapai.com", "r": "other"}, {"n": "亞太地區", "r": "other"}, {"n": "俄羅斯丨yoyapai.com", "r": "other"}, {"n": "臺灣省丨yoyapai.com", "r": "other"}, {"n": "亞太地區丨yoyapai.com", "r": "other"}, {"n": "俄羅斯", "r": "other"}, {"n": "荷蘭丨yoyapai.com", "r": "other"}, {"n": "台湾省台北市丨yoyapai.com", "r": "other"}, {"n": "日本節點丨yoyapai.com", "r": "jp"}, {"n": "俄羅斯丨yoyapai.com_2", "r": "other"}, {"n": "瑞士丨yoyapai.com", "r": "other"}, {"n": "英國節點丨yoyapai.com", "r": "other"}, {"n": "亞太地區丨yoyapai.com_2", "r": "other"}, {"n": "保加利亞丨yoyapai.com_3", "r": "other"}, {"n": "巴西聖保羅丨yoyapai.com", "r": "other"}, {"n": "土耳其丨yoyapai.com", "r": "other"}, {"n": "烏克蘭丨yoyapai.com_2", "r": "other"}, {"n": "美國丨yoyapai.com_18", "r": "us"}, {"n": "美國丨yoyapai.com_19", "r": "us"}, {"n": "荷蘭丨yoyapai.com_2", "r": "other"}, {"n": "美國CloudFlare节点丨yoyapai.com", "r": "us"}, {"n": "德國法蘭克福丨yoyapai.com", "r": "other"}, {"n": "韓國丨yoyapai.com_2", "r": "other"}, {"n": "巴西聖保羅丨yoyapai.com_1", "r": "other"}, {"n": "巴西聖保羅丨yoyapai.com_2", "r": "other"}, {"n": "法國節點", "r": "fr"}, {"n": "美國丨yoyapai.com_21", "r": "us"}, {"n": "亞太地區_4", "r": "other"}, {"n": "免費節點丨yoyapai.com", "r": "other"}, {"n": "IR伊朗丨yoyapai.com", "r": "other"}, {"n": "US美國丨yoyapai.com_6", "r": "us"}, {"n": "KR韓國丨yoyapai.com", "r": "other"}, {"n": "CA加拿大丨yoyapai.com_32", "r": "other"}, {"n": "美國節點丨yoyapai.com_8", "r": "us"}, {"n": "US美國丨yoyapai.com_24", "r": "us"}, {"n": "HU匈牙利丨yoyapai.com", "r": "other"}, {"n": "免費節點丨yoyapai.com_3", "r": "other"}, {"n": "LT立陶宛丨yoyapai.com", "r": "other"}, {"n": "US美國丨yoyapai.com_3", "r": "us"}, {"n": "羅馬尼亞丨yoyapai.com_8", "r": "other"}, {"n": "意大利丨yoyapai.com", "r": "other"}, {"n": "瑞典丨yoyapai.com_4", "r": "other"}, {"n": "美國丨yoyapai.com_25", "r": "us"}, {"n": "CH瑞士丨yoyapai.com", "r": "other"}, {"n": "美國丨yoyapai.com_27", "r": "us"}, {"n": "RU俄羅斯丨yoyapai.com", "r": "other"}, {"n": "US美國丨yoyapai.com_25", "r": "us"}, {"n": "美國+CloudFlare节点丨yoyapai.com", "r": "us"}, {"n": "美國+CloudFlare节点丨yoyapai.com_1", "r": "us"}, {"n": "荷蘭丨yoyapai.com", "r": "other"}, {"n": "US美國丨yoyapai.com_28", "r": "us"}, {"n": "_NL荷蘭丨yoyapai.com", "r": "other"}, {"n": "俄羅斯丨yoyapai.com", "r": "other"}, {"n": "美國佐治亞州亞特蘭大丨yoyapai.com", "r": "us"}, {"n": "🟢[]_github.com/Ruk1ng001_f28c2c38", "r": "other"}, {"n": "🟢[]_github.com/Ruk1ng001_11fe92fa", "r": "other"}, {"n": "🟢[]_github.com/Ruk1ng001_a88e970f", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_78cb3889", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_02122b3e", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_5b8e1a9b", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_c0064576", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_ff3fc59d", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_7c8ebfa0", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_678c1cb7", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_07c3ff1a", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_55cb19bd", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_4c4d893a", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_0378e8f5", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_3ea3db9b", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_172e5b02", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_d6864b0e", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_50511bed", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_4385d4f1", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_9d1e9ccb", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_fb220a84", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_01ff4389", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_cc8f9182", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_d10eacd8", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_c91883ca", "r": "other"}, {"n": "🟠[]_github.com/Ruk1ng001_0f7922fa", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_fd7b192d", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_aac57d45", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_9b17ddd6", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_cb3d27ed", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_0f28691f", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_58a3d31b", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_9e6cebef", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_a0921b46", "r": "other"}, {"n": "🟠[]_github.com/Ruk1ng001_cd386f1c", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_85c29221", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_d8e88830", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_011d3b15", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_450af56b", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_b7a25db2", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_c5b61986", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_46e9bf7d", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_59f086ef", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_961db747", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_6e39a6cb", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_d7d8d337", "r": "other"}, {"n": "🟠[]_github.com/Ruk1ng001_017c8260", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_e6c033a3", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_f8d02395", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_aa105999", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_edf4fc20", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_48370336", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_af52e797", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_86d476ed", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_85cf2f97", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_6fd1af3e", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_450d9f17", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_7b5efeb3", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_3adb38ee", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_7bdb2d5d", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_786985ca", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_1a1bd9fd", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_01eb1362", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_a0cc4c8a", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_ca427c46", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_45dd8b4b", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_ef690cc6", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_6d4a7817", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_e76e07f3", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_97352dbf", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_0ae131d7", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_4a2952a3", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_9f24578b", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_c5731f2c", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_588489b3", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_390d92de", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_a89a852e", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_4de2b545", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_7f908228", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_1af479e3", "r": "other"}, {"n": "🟢[]_github.com/Ruk1ng001_76ab33c4", "r": "other"}, {"n": "🟢[]_github.com/Ruk1ng001_d4d3f58d", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_8ef844c9", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_07b2ee2b", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_1026877a", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_ed7b38b8", "r": "other"}, {"n": "🟢[]_github.com/Ruk1ng001_37aa4ccd", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_223af90e", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_a43c097b", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_9f5445c9", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_26763f04", "r": "other"}, {"n": "🟢[]_github.com/Ruk1ng001_fb5ab450", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_5c5afcdb", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_750809c5", "r": "other"}, {"n": "🟢[]_github.com/Ruk1ng001_0c49c5a0", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_26dd3d10", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_fc196041", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_bc561dde", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_6f0b4d5b", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_7063f71e", "r": "other"}, {"n": "🟢[]_github.com/Ruk1ng001_945d166c", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_6778395a", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_013e8016", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_73809fb0", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_226fa120", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_9e2a5f02", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_6b7dbcaf", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_5a03f828", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_300e8e1c", "r": "other"}, {"n": "🟢[]_github.com/Ruk1ng001_78594eda", "r": "other"}, {"n": "🟢[]_github.com/Ruk1ng001_74aee6dc", "r": "other"}, {"n": "🟢[]_github.com/Ruk1ng001_e7db25db", "r": "other"}, {"n": "🟢[]_github.com/Ruk1ng001_dd55b770", "r": "other"}, {"n": "🟢[]_github.com/Ruk1ng001_5b5b975d", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_37c76867", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_3b6bf33f", "r": "other"}, {"n": "🟠[]_github.com/Ruk1ng001_02272879", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_f74c5c39", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_1f3c79f3", "r": "other"}, {"n": "🟢[]_github.com/Ruk1ng001_23c8fa6d", "r": "other"}, {"n": "🟠[]_github.com/Ruk1ng001_4c06dbb1", "r": "other"}, {"n": "🟢[]_github.com/Ruk1ng001_9faf5f6f", "r": "other"}, {"n": "🟠[]_github.com/Ruk1ng001_d67d9538", "r": "other"}, {"n": "🟢[]_github.com/Ruk1ng001_9617d335", "r": "other"}, {"n": "[]_github.com/Ruk1ng001_e3051f22", "r": "other"}, {"n": "12-vless-Fast Deploy Your Own Worker For Creation", "r": "other"}, {"n": "13-vless-美国 CloudFlare节点", "r": "us"}, {"n": "22-vless->>@oneclickvpnkeys::US", "r": "other"}, {"n": "26-vless->>@oneclickvpnkeys::US", "r": "other"}, {"n": "30-vless->>@oneclickvpnkeys::US", "r": "other"}, {"n": "34-vless-美国 CloudFlare节点", "r": "us"}, {"n": "35-vless->>@v2ray_configs_pool::US", "r": "other"}, {"n": "36-trojan-US-149.28.241.235-0646", "r": "other"}, {"n": "40-vless- US 28", "r": "other"}, {"n": "44-vless- US 36", "r": "other"}, {"n": "48-vless- US 37", "r": "other"}, {"n": "77-vless-美国 CloudFlare节点", "r": "us"}, {"n": "78-vless-美国 CloudFlare节点", "r": "us"}, {"n": "79-vless-美国 CloudFlare节点", "r": "us"}, {"n": "81-trojan- 30 - US - Trojan/WS/TLS - 443", "r": "other"}, {"n": "83-trojan- WS-TLS | @Express_alaki | src @V2rayng", "r": "other"}, {"n": "85-trojan-@filembad", "r": "other"}, {"n": "86-trojan- 44 - US - Trojan/WS/TLS - 443", "r": "other"}, {"n": "87-trojan- 67 - ES - Trojan/WS/TLS - 443", "r": "other"}, {"n": "88-trojan- WS-TLS | @Express_alaki | src @v2Line", "r": "other"}, {"n": "90-trojan- 26 - US - Trojan/WS/TLS - 443", "r": "other"}, {"n": "91-trojan-@V2ray_confiig`", "r": "other"}, {"n": "92-vless-美国 V2CROSS.COM", "r": "us"}, {"n": "93-vless- US 41", "r": "other"}, {"n": "94-vless- US 44", "r": "other"}, {"n": "美国/San Francisco/United States/San Francisco", "r": "us"}, {"n": "荷兰/阿姆斯特丹/The Netherlands/Amsterdam", "r": "other"}, {"n": "美国/San Francisco/United States/San Francisco-2", "r": "us"}, {"n": "芬兰/赫尔辛基/Finland/Helsinki", "r": "other"}, {"n": "俄罗斯联邦/圣彼得堡/Russia/St Petersburg", "r": "other"}, {"n": "英国/United Kingdom", "r": "other"}, {"n": "澳大利亚/悉尼/Australia/Sydney", "r": "other"}, {"n": "美国/United States", "r": "us"}, {"n": "土耳其/伊斯坦布尔/Türkiye/Istanbul", "r": "other"}, {"n": "德国/法兰克福/Germany/Frankfurt am Main", "r": "fr"}, {"n": "法国/France", "r": "fr"}, {"n": "加拿大/蒙特利尔/Canada/Montreal", "r": "other"}, {"n": "德国/Germany", "r": "other"}, {"n": "美国/San Francisco/United States/San Francisco-6", "r": "us"}, {"n": "美国/San Francisco/United States/San Francisco-7", "r": "us"}, {"n": "英国/United Kingdom-2", "r": "other"}, {"n": "美国/United States-3", "r": "us"}, {"n": "英国/United Kingdom-3", "r": "other"}, {"n": "新加坡/新加坡/Singapore/Singapore", "r": "other"}, {"n": "法国/France-2", "r": "fr"}, {"n": "波兰/华沙/Poland/Warsaw", "r": "other"}, {"n": "美国/San Francisco/United States/San Francisco-9", "r": "us"}, {"n": "俄罗斯联邦/莫斯科/Russia/Moscow", "r": "other"}, {"n": "伊朗/Iran", "r": "other"}, {"n": "俄罗斯联邦/莫斯科/Russia/Moscow-2", "r": "other"}, {"n": "美国/北伯根/United States/North Bergen", "r": "us"}, {"n": "法国/France-3", "r": "fr"}, {"n": "德国/法兰克福/Germany/Frankfurt am Main-2", "r": "fr"}, {"n": "意大利/Italy", "r": "other"}, {"n": "日本/Japan", "r": "jp"}, {"n": "荷兰/阿姆斯特丹/The Netherlands/Amsterdam-2", "r": "other"}, {"n": "塞舌尔/Seychelles", "r": "other"}, {"n": "爱沙尼亚/Estonia", "r": "other"}, {"n": "新西兰/New Zealand", "r": "other"}, {"n": "马来西亚/吉隆坡/Malaysia/Kuala Lumpur", "r": "other"}, {"n": "荷兰/恩斯赫德/The Netherlands/Enschede", "r": "other"}, {"n": "美国/United States-7", "r": "us"}, {"n": "南非/约翰内斯堡/South Africa/Johannesburg", "r": "fr"}, {"n": "韩国/首尔特别市/South Korea/Seoul", "r": "other"}, {"n": "法国/France-4", "r": "fr"}, {"n": "美国/United States-8", "r": "us"}, {"n": "南非/约翰内斯堡/South Africa/Johannesburg-2", "r": "fr"}, {"n": "挪威/奥斯陆/Norway/Oslo", "r": "other"}, {"n": "法国/巴黎/France/Paris", "r": "fr"}, {"n": "摩尔多瓦/Moldova", "r": "other"}, {"n": "美国/United States-9", "r": "us"}, {"n": "塞舌尔/Seychelles-2", "r": "other"}, {"n": "美国/San Francisco/United States/San Francisco-12", "r": "us"}, {"n": "奥地利/Austria", "r": "other"}, {"n": "美国/United States-10", "r": "us"}, {"n": "美国/San Francisco/United States/San Francisco-13", "r": "us"}, {"n": "荷兰/阿姆斯特丹/The Netherlands/Amsterdam-3", "r": "other"}, {"n": "日本/东京/Japan/Tokyo-2", "r": "jp"}, {"n": "法国/巴黎/France/Paris-2", "r": "fr"}, {"n": "美国/United States-13", "r": "us"}, {"n": "韩国/春川市/South Korea/Chuncheon", "r": "other"}, {"n": "美国/San Francisco/United States/San Francisco-14", "r": "us"}, {"n": "德国/纽伦堡/Germany/Nuremberg", "r": "other"}, {"n": "新加坡/Singapore", "r": "other"}, {"n": "德国/法兰克福/Germany/Frankfurt am Main-3", "r": "fr"}, {"n": "香港/香港/Hong Kong/Hong Kong", "r": "other"}, {"n": "俄罗斯联邦/Russia", "r": "other"}, {"n": "哈萨克斯坦/阿斯塔纳/Kazakhstan/Astana", "r": "other"}, {"n": "罗马尼亚/Romania", "r": "other"}, {"n": "美国/United States-14", "r": "us"}, {"n": "美国/United States-15", "r": "us"}, {"n": "美国/San Francisco/United States/San Francisco-17", "r": "us"}, {"n": "拉脱维亚/里加/Latvia/Riga", "r": "other"}, {"n": "德国/法兰克福/Germany/Frankfurt am Main-4", "r": "fr"}, {"n": "美国/San Francisco/United States/San Francisco-18", "r": "us"}, {"n": "美国/San Francisco/United States/San Francisco-19", "r": "us"}, {"n": "芬兰/赫尔辛基/Finland/Helsinki-2", "r": "other"}, {"n": "德国/Germany-2", "r": "other"}, {"n": "德国/法兰克福/Germany/Frankfurt am Main-5", "r": "fr"}, {"n": "马来西亚/吉隆坡/Malaysia/Kuala Lumpur-2", "r": "other"}, {"n": "英国/金丝雀码头/United Kingdom/Canary Wharf", "r": "other"}, {"n": "法国/France-5", "r": "fr"}, {"n": "美国/San Francisco/United States/San Francisco-20", "r": "us"}, {"n": "美国/San Francisco/United States/San Francisco-21", "r": "us"}, {"n": "土耳其/伊斯坦布尔/Türkiye/Istanbul-2", "r": "other"}, {"n": "美国/哥伦布/United States/Columbus", "r": "us"}, {"n": "美国/保德曼/United States/Boardman", "r": "us"}, {"n": "美国/保德曼/United States/Boardman-2", "r": "us"}, {"n": "荷兰/阿姆斯特丹/The Netherlands/Amsterdam-4", "r": "other"}, {"n": "澳大利亚/悉尼/Australia/Sydney-2", "r": "other"}, {"n": "美国/保德曼/United States/Boardman-3", "r": "us"}, {"n": "荷兰/埃因霍温/The Netherlands/Eindhoven", "r": "other"}, {"n": "美国/哥伦布/United States/Columbus-2", "r": "us"}, {"n": "新加坡/新加坡/Singapore/Singapore-2", "r": "other"}, {"n": "塞浦路斯/Cyprus", "r": "other"}, {"n": "美国/保德曼/United States/Boardman-4", "r": "us"}, {"n": "新加坡/新加坡/Singapore/Singapore-3", "r": "other"}, {"n": "美国/哥伦布/United States/Columbus-3", "r": "us"}, {"n": "美国/保德曼/United States/Boardman-5", "r": "us"}, {"n": "美国/保德曼/United States/Boardman-6", "r": "us"}, {"n": "新加坡/新加坡/Singapore/Singapore-4", "r": "other"}, {"n": "越南/胡志明市/Vietnam/Ho Chi Minh City", "r": "other"}, {"n": "节点选择", "r": "other"}, {"n": "自动选择", "r": "other"}, {"n": "国外媒体", "r": "other"}, {"n": "电报信息", "r": "other"}, {"n": "Ⓜ 微软服务", "r": "other"}, {"n": "苹果服务", "r": "other"}, {"n": "全球直连", "r": "other"}, {"n": "全球拦截", "r": "other"}, {"n": "应用净化", "r": "other"}, {"n": "漏网之鱼", "r": "other"}];
+var BADGES = {
   jp: '<span class="badge jp">' + t('badge_jp') + '</span>',
   us: '<span class="badge us">' + t('badge_us') + '</span>',
   fr: '<span class="badge fr">' + t('badge_fr') + '</span>',
   other: '<span class="badge other">' + t('badge_other') + '</span>'
-}};
+};
 var curFilter = 'all', curSearch = '';
 
-function esc(s) {{ var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }}
+function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 
-function render() {{
+function render() {
   var h = '', c = 0, q = curSearch.toLowerCase();
-  NODES.forEach(function(n) {{
+  NODES.forEach(function(n) {
     if (curFilter !== 'all' && n.r !== curFilter) return;
     if (q && n.n.toLowerCase().indexOf(q) === -1) return;
     h += '<tr><td>' + esc(n.n) + '</td><td>' + (BADGES[n.r] || BADGES.other) + '</td></tr>';
     c++;
-  }});
+  });
   document.getElementById('tbody').innerHTML = h;
   document.getElementById('empty').style.display = c ? 'none' : 'block';
-}}
+}
 
-function setFilter(f, btn) {{
+function setFilter(f, btn) {
   curFilter = f;
-  document.querySelectorAll('.filter-btn').forEach(function(b) {{ b.classList.remove('active'); }});
+  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
   render();
-}}
+}
 
-function setSearch(q) {{ curSearch = q; render(); }}
+function setSearch(q) { curSearch = q; render(); }
 
-function doCopy(id, btn) {{
+function doCopy(id, btn) {
   var inp = document.getElementById(id);
   inp.select(); inp.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(inp.value).then(function() {{
+  navigator.clipboard.writeText(inp.value).then(function() {
     var orig = btn.textContent;
     btn.textContent = t('copied'); btn.classList.add('copied');
     var toast = document.getElementById('toast');
     toast.textContent = t('toast');
     toast.classList.add('show');
-    setTimeout(function() {{
+    setTimeout(function() {
       toast.classList.remove('show');
       btn.textContent = orig; btn.classList.remove('copied');
-    }}, 1800);
-  }});
-}}
+    }, 1800);
+  });
+}
 
-function animateCounters() {{
-  document.querySelectorAll('.stat .num[data-target]').forEach(function(el) {{
+function animateCounters() {
+  document.querySelectorAll('.stat .num[data-target]').forEach(function(el) {
     var target = parseInt(el.getAttribute('data-target'));
     var dur = 1000, start = performance.now();
-    function tick(now) {{
+    function tick(now) {
       var p = Math.min((now - start) / dur, 1);
       var eased = 1 - Math.pow(1 - p, 3);
       el.textContent = Math.floor(eased * target);
       if (p < 1) requestAnimationFrame(tick);
       else el.textContent = target;
-    }}
+    }
     requestAnimationFrame(tick);
-  }});
-}}
+  });
+}
 
 applyLang();
 render();
@@ -693,50 +633,50 @@ animateCounters();
 <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-stars@4/tsparticles.preset.stars.bundle.min.js"></script>
 <script>
 /* ── Water (Three.js) + Particles (tsParticles) ── */
-(function(){{
+(function(){
 
 // ── WebGL Water ──
 var wc=document.createElement('canvas');
 wc.style.cssText='position:fixed;inset:0;z-index:1;pointer-events:none;transition:opacity .6s ease';
 document.body.appendChild(wc);
-var obs=new MutationObserver(function(ms){{ms.forEach(function(m){{if(m.attributeName==='data-theme')wc.style.opacity=document.documentElement.getAttribute('data-theme')==='light'?'0':'1'}});}});
-obs.observe(document.documentElement,{{attributes:true}});
+var obs=new MutationObserver(function(ms){ms.forEach(function(m){if(m.attributeName==='data-theme')wc.style.opacity=document.documentElement.getAttribute('data-theme')==='light'?'0':'1'});});
+obs.observe(document.documentElement,{attributes:true});
 
-if(typeof THREE!=='undefined'){{
-var renderer=new THREE.WebGLRenderer({{canvas:wc,alpha:true,antialias:true}});
+if(typeof THREE!=='undefined'){
+var renderer=new THREE.WebGLRenderer({canvas:wc,alpha:true,antialias:true});
 renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
 var scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(45,1,.1,100);
 camera.position.set(0,.5,2.8);camera.lookAt(0,.5,0);
 var geo=new THREE.PlaneGeometry(8,4,100,50);geo.rotateX(-Math.PI/2);
-var mat=new THREE.ShaderMaterial({{
-  uniforms:{{uTime:{{value:0}},uColor1:{{value:new THREE.Color('#0a3060')}},uColor2:{{value:new THREE.Color('#041830')}},uHigh:{{value:new THREE.Color('#6098d0')}}}},
-  vertexShader:'uniform float uTime;varying vec3 vP;varying vec2 vU;void main(){{vec3 p=position;float w=sin(p.x*3.5+uTime*1.2)*.12;w+=cos(p.x*5.8-uTime*.9+p.z*2.)*.08;w+=sin(p.x*9.1+uTime*1.5+p.z*4.1)*.05;w+=cos(p.x*14.-uTime*2.)*.03;p.y+=w;vP=p;vU=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.);}}',
-  fragmentShader:'uniform float uTime;uniform vec3 uColor1,uColor2,uHigh;varying vec3 vP;varying vec2 vU;void main(){{float d=1.-vU.y;vec3 col=mix(uColor1,uColor2,d);float wave=sin(vP.x*10.+uTime*1.3)*.5+.5;col+=pow(wave,20.)*.15*uHigh;float beam=exp(-abs(vP.x)*2.5);float rip=sin(vP.x*8.-uTime*2.+vP.y*20.)*.5+.5;col+=beam*rip*(1.-d)*.15*uHigh;col+=pow(1.-vU.y,3.)*.08*uHigh;float alpha=smoothstep(0.,.4,vU.y)*.92;gl_FragColor=vec4(col,alpha);}}',
+var mat=new THREE.ShaderMaterial({
+  uniforms:{uTime:{value:0},uColor1:{value:new THREE.Color('#0a3060')},uColor2:{value:new THREE.Color('#041830')},uHigh:{value:new THREE.Color('#6098d0')}},
+  vertexShader:'uniform float uTime;varying vec3 vP;varying vec2 vU;void main(){vec3 p=position;float w=sin(p.x*3.5+uTime*1.2)*.12;w+=cos(p.x*5.8-uTime*.9+p.z*2.)*.08;w+=sin(p.x*9.1+uTime*1.5+p.z*4.1)*.05;w+=cos(p.x*14.-uTime*2.)*.03;p.y+=w;vP=p;vU=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.);}',
+  fragmentShader:'uniform float uTime;uniform vec3 uColor1,uColor2,uHigh;varying vec3 vP;varying vec2 vU;void main(){float d=1.-vU.y;vec3 col=mix(uColor1,uColor2,d);float wave=sin(vP.x*10.+uTime*1.3)*.5+.5;col+=pow(wave,20.)*.15*uHigh;float beam=exp(-abs(vP.x)*2.5);float rip=sin(vP.x*8.-uTime*2.+vP.y*20.)*.5+.5;col+=beam*rip*(1.-d)*.15*uHigh;col+=pow(1.-vU.y,3.)*.08*uHigh;float alpha=smoothstep(0.,.4,vU.y)*.92;gl_FragColor=vec4(col,alpha);}',
   transparent:true,depthWrite:false
-}});
+});
 var water=new THREE.Mesh(geo,mat);scene.add(water);
-function rs(){{var w=window.innerWidth,h=window.innerHeight;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();water.position.y=-.25;water.scale.set(1,1,.55);}}
+function rs(){var w=window.innerWidth,h=window.innerHeight;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();water.position.y=-.25;water.scale.set(1,1,.55);}
 window.addEventListener('resize',rs);rs();
-function rn(ts){{mat.uniforms.uTime.value=ts*.001;renderer.render(scene,camera);requestAnimationFrame(rn);}}
+function rn(ts){mat.uniforms.uTime.value=ts*.001;renderer.render(scene,camera);requestAnimationFrame(rn);}
 requestAnimationFrame(rn);
-}}
+}
 
 // ── Particles (stars / bubbles) ──
-if(typeof tsParticles!=='undefined'){{
-(async function(){{
+if(typeof tsParticles!=='undefined'){
+(async function(){
 await loadSlim(tsParticles);await loadStarsPreset(tsParticles);
 var pc=document.getElementById('tsparticles');
-var darkCfg={{preset:'stars',background:{{color:'transparent'}},particles:{{number:{{value:150}},color:{{value:['#fff','#c8dfff','#ffe8cc','#adf']}},opacity:{{value:{{min:.15,max:.9}},animation:{{enable:true,speed:2,sync:false}}}},size:{{value:{{min:.5,max:2.8}}}},move:{{enable:true,speed:.1,direction:'none',random:true}}}},fullScreen:{{enable:true,zIndex:2}}}};
-var lightCfg={{background:{{color:'transparent'}},particles:{{number:{{value:38}},color:{{value:['rgba(255,255,255,.22)','rgba(240,245,255,.18)','rgba(220,235,255,.16)','rgba(200,220,250,.2)','rgba(245,250,255,.14)','rgba(190,215,245,.12)']}},shape:{{type:'circle'}},opacity:{{value:.25,animation:{{enable:true,speed:.4,sync:false,min:.08,max:.35}}}},size:{{value:{{min:8,max:55}},animation:{{enable:true,speed:1.2,sync:false,min:6,max:60}}}},move:{{enable:true,speed:.2,direction:'top',random:true,straight:false,outModes:{{default:'out'}}}},stroke:{{width:1.5,color:'rgba(255,255,255,.2)',opacity:.5}}}},fullScreen:{{enable:true,zIndex:2}}}};
+var darkCfg={preset:'stars',background:{color:'transparent'},particles:{number:{value:150},color:{value:['#fff','#c8dfff','#ffe8cc','#adf']},opacity:{value:{min:.15,max:.9},animation:{enable:true,speed:2,sync:false}},size:{value:{min:.5,max:2.8}},move:{enable:true,speed:.1,direction:'none',random:true}},fullScreen:{enable:true,zIndex:2}};
+var lightCfg={background:{color:'transparent'},particles:{number:{value:38},color:{value:['rgba(255,255,255,.22)','rgba(240,245,255,.18)','rgba(220,235,255,.16)','rgba(200,220,250,.2)','rgba(245,250,255,.14)','rgba(190,215,245,.12)']},shape:{type:'circle'},opacity:{value:.25,animation:{enable:true,speed:.4,sync:false,min:.08,max:.35}},size:{value:{min:8,max:55},animation:{enable:true,speed:1.2,sync:false,min:6,max:60}},move:{enable:true,speed:.2,direction:'top',random:true,straight:false,outModes:{default:'out'}},stroke:{width:1.5,color:'rgba(255,255,255,.2)',opacity:.5}},fullScreen:{enable:true,zIndex:2}};
 var cur=document.documentElement.getAttribute('data-theme')||'dark';
-var ct=await tsParticles.load({{id:'tsparticles',options:cur==='light'?lightCfg:darkCfg}});
-function upd(){{var t=document.documentElement.getAttribute('data-theme')||'dark';pc.classList.add('fading');setTimeout(function(){{ct.options.load(t==='light'?lightCfg:darkCfg);ct.refresh();pc.classList.remove('fading');}},400);}}
-new MutationObserver(function(ms){{ms.forEach(function(m){{if(m.attributeName==='data-theme')upd();}});}}).observe(document.documentElement,{{attributes:true}});
-var orig=toggleTheme;toggleTheme=function(){{orig();upd();}};
-}})();
-}}
+var ct=await tsParticles.load({id:'tsparticles',options:cur==='light'?lightCfg:darkCfg});
+function upd(){var t=document.documentElement.getAttribute('data-theme')||'dark';pc.classList.add('fading');setTimeout(function(){ct.options.load(t==='light'?lightCfg:darkCfg);ct.refresh();pc.classList.remove('fading');},400);}
+new MutationObserver(function(ms){ms.forEach(function(m){if(m.attributeName==='data-theme')upd();});}).observe(document.documentElement,{attributes:true});
+var orig=toggleTheme;toggleTheme=function(){orig();upd();};
+})();
+}
 
-}})();
+})();
 </script>
 </body>
 </html>
