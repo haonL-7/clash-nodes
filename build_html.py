@@ -239,7 +239,7 @@ footer a:hover {{ color: var(--primary); }}
     <div class="step-num">2</div>
     <div class="step-body">
       <strong>Copy a subscription link below</strong>
-      <p>Scroll down → click <em>Copy</em> on any source → paste into client → <em>Profiles</em> → <em>+</em> → <em>URL</em> → <em>Download</em>.</p>
+      <p><strong>Do not open the link in your browser</strong> — it's raw code, not a web page. Click <em>Copy</em> → open client → <em>Profiles</em> → <em>+</em> → <em>URL</em> → paste → <em>Download</em>.</p>
     </div>
   </div>
 
@@ -262,7 +262,10 @@ footer a:hover {{ color: var(--primary); }}
 
 <div class="card entrance entrance-d1">
   <h2>Subscription URLs</h2>
-  <p style="color:var(--text-muted);font-size:.72rem;margin-bottom:.8rem">Copy a URL, paste into your client. Try each — not all work on every network.</p>
+  <div style="background:rgba(107,140,255,0.08);border-left:3px solid var(--primary);padding:.7rem .9rem;margin-bottom:.9rem;border-radius:4px">
+    <p style="color:var(--text);font-size:.78rem;font-weight:600;margin-bottom:.2rem">Do NOT open these links in your browser!</p>
+    <p style="color:var(--text-dim);font-size:.72rem">The links below are raw config files, not web pages. Click <em style="color:var(--primary);font-style:normal">Copy</em>, then paste the URL directly into your proxy client app.</p>
+  </div>
   <div class="sub-list">
     <div class="sub-item">
       <label>yoyapai <span class="tag tag-daily">daily</span></label>
