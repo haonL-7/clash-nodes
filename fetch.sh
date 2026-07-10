@@ -73,6 +73,11 @@ echo ""
 echo "[merge] Combining all sources..."
 python3 merge_yaml.py
 
+# ── Health check ──
+echo ""
+echo "[health] Testing node connectivity..."
+python3 health_check.py
+
 # ── Check result ──
 if ! grep -q 'proxies:' latest.yaml 2>/dev/null; then
   echo "FATAL: merge failed, latest.yaml is invalid"
