@@ -3,35 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Free proxy nodes — individually verified, one-click copy to client.">
+<meta name="description" content="Free proxy subscription sources — clean, ad-free directory.">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="Clash Nodes — Free Proxy">
-<title>Clash Nodes</title>
+<meta property="og:title" content="Clash Nodes">
+<title>Clash Nodes — Free Proxy Sources</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
   --bg-deep: #060b14; --bg: #0a0f1e;
-  --surface-glass: rgba(18,24,42,0.55); --surface-solid: rgba(16,22,38,0.8);
+  --surface-glass: rgba(18,24,42,0.55);
   --border-glass: rgba(255,255,255,0.06); --border-strong: rgba(255,255,255,0.1);
   --text: #e8edf5; --text-dim: #8899b4; --text-muted: #556680;
-  --primary: #6b8cff; --primary-soft: rgba(107,140,255,0.15);
-  --green: #34d399; --green-soft: rgba(52,211,153,0.12);
-  --amber: #f59e0b; --amber-soft: rgba(245,158,11,0.12);
-  --rose: #f87171; --rose-soft: rgba(248,113,113,0.12);
-  --radius-sm: 8px; --radius: 14px; --radius-lg: 20px;
+  --primary: #6b8cff; --green: #34d399;
+  --radius: 14px; --radius-sm: 8px;
   --nav-height: 56px;
 }
 
 [data-theme="light"] {
   --bg-deep: #f0f4f8; --bg: #f6f9fc;
-  --surface-glass: rgba(255,255,255,0.65); --surface-solid: rgba(255,255,255,0.85);
+  --surface-glass: rgba(255,255,255,0.65);
   --border-glass: rgba(0,0,0,0.06); --border-strong: rgba(0,0,0,0.12);
   --text: #1a2332; --text-dim: #556680; --text-muted: #8899b4;
-  --primary: #4b6eec; --primary-soft: rgba(75,110,236,0.1);
-  --green: #10b981; --green-soft: rgba(16,185,129,0.1);
-  --amber: #d97706; --amber-soft: rgba(217,119,6,0.08);
-  --rose: #ef4444; --rose-soft: rgba(239,68,68,0.08);
+  --primary: #4b6eec; --green: #10b981;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -49,101 +43,65 @@ body {
   backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   position: fixed; top:0; left:0; right:0; z-index: 100;
 }
-[data-theme="light"] .nav { background: rgba(240,244,248,0.7); }
 .nav-brand { font-weight: 800; font-size: 1rem; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: .45rem; }
 .dot { width:8px; height:8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px rgba(52,211,153,0.5); }
-.nav-actions { display: flex; gap: .4rem; align-items: center; }
+.nav-actions { display: flex; gap: .4rem; }
 .nav-btn {
   background: rgba(0,0,0,0.2); border: 1px solid var(--border-glass); color: var(--text-dim);
   padding: .35rem .65rem; border-radius: var(--radius-sm); cursor: pointer;
-  font-size: .75rem; font-weight: 600; transition: all .25s;
-  display: flex; align-items: center; gap: .3rem; font-family: inherit;
+  font-size: .75rem; font-weight: 600; font-family: inherit; transition: all .25s;
+  display: flex; align-items: center; gap: .3rem;
 }
-[data-theme="light"] .nav-btn { background: rgba(0,0,0,0.03); }
 .nav-btn:hover { color: var(--text); border-color: var(--border-strong); }
 .nav-btn svg { fill: none; stroke: currentColor; stroke-width: 1.8; }
 .sun-icon { display: none; }
 [data-theme="light"] .moon-icon { display: none; }
 [data-theme="light"] .sun-icon { display: inline; }
 
-.container { max-width: 800px; margin: 0 auto; padding: 1.5rem 1.2rem; }
+.container { max-width: 700px; margin: 0 auto; padding: 1.5rem 1.2rem; }
 
-header { text-align: center; margin-bottom: 2rem; }
+header { text-align: center; margin-bottom: 2.5rem; }
 header h1 { font-size: 2rem; font-weight: 900; letter-spacing: -.03em; }
 .subtitle { color: var(--text-dim); font-size: .82rem; margin-top: .3rem; }
 
-.stats { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 1.5rem; justify-content: center; }
-.stat {
-  background: rgba(0,0,0,0.2); border: 1px solid var(--border-glass);
-  border-radius: var(--radius); padding: .85rem .9rem; text-align: center;
-  min-width: 80px; flex: 1; max-width: 140px;
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-}
-[data-theme="light"] .stat { background: rgba(0,0,0,0.03); }
-.stat .num { font-size: 1.8rem; font-weight: 900; line-height: 1.1; }
-.stat .label { font-size: .7rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-top: .2rem; }
-.num.total { color: var(--text); }
-.num.jp { color: var(--rose); }
-.num.us { color: var(--primary); }
-.num.fr { color: var(--amber); }
-
 .card {
   background: var(--surface-glass); border: 1px solid var(--border-glass);
-  border-radius: var(--radius-lg); padding: 1.3rem; margin-bottom: 1.2rem;
+  border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1rem;
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
 }
 .card h2 { font-size: .85rem; font-weight: 700; color: var(--text-dim); margin-bottom: .8rem; text-transform: uppercase; letter-spacing: .06em; }
 
-.toolbar { display: flex; gap: .4rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
-.search-box {
-  margin-left: auto; background: rgba(0,0,0,0.3); border: 1px solid var(--border-glass);
-  border-radius: 20px; padding: .4rem .9rem; font-size: .78rem; color: var(--text);
-  outline: none; transition: all .3s; width: 180px;
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+.sub-list { display: flex; flex-direction: column; gap: .7rem; }
+.sub-item { display: flex; gap: .5rem; align-items: center; }
+.sub-item label {
+  font-size: .74rem; color: var(--text-muted); min-width: 80px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .05em;
 }
-.search-box:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-soft); width: 220px; }
-.search-box::placeholder { color: var(--text-muted); }
-
-.filter-btn {
-  background: rgba(0,0,0,0.2); border: 1px solid var(--border-glass); color: var(--text-dim);
-  padding: .35rem .85rem; border-radius: 20px; cursor: pointer;
-  font-size: .76rem; font-weight: 600; transition: all .25s; font-family: inherit;
+.sub-item input {
+  flex: 1; background: rgba(0,0,0,0.3); border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm); padding: .55rem .75rem;
+  font-size: .76rem; color: var(--text); font-family: 'SF Mono','Fira Code',monospace;
+  transition: all .25s; min-width: 0;
 }
-.filter-btn:hover { color: var(--text); border-color: var(--border-strong); }
-.filter-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 4px 16px rgba(107,140,255,0.25); }
-
-.table-wrap { max-height: 460px; overflow-y: auto; border-radius: var(--radius-sm); background: rgba(0,0,0,0.2); }
-.table-wrap::-webkit-scrollbar { width: 5px; }
-.table-wrap::-webkit-scrollbar-track { background: transparent; }
-.table-wrap::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 10px; }
-table { width: 100%; border-collapse: collapse; font-size: .8rem; }
-th, td { padding: .5rem .8rem; text-align: left; border-bottom: 1px solid var(--border-glass); }
-th {
-  color: var(--text-muted); font-weight: 600; font-size: .7rem;
-  text-transform: uppercase; letter-spacing: .06em;
-  position: sticky; top: 0; background: rgba(10,15,30,0.95);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 1;
+.sub-item input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(107,140,255,0.15); }
+.sub-item button {
+  background: rgba(107,140,255,0.1); color: var(--primary);
+  border: 1px solid rgba(107,140,255,0.25); border-radius: var(--radius-sm);
+  padding: .5rem 1rem; cursor: pointer; font-size: .76rem; font-weight: 600;
+  white-space: nowrap; font-family: inherit; transition: all .25s;
 }
-tr { transition: background .2s; cursor: pointer; }
-tr:hover td { background: rgba(107,140,255,0.06); }
-tr.copied td { background: rgba(52,211,153,0.1); transition: background .3s; }
+.sub-item button:hover { background: var(--primary); border-color: var(--primary); color: #fff; }
+.sub-item button.copied { background: var(--green); border-color: var(--green); color: #fff; }
 
-.badge { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 12px; font-size: .68rem; font-weight: 600; }
-.badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; }
-.badge.jp { background: var(--rose-soft); color: var(--rose); }
-.badge.jp::before { background: var(--rose); }
-.badge.us { background: var(--primary-soft); color: var(--primary); }
-.badge.us::before { background: var(--primary); }
-.badge.fr { background: var(--amber-soft); color: var(--amber); }
-.badge.fr::before { background: var(--amber); }
-.badge.other { background: rgba(136,153,180,.08); color: var(--text-dim); }
-.badge.other::before { background: var(--text-muted); }
+.tag {
+  display: inline-block; font-size: .62rem; font-weight: 700; padding: 2px 7px;
+  border-radius: 3px; margin-left: .4rem; text-transform: uppercase;
+  letter-spacing: .04em; vertical-align: middle;
+}
+.tag-daily { background: rgba(52,211,153,0.12); color: var(--green); }
+.tag-stable { background: rgba(136,153,184,0.1); color: var(--text-dim); }
 
-.empty-state { text-align: center; padding: 2rem; color: var(--text-muted); font-size: .82rem; }
-
-.tip { font-size: .72rem; color: var(--text-muted); margin-bottom: .8rem; line-height: 1.5; }
-
-footer { text-align: center; color: var(--text-muted); font-size: .7rem; margin-top: 2.5rem; padding-bottom: 1.5rem; }
+footer { text-align: center; color: var(--text-muted); font-size: .7rem; margin-top: 2rem; padding-bottom: 1.5rem; }
 footer a { color: var(--text-dim); text-decoration: none; font-weight: 500; }
 footer a:hover { color: var(--primary); }
 
@@ -160,16 +118,11 @@ footer a:hover { color: var(--primary); }
 @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
 .entrance { animation: fadeUp .6s ease both; }
 .entrance-d1 { animation-delay: .05s; }
-.entrance-d2 { animation-delay: .12s; }
-.entrance-d3 { animation-delay: .19s; }
-.entrance-d4 { animation-delay: .26s; }
 
 @media (max-width: 600px) {
   .container { padding: 1rem .6rem; }
-  .stat { min-width: 60px; padding: .6rem .5rem; }
-  .stat .num { font-size: 1.3rem; }
-  .filter-btn { padding: .3rem .6rem; font-size: .7rem; }
-  th, td { padding: .35rem .5rem; }
+  .sub-item { flex-wrap: wrap; }
+  .sub-item label { min-width: 60px; font-size: .68rem; }
   header h1 { font-size: 1.5rem; }
 }
 </style>
@@ -191,161 +144,76 @@ footer a:hover { color: var(--primary); }
 <div class="container">
 <header class="entrance">
   <h1>Clash Nodes</h1>
-  <p class="subtitle">Free verified proxy nodes &mdash; click to copy, paste into your client.</p>
+  <p class="subtitle">Free proxy subscription sources &mdash; clean, ad&#8209;free directory.</p>
 </header>
 
-<div class="stats">
-  <div class="stat total entrance entrance-d1"><div class="num total">24</div><div class="label">Verified</div></div>
-  <div class="stat jp entrance entrance-d2"><div class="num jp">0</div><div class="label">Japan</div></div>
-  <div class="stat us entrance entrance-d3"><div class="num us">3</div><div class="label">US</div></div>
-  <div class="stat fr entrance entrance-d4"><div class="num fr">0</div><div class="label">France</div></div>
+<div class="card entrance entrance-d1">
+  <h2>Subscription URLs</h2>
+  <p style="color:var(--text-muted);font-size:.72rem;margin-bottom:.8rem">Copy a URL, paste into FlClash / Clash Verge / cmfa. Try each source — not all nodes work.</p>
+  <div class="sub-list">
+    <div class="sub-item">
+      <label>yoyapai <span class="tag tag-daily">daily</span></label>
+      <input id="sub0" value="https://freenode.yoyapai.com/2026/07/10-yoyapai.com-clash-vpn-mianfei-jiedian.yaml" readonly onclick="this.select()">
+      <button onclick="doCopy('sub0', this)">Copy</button>
+    </div>
+    <div class="sub-item">
+      <label>freeSub <span class="tag tag-stable">stable</span></label>
+      <input id="sub1" value="https://raw.githubusercontent.com/Ruk1ng001/freeSub/main/clash.yaml" readonly onclick="this.select()">
+      <button onclick="doCopy('sub1', this)">Copy</button>
+    </div>
+    <div class="sub-item">
+      <label>free-vpn <span class="tag tag-stable">stable</span></label>
+      <input id="sub2" value="https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml" readonly onclick="this.select()">
+      <button onclick="doCopy('sub2', this)">Copy</button>
+    </div>
+    <div class="sub-item">
+      <label>awesome <span class="tag tag-stable">stable</span></label>
+      <input id="sub3" value="https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/clash.yaml" readonly onclick="this.select()">
+      <button onclick="doCopy('sub3', this)">Copy</button>
+    </div>
+  </div>
 </div>
 
 <div class="card entrance entrance-d1">
-  <h2>Verified Nodes</h2>
-  <p class="tip">Each row is one verified node. <strong>Click any row</strong> to copy its config. Then paste into FlClash / Clash Verge / cmfa.</p>
-  <div class="toolbar">
-    <button class="filter-btn active" onclick="setFilter('all', this)">All<span class="count" style="font-size:.66rem;opacity:.6;margin-left:2px">24</span></button>
-    <button class="filter-btn" onclick="setFilter('jp', this)">Japan<span class="count" style="font-size:.66rem;opacity:.6;margin-left:2px">0</span></button>
-    <button class="filter-btn" onclick="setFilter('us', this)">US<span class="count" style="font-size:.66rem;opacity:.6;margin-left:2px">3</span></button>
-    <button class="filter-btn" onclick="setFilter('fr', this)">France<span class="count" style="font-size:.66rem;opacity:.6;margin-left:2px">0</span></button>
-    <input class="search-box" type="text" placeholder="Search nodes..." oninput="setSearch(this.value)">
-  </div>
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th style="width:60%">Name</th><th>Region</th><th style="width:80px">Type</th></tr></thead>
-      <tbody id="tbody"></tbody>
-    </table>
-    <div class="empty-state" id="empty" style="display:none">No matching nodes.</div>
-  </div>
-</div>
-
-<div class="card entrance entrance-d2">
   <h2>How to Use</h2>
-  <p class="tip">
-    1. Install <a href="https://github.com/chen08209/FlClash/releases/latest" target="_blank" style="color:var(--primary)">FlClash</a> (Windows) or <a href="https://github.com/clash-verge-rev/clash-verge-rev/releases/latest" target="_blank" style="color:var(--primary)">Clash Verge Rev</a>.<br>
-    2. Click any node above to copy its config.<br>
-    3. In your client: <strong>New Profile → Paste → Save</strong>.<br>
-    4. Turn on System Proxy, select the node, done.
-  </p>
+  <div style="color:var(--text-dim);font-size:.76rem;line-height:1.8">
+    1. Install a client: <a href="https://github.com/chen08209/FlClash/releases/latest" target="_blank" style="color:var(--primary)">FlClash</a> (Win) or <a href="https://github.com/clash-verge-rev/clash-verge-rev/releases/latest" target="_blank" style="color:var(--primary)">Clash Verge Rev</a><br>
+    2. Copy any URL above → paste into client → download<br>
+    3. Turn on System Proxy, pick a node.<br>
+    4. Not working? Try another source.
+  </div>
 </div>
 
 <footer>
-  <a href="https://haonl-7.github.io">haonl-7.github.io</a> &middot;
-  Last update: 2026-07-10 14:18 CST &middot;
-  <span>Nodes individually verified via protocol test</span>
+  <a href="https://haonl-7.github.io">haonl-7.github.io</a> &middot; Updated: 2026-07-10 14:22 CST &middot;
+  <span>No ads. No tracking. Just links.</span>
 </footer>
 </div>
 
 <script>
-/* ── Theme ── */
 (function() {
   var saved = localStorage.getItem('theme') || 'dark';
   document.documentElement.setAttribute('data-theme', saved);
 })();
 function toggleTheme() {
   var el = document.documentElement;
-  var cur = el.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-  el.setAttribute('data-theme', cur);
-  localStorage.setItem('theme', cur);
+  el.setAttribute('data-theme', el.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+  localStorage.setItem('theme', el.getAttribute('data-theme'));
 }
-
-/* ── Node data ── */
-var NODES = [{"n": "新加坡丨yoyapai.com", "r": "other", "d": {"name": "新加坡丨yoyapai.com", "server": "cf4.danfeng.eu.org", "port": 2053, "type": "vless", "uuid": "bafacd98-136a-4530-838d-4e5c51838dac", "network": "ws", "servername": "juzi8186.qea.ccwu.cc", "tls": true, "ws-opts": {"path": "/tv/juzibaipiao?ed=2560", "headers": {"Host": "juzi8186.qea.ccwu.cc"}}, "skip-cert-verify": true, "udp": true, "client-fingerprint": "firefox"}}, {"n": "委內瑞拉丨yoyapai.com", "r": "other", "d": {"name": "委內瑞拉丨yoyapai.com", "server": "158.160.191.91", "port": 443, "type": "vless", "uuid": "a5ea9247-79f3-4655-aece-3fb51e1e669e", "servername": "rezerv8.yunus.guru", "tls": true, "skip-cert-verify": true, "udp": true, "client-fingerprint": "firefox"}}, {"n": "NL荷蘭丨yoyapai.com", "r": "other", "d": {"name": "🇳🇱NL荷蘭丨yoyapai.com", "server": "91.221.190.80", "port": 443, "type": "trojan", "password": "8r<[9'l6hAO#8ZQi", "sni": "Koma-YT.PAGeS.Dev", "tls": true, "ws-opts": {"path": "/trTelegram🇨🇳 @WangCai2", "headers": {"Host": "Koma-YT.PAGeS.Dev"}}, "skip-cert-verify": true, "udp": true}}, {"n": "意大利節點IT丨yoyapai.com", "r": "other", "d": {"name": "意大利節點🇮🇹IT丨yoyapai.com", "server": "151.241.215.148", "port": 443, "type": "trojan", "password": "8r<[9'l6hAO#8ZQi", "sni": "Koma-YT.PAGeS.Dev", "tls": true, "ws-opts": {"path": "/trTelegram🇨🇳 @WangCai2", "headers": {"Host": "Koma-YT.PAGeS.Dev"}}, "skip-cert-verify": true, "udp": true}}, {"n": "荷蘭節點丨yoyapai.com", "r": "other", "d": {"name": "荷蘭節點丨yoyapai.com", "server": "152.53.200.89", "port": 8443, "type": "trojan", "password": "8r<[9'l6hAO#8ZQi", "sni": "Koma-YT.PAGeS.Dev", "tls": true, "ws-opts": {"path": "/trTelegram🇨🇳 @WangCai2", "headers": {"Host": "Koma-YT.PAGeS.Dev"}}, "skip-cert-verify": true, "udp": true}}, {"n": "保加利亞丨yoyapai.com_2", "r": "other", "d": {"name": "保加利亞丨yoyapai.com_2", "server": "ger-nnn.prostosetup.org", "port": 443, "type": "vless", "uuid": "1b43419a-b711-40d4-a0ee-eb5c73e60c92", "servername": "github.com", "tls": true, "skip-cert-verify": true, "udp": true, "client-fingerprint": "chrome"}}, {"n": "俄羅斯", "r": "other", "d": {"name": "俄羅斯", "server": "renderer-stream-1-411.mirra.now", "port": 443, "type": "vmess", "uuid": "df9c9355-b02c-4c12-909d-0dbeb725d52b", "cipher": "auto", "network": "ws", "tls": true, "ws-opts": {"path": "/api/v1/gpu-stream/socket", "headers": {"Host": "renderer-stream-1-411.mirra.now"}}, "skip-cert-verify": true, "udp": true}}, {"n": "俄羅斯丨yoyapai.com_2", "r": "other", "d": {"name": "俄羅斯丨yoyapai.com_2", "server": "81.177.212.44", "port": 443, "type": "vless", "uuid": "039a1658-e86e-475f-a3a4-67cc249acada", "servername": "sw1.panel11.ru", "tls": true, "skip-cert-verify": true, "udp": true, "client-fingerprint": "chrome"}}, {"n": "亞太地區丨yoyapai.com_2", "r": "other", "d": {"name": "亞太地區丨yoyapai.com_2", "server": "103.200.28.142", "port": 7443, "type": "vless", "uuid": "89304de3-af59-4313-b18d-c93dadf54537", "servername": "icloud.com", "tls": true, "skip-cert-verify": true, "udp": true, "client-fingerprint": "chrome"}}, {"n": "巴西聖保羅丨yoyapai.com", "r": "other", "d": {"name": "巴西聖保羅丨yoyapai.com", "server": "188.114.97.6", "port": 443, "type": "trojan", "password": "mitivpn", "sni": "2.1.mitivpn.dee.srfsl.gleobal.fastl3y.n3et.mitivpn.site", "tls": true, "ws-opts": {"path": "https://chatgpt.com", "headers": {"Host": "mitivpn.de.ssl.global.fastly.net.mitivpn.site"}}, "skip-cert-verify": true, "udp": true}}, {"n": "英國節點丨yoyapai.com", "r": "other", "d": {"name": "英國節點丨yoyapai.com", "server": "185.170.154.202", "port": 443, "type": "vless", "uuid": "df7a61b3-fcfb-4e88-aea6-460f83a32823", "servername": "nodg.me3op.site", "tls": true, "skip-cert-verify": true, "udp": true, "client-fingerprint": "chrome"}}, {"n": "羅馬尼亞丨yoyapai.com_8", "r": "other", "d": {"name": "羅馬尼亞丨yoyapai.com_8", "server": "185.137.157.72", "port": 443, "type": "vless", "uuid": "55a5044d-5b35-405f-971c-ea7aacaafcb4", "servername": "www.nvidia.com", "tls": true, "skip-cert-verify": true, "udp": true, "client-fingerprint": "chrome"}}, {"n": "US美國丨yoyapai.com_3", "r": "us", "d": {"name": "🇺🇸 US美國丨yoyapai.com_3", "server": "167.82.101.251", "port": 443, "type": "vless", "uuid": "d27a232b-de94-4204-9bae-b0c243c6b93c", "network": "ws", "servername": "default.ssl.fastly.net", "tls": true, "ws-opts": {"path": "/", "headers": {"Host": "newip.global.ssl.fastly.neT."}}, "skip-cert-verify": true, "udp": true}}, {"n": "美國丨yoyapai.com_25", "r": "us", "d": {"name": "美國丨yoyapai.com_25", "server": "167.82.101.251", "port": 443, "type": "trojan", "password": "Mitivpn", "sni": "ssl.fastly.com", "tls": true, "ws-opts": {"path": "/de", "headers": {"Host": "3-mitivpn.global.ssl.fastly.net"}}, "skip-cert-verify": true, "udp": true}}, {"n": "CH瑞士丨yoyapai.com", "r": "other", "d": {"name": "🇨🇭CH瑞士丨yoyapai.com", "server": "45.195.137.219", "port": 8443, "type": "vless", "uuid": "7f89560c-b9f0-4c56-b3e0-1b1bdafe0b08", "servername": "storage.yandex.net", "tls": true, "skip-cert-verify": true, "udp": true, "client-fingerprint": "chrome"}}, {"n": "美國佐治亞州亞特蘭大丨yoyapai.com", "r": "us", "d": {"name": "美國佐治亞州亞特蘭大丨yoyapai.com", "server": "151.101.56.6", "port": 443, "type": "trojan", "password": "Mitivpn", "sni": "ssl.fastly.com", "tls": true, "ws-opts": {"path": "/", "headers": {"Host": "4-4-3-mitivpn.global.ssl.fastly.net"}}, "skip-cert-verify": true, "udp": true}}, {"n": "俄羅斯丨yoyapai.com", "r": "other", "d": {"name": "🇷🇺俄羅斯丨yoyapai.com", "server": "109.120.176.37", "port": 443, "type": "vless", "uuid": "10a6b923-e349-4594-92bb-d81a6245aaec", "network": "ws", "servername": "sertraline.adaspoloandco.com", "tls": true, "ws-opts": {"path": "/download.php", "headers": {"Host": "sertraline.adaspoloandco.com"}}, "skip-cert-verify": true, "udp": true, "client-fingerprint": "chrome"}}, {"n": "[]_github.com/Ruk1ng001_78cb3889", "r": "other", "d": {"name": "🔴🇺🇸[🎬🤖📺🎭]_github.com/Ruk1ng001_78cb3889", "server": "7a773958-tegxs0-tlvq5w-1jcwu.los.hyhuawei.com", "port": 443, "type": "anytls", "password": "f93486ce-cc84-11ed-9e98-f23c913c8d2b", "sni": "7a773958-tegxs0-tlvq5w-1jcwu.los.hyhuawei.com", "skip-cert-verify": true, "udp": true}}, {"n": "_github.com/Ruk1ng001_54d00832", "r": "other", "d": {"name": "⚪🏳️_github.com/Ruk1ng001_54d00832", "server": "guanwang.awsno.com", "port": 443, "type": "vmess", "uuid": "6a89a215-22bf-4bd7-9642-b95b2e09583a", "cipher": "auto", "network": "tcp", "servername": "gw.alicdn.com", "tls": true, "skip-cert-verify": true, "client-fingerprint": "safari"}}, {"n": "_github.com/Ruk1ng001_79f3708c", "r": "other", "d": {"name": "⚪🏳️_github.com/Ruk1ng001_79f3708c", "server": "185.220.238.77", "port": 11543, "type": "trojan", "password": "HutaoCloud", "network": "ws", "sni": "185.220.238.77", "ws-opts": {"headers": {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"}, "path": "/api"}, "skip-cert-verify": true, "udp": true, "client-fingerprint": "chrome"}}, {"n": "🟢[]_github.com/Ruk1ng001_9617d335", "r": "other", "d": {"name": "🟢🇭🇰[🎬🧠📺🎭]_github.com/Ruk1ng001_9617d335", "server": "9a3bdce2-te3z40-tyt0e8-1mh67.hk2.hyhuawei.com", "port": 443, "type": "anytls", "password": "e1c7fbbc-96b6-11ef-8563-f23c913c8d2b", "sni": "9a3bdce2-te3z40-tyt0e8-1mh67.hk2.hyhuawei.com", "skip-cert-verify": true}}, {"n": "🟢[]_github.com/Ruk1ng001_c1e453c2", "r": "other", "d": {"name": "🟢🇳🇱[🎬📺🎭📦]_github.com/Ruk1ng001_c1e453c2", "server": "185.245.40.251", "port": 443, "type": "vless", "uuid": "a2415a12-3f92-4636-9823-9828d3ceb818", "network": "tcp", "servername": "sun6-20.userapi.com", "tls": true, "udp": true, "client-fingerprint": "firefox"}}, {"n": "🟢_github.com/Ruk1ng001_33b4f4f7", "r": "other", "d": {"name": "🟢🇩🇪_github.com/Ruk1ng001_33b4f4f7", "server": "ff2.yuntong.click", "port": 443, "type": "hysteria2", "password": "f7cb07a0-e6f9-4d22-a60e-c61854450c89", "sni": "ff2.yuntong.click", "skip-cert-verify": false}}, {"n": "越南/胡志明市/Vietnam/Ho Chi Minh City", "r": "other", "d": {"name": "越南/胡志明市/Vietnam/Ho Chi Minh City", "server": "vn2.yuntong.click", "port": 443, "type": "hysteria2", "password": "f7cb07a0-e6f9-4d22-a60e-c61854450c89", "sni": "vn2.yuntong.click", "skip-cert-verify": true}}];
-var BADGES = {
-  jp: '<span class="badge jp">Japan</span>',
-  us: '<span class="badge us">US</span>',
-  fr: '<span class="badge fr">France</span>',
-  other: '<span class="badge other">Other</span>'
-};
-var curFilter = 'all', curSearch = '';
-var ALL_NODES = NODES;
-
-function render() {
-  var h = '', c = 0, q = curSearch.toLowerCase();
-  NODES.forEach(function(n, idx) {
-    if (curFilter !== 'all' && n.r !== curFilter) return;
-    if (q && n.n.toLowerCase().indexOf(q) === -1) return;
-    var ptype = (n.d && n.d.type) || '?';
-    h += '<tr onclick="copyNode(' + idx + ', this)" title="Click to copy config">';
-    h += '<td>' + esc(n.n) + '</td>';
-    h += '<td>' + (BADGES[n.r] || BADGES.other) + '</td>';
-    h += '<td style="color:var(--text-muted);font-size:.7rem">' + ptype + '</td>';
-    h += '</tr>';
-    c++;
-  });
-  document.getElementById('tbody').innerHTML = h;
-  document.getElementById('empty').style.display = c ? 'none' : 'block';
-}
-
-function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
-
-function setFilter(f, btn) {
-  curFilter = f;
-  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
-  if (btn) btn.classList.add('active');
-  render();
-}
-
-function setSearch(q) { curSearch = q; render(); }
-
-function toURI(data) {
-  var name = encodeURIComponent(data.name || 'node');
-  var type = data.type || '';
-  var server = data.server || '';
-  var port = data.port || 443;
-  var params = [];
-
-  if (type === 'vless') {
-    var uuid = data.uuid || '';
-    // Build params
-    if (data.tls) { params.push('security=tls'); }
-    if (data.servername || data.sni) { params.push('sni=' + encodeURIComponent(data.servername || data.sni)); }
-    if (data.network === 'ws') {
-      params.push('type=ws');
-      var ws = data['ws-opts'] || {};
-      if (typeof ws === 'object' && ws.path) params.push('path=' + encodeURIComponent(ws.path));
-      if (typeof ws === 'object' && ws.headers && ws.headers.Host) params.push('host=' + encodeURIComponent(ws.headers.Host));
-    }
-    if (data['skip-cert-verify']) params.push('allowInsecure=1');
-    return 'vless://' + uuid + '@' + server + ':' + port + '?' + params.join('&') + '#' + name;
-  }
-
-  if (type === 'trojan') {
-    var pw = data.password || '';
-    if (data.sni || data.servername) params.push('sni=' + encodeURIComponent(data.sni || data.servername));
-    if (data['skip-cert-verify']) params.push('allowInsecure=1');
-    return 'trojan://' + encodeURIComponent(pw) + '@' + server + ':' + port + '?' + params.join('&') + '#' + name;
-  }
-
-  if (type === 'ss') {
-    // shadowsocks: ss://base64(method:password@server:port)#name
-    var method = data.cipher || 'aes-256-gcm';
-    var pw2 = data.password || '';
-    var b64 = btoa(method + ':' + pw2);
-    return 'ss://' + b64 + '@' + server + ':' + port + '#' + name;
-  }
-
-  // Fallback: raw YAML snippet
-  var lines = [];
-  for (var k in data) { if (k !== 'name') { var v = data[k]; if (typeof v === 'object') v = JSON.stringify(v); lines.push('  ' + k + ': ' + v); } }
-  return '- name: ' + (data.name || '') + '\n' + lines.join('\n');
-}
-
-function copyNode(idx, row) {
-  var node = ALL_NODES[idx];
-  var uri = toURI(node.d);
-  navigator.clipboard.writeText(uri).then(function() {
-    row.classList.add('copied');
-    setTimeout(function() { row.classList.remove('copied'); }, 600);
-    var toast = document.getElementById('toast');
-    toast.textContent = 'Copied! Paste into client';
-    toast.classList.add('show');
-    setTimeout(function() { toast.classList.remove('show'); }, 1500);
+function doCopy(id, btn) {
+  var inp = document.getElementById(id);
+  inp.select(); inp.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(inp.value).then(function() {
+    var orig = btn.textContent;
+    btn.textContent = 'Copied'; btn.classList.add('copied');
+    document.getElementById('toast').textContent = 'Link copied!';
+    document.getElementById('toast').classList.add('show');
+    setTimeout(function() {
+      document.getElementById('toast').classList.remove('show');
+      btn.textContent = orig; btn.classList.remove('copied');
+    }, 1800);
   });
 }
-
-render();
 </script>
 </body>
 </html>
