@@ -106,6 +106,9 @@ def dedup_key(p):
     # Last resort: name
     return "name:" + name.strip().lower()
 
+# HTTP proxies from free sources are CDN edge nodes (not real proxies) — skip them
+SKIP_TYPES = {'http', 'socks5'}  # socks5 also unreliable from free sources
+
 def merge_all(files_and_labels):
     """Merge proxies from multiple sources, smart dedup by UUID/server/SNI."""
     seen = set()
@@ -115,20 +118,25 @@ def merge_all(files_and_labels):
     for path, label in files_and_labels:
         proxies = load_proxies(path, label)
         added = 0
+        skipped = 0
         for p in proxies:
             if not isinstance(p, dict):
                 continue
             name = p.get("name", "")
             if not name:
                 continue
+            ptype = p.get("type", "").lower()
+            if ptype in SKIP_TYPES:
+                skipped += 1
+                continue
             key = dedup_key(p)
             if key not in seen:
                 seen.add(key)
                 merged.append(p)
                 added += 1
-        stats[label] = {"total": len(proxies), "added": added}
+        stats[label] = {"total": len(proxies), "added": added, "skipped": skipped}
         if proxies:
-            print(f"  [{label}] {added} new (from {len(proxies)} total, {len(proxies)-added} dupes)")
+            print(f"  [{label}] {added} new, {skipped} http/socks5 skipped (from {len(proxies)} total, {len(proxies)-added-skipped} dupes)")
 
     return merged, stats
 
