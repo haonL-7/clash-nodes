@@ -275,18 +275,28 @@ header a:hover {{ text-decoration: underline; }}
 .sub-item button:hover {{ background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 4px 16px rgba(107,140,255,0.3); }}
 .sub-item button.copied {{ background: var(--green); border-color: var(--green); color: #fff; box-shadow: 0 4px 16px rgba(52,211,153,0.3); }}
 
-/* ── Client grid ── */
-.client-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .55rem; }}
-.client-item {{
-  display: block; background: rgba(0,0,0,0.2); border: 1px solid var(--border-glass);
-  border-radius: var(--radius-sm); padding: .85rem 1rem;
-  text-decoration: none; transition: all .3s var(--ease);
+/* ── Download Grid ── */
+.dl-grid {{ display: flex; flex-direction: column; gap: .5rem; }}
+.dl-item {{
+  display: flex; align-items: center; gap: .85rem;
+  background: rgba(0,0,0,0.2); border: 1px solid var(--border-glass);
+  border-radius: var(--radius); padding: .85rem 1rem;
+  text-decoration: none; transition: all .25s var(--ease);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }}
-[data-theme="light"] .client-item {{ background: rgba(0,0,0,0.03); }}
-.client-item:hover {{ border-color: var(--primary); background: var(--primary-soft); transform: translateY(-2px); box-shadow: var(--shadow-md); }}
-.client-name {{ color: var(--text); font-size: .84rem; font-weight: 700; }}
-.client-meta {{ color: var(--text-muted); font-size: .7rem; margin-top: .2rem; }}
+[data-theme="light"] .dl-item {{ background: rgba(0,0,0,0.03); }}
+.dl-item:hover {{ border-color: var(--primary); background: var(--primary-soft); }}
+.dl-icon {{ flex-shrink: 0; color: var(--primary); display: flex; align-items: center; }}
+.dl-info {{ flex: 1; min-width: 0; }}
+.dl-name {{ color: var(--text); font-size: .82rem; font-weight: 700; }}
+.dl-meta {{ color: var(--text-muted); font-size: .68rem; margin-top: .1rem; }}
+.dl-btn {{
+  flex-shrink: 0; background: var(--primary); color: #fff;
+  padding: .4rem .9rem; border-radius: var(--radius-sm);
+  font-size: .74rem; font-weight: 600; white-space: nowrap;
+  transition: all .2s;
+}}
+.dl-item:hover .dl-btn {{ box-shadow: 0 4px 16px rgba(107,140,255,0.3); }}
 
 /* ── Toolbar ── */
 .toolbar {{ display: flex; gap: .4rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }}
@@ -431,22 +441,43 @@ body {{ transition: background .8s ease; }}
 </div>
 
 <div class="card entrance entrance-d2">
-  <h2 data-i18n="clients_title">Desktop Clients</h2>
-  <div class="client-grid">
-    <a class="client-item" href="https://github.com/clash-verge-rev/clash-verge-rev/releases/latest" target="_blank">
-      <div class="client-name">Clash Verge Rev</div>
-      <div class="client-meta">Windows / macOS / Linux</div>
+  <h2 data-i18n="clients_title">Download Client</h2>
+  <div class="dl-grid">
+    <!-- Windows -->
+    <a class="dl-item" href="https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v2.5.1/Clash.Verge_2.5.1_x64-setup.exe" target="_blank">
+      <div class="dl-icon">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="dl-info">
+        <div class="dl-name">Windows</div>
+        <div class="dl-meta">Clash Verge Rev v2.5.1 &middot; 44.9 MB</div>
+      </div>
+      <div class="dl-btn">Download</div>
     </a>
-    <a class="client-item" href="https://github.com/chen08209/FlClash/releases/latest" target="_blank">
-      <div class="client-name">FlClash</div>
-      <div class="client-meta">Windows / macOS / Linux / Android</div>
+    <!-- Android -->
+    <a class="dl-item" href="https://github.com/chen08209/FlClash/releases/latest" target="_blank">
+      <div class="dl-icon">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+      </div>
+      <div class="dl-info">
+        <div class="dl-name">Android</div>
+        <div class="dl-meta">FlClash &middot; APK on GitHub</div>
+      </div>
+      <div class="dl-btn">Download</div>
     </a>
-    <a class="client-item" href="https://github.com/LibNyanpasu/clash-nyanpasu/releases/latest" target="_blank">
-      <div class="client-name">Clash Nyanpasu</div>
-      <div class="client-meta">Windows / macOS / Linux</div>
+    <!-- macOS -->
+    <a class="dl-item" href="https://github.com/clash-verge-rev/clash-verge-rev/releases/latest" target="_blank">
+      <div class="dl-icon">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.5 2C18.5 3.5 19 6 17 8.5C15 11 12 13 9.5 13.5C9 13.5 8.5 12 9 10.5C9.5 9 11 7 13 5C15 3 17 2 17.5 2Z"/><path d="M14.5 13C13 15.5 11.5 19 11.5 22"/><path d="M9.5 13.5L8 15"/><path d="M8 15C6.5 16 4.5 18 4 21"/></svg>
+      </div>
+      <div class="dl-info">
+        <div class="dl-name">macOS</div>
+        <div class="dl-meta">Clash Verge Rev &middot; DMG on GitHub</div>
+      </div>
+      <div class="dl-btn">Download</div>
     </a>
   </div>
-  <p style="color:var(--text-muted);font-size:.72rem;margin-top:.75rem;font-weight:500;" data-i18n="clients_hint">Install any client, then import the subscription URL above.</p>
+  <p style="color:var(--text-muted);font-size:.72rem;margin-top:.85rem;font-weight:500;" data-i18n="clients_hint">Install any client, then import the subscription URL above.</p>
 </div>
 
 <div class="card entrance entrance-d3">
