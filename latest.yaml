@@ -1,4 +1,4 @@
-# Real proxy test: 310/315 alive
+# Real proxy test: 308/310 alive
 mixed-port: 7890
 allow-lan: false
 mode: rule
@@ -25,17 +25,58 @@ dns:
     - https://1.1.1.1/dns-query#🚀 节点选择
     - https://8.8.8.8/dns-query#🚀 节点选择
 proxies:
-- name: 🇺🇸US美國丨yoyapai.com_2
+- name: 🇺🇸_US美國丨yoyapai.com
   type: vless
-  server: support.zoom.us
+  server: 199.232.78.159
   port: 443
-  uuid: 6680846a-8a57-4dfd-9a0e-63209cfc8535
+  uuid: 6e2e03e2-4f66-479a-a186-a34d66ca8c91
+  network: ws
+  servername: ssl.fastly.com
+  tls: true
+  client-fingerprint: chrome
+  ws-opts:
+    path: /TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER?ed=2053
+    headers:
+      Host: pan11.global.ssl.fastly.net
+  skip-cert-verify: false
+  udp: true
+- name: 🇺🇸US美國丨yoyapai.com_1
+  type: vless
+  server: 108.162.194.135
+  port: 443
+  uuid: 659a9075-d5ab-4fd2-bf34-b37043fae832
+  network: ws
+  servername: nbhhh.mrcool.kdns.fr
+  tls: true
+  ws-opts:
+    path: /
+    headers:
+      Host: nbhhh.mrcool.kdns.fr
+  skip-cert-verify: false
+  udp: true
+- name: FR法国丨yoyapai.com
+  type: trojan
+  server: 104.16.174.36
+  port: 443
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: false
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+  udp: true
+- name: 🇨🇦CA加拿大丨yoyapai.com
+  type: vless
+  server: 104.26.2.173
+  port: 443
+  uuid: 4d10c997-4781-4cd9-82c3-15453523e12c
   network: ws
   servername: support.zoom.us.yxls.eu.cc
   tls: true
   client-fingerprint: chrome
   ws-opts:
-    path: /sg-amz
+    path: /sg-melbi
     headers:
       Host: support.zoom.us.yxls.eu.cc
   skip-cert-verify: false
@@ -55,97 +96,6 @@ proxies:
       Host: ld.223350.xyz
   skip-cert-verify: false
   udp: true
-- name: 🇺🇸US美國丨yoyapai.com_1
-  type: vless
-  server: 108.162.194.135
-  port: 443
-  uuid: 659a9075-d5ab-4fd2-bf34-b37043fae832
-  network: ws
-  servername: nbhhh.mrcool.kdns.fr
-  tls: true
-  ws-opts:
-    path: /
-    headers:
-      Host: nbhhh.mrcool.kdns.fr
-  skip-cert-verify: false
-  udp: true
-- name: 🇺🇸US美國丨yoyapai.com_9
-  type: vless
-  server: 185.193.29.123
-  port: 443
-  uuid: 1d16c6e0-1bbe-435b-b661-90043fee999c
-  network: ws
-  servername: notls.lukongtou.eu.org
-  tls: true
-  ws-opts:
-    path: Telegram-WangCai2🇨🇳
-    headers:
-      Host: notls.lukongtou.eu.org
-  skip-cert-verify: false
-  udp: true
-- name: 美國丨yoyapai.com
-  type: trojan
-  server: www.ignitelimit.com
-  port: 443
-  password: humanity
-  skip-cert-verify: false
-  ws-opts:
-    path: /assignment
-  udp: true
-- name: 🇺🇸_US美國丨yoyapai.com
-  type: vless
-  server: 199.232.78.159
-  port: 443
-  uuid: 6e2e03e2-4f66-479a-a186-a34d66ca8c91
-  network: ws
-  servername: ssl.fastly.com
-  tls: true
-  client-fingerprint: chrome
-  ws-opts:
-    path: /TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER?ed=2053
-    headers:
-      Host: pan11.global.ssl.fastly.net
-  skip-cert-verify: false
-  udp: true
-- name: 美國丨yoyapai.com_1
-  type: trojan
-  server: blackshadow.dpdns.org
-  port: 443
-  password: 2bcfbfba-b446-4ad5-93ad-72af9e008f61
-  sni: blackshadow.dpdns.org
-  skip-cert-verify: false
-  ws-opts:
-    path: /195.123.218.174-443
-    headers:
-      Host: blackshadow.dpdns.org
-  udp: true
-- name: 🇨🇦CA加拿大丨yoyapai.com
-  type: vless
-  server: 104.26.2.173
-  port: 443
-  uuid: 4d10c997-4781-4cd9-82c3-15453523e12c
-  network: ws
-  servername: support.zoom.us.yxls.eu.cc
-  tls: true
-  client-fingerprint: chrome
-  ws-opts:
-    path: /sg-melbi
-    headers:
-      Host: support.zoom.us.yxls.eu.cc
-  skip-cert-verify: false
-  udp: true
-- name: FR法国丨yoyapai.com
-  type: trojan
-  server: 104.16.174.36
-  port: 443
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: false
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.ignitelimit.com
-  udp: true
 - name: 🇩🇪德国丨yoyapai.com_4
   type: vless
   server: 104.18.12.149
@@ -163,67 +113,55 @@ proxies:
     mode: auto
   skip-cert-verify: false
   udp: true
-- name: 🇺🇸 US美國丨yoyapai.com_1
+- name: 🇺🇸US美國丨yoyapai.com_9
   type: vless
-  server: 167.82.101.251
+  server: 185.193.29.123
   port: 443
-  uuid: d27a232b-de94-4204-9bae-b0c243c6b93c
+  uuid: 1d16c6e0-1bbe-435b-b661-90043fee999c
   network: ws
-  servername: default.ssl.fastly.net
+  servername: notls.lukongtou.eu.org
   tls: true
   ws-opts:
-    path: /
+    path: Telegram-WangCai2🇨🇳
     headers:
-      Host: newip.global.ssl.fastly.neT.
+      Host: notls.lukongtou.eu.org
   skip-cert-verify: false
   udp: true
-- name: 🇷🇺俄罗斯丨yoyapai.com_1
+- name: 🇺🇸US美國丨yoyapai.com_2
   type: vless
-  server: 104.18.32.47
+  server: support.zoom.us
   port: 443
-  uuid: a5a544bf-e4b3-4651-9ff4-de3461910d87
-  network: xhttp
-  servername: rus.aba-hum.store
+  uuid: 6680846a-8a57-4dfd-9a0e-63209cfc8535
+  network: ws
+  servername: support.zoom.us.yxls.eu.cc
   tls: true
   client-fingerprint: chrome
-  alpn:
-  - h3
-  xhttp-opts:
-    path: /
-    mode: auto
-  skip-cert-verify: false
-  udp: true
-- name: 🇨🇦CA加拿大丨yoyapai.com_4
-  type: trojan
-  server: 104.18.152.225
-  port: 443
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: false
   ws-opts:
-    path: /assignment
+    path: /sg-amz
     headers:
-      Host: www.ignitelimit.com
+      Host: support.zoom.us.yxls.eu.cc
+  skip-cert-verify: false
   udp: true
-- name: 🇨🇦CA加拿大丨yoyapai.com_5
+- name: 美國丨yoyapai.com
   type: trojan
-  server: 104.18.152.219
+  server: www.ignitelimit.com
   port: 443
   password: humanity
-  sni: www.ignitelimit.com
   skip-cert-verify: false
   ws-opts:
     path: /assignment
   udp: true
-- name: 🇮🇷_IR伊朗丨yoyapai.com
-  type: vless
-  server: 217.60.193.1
+- name: 美國丨yoyapai.com_1
+  type: trojan
+  server: blackshadow.dpdns.org
   port: 443
-  uuid: 5c192fd7-ef98-4112-a20c-129108fcd7e9
-  servername: ddc-akn.astralweb.tech
-  tls: true
-  client-fingerprint: firefox
+  password: 2bcfbfba-b446-4ad5-93ad-72af9e008f61
+  sni: blackshadow.dpdns.org
   skip-cert-verify: false
+  ws-opts:
+    path: /195.123.218.174-443
+    headers:
+      Host: blackshadow.dpdns.org
   udp: true
 - name: 🇫🇷 法国丨yoyapai.com
   type: vless
@@ -242,64 +180,42 @@ proxies:
     mode: packet-up
   skip-cert-verify: false
   udp: true
-- name: 🇳🇱 荷蘭丨yoyapai.com_1
-  type: vless
-  server: 94.102.51.218
+- name: 🇨🇦CA加拿大丨yoyapai.com_5
+  type: trojan
+  server: 104.18.152.219
   port: 443
-  uuid: c28ee61d-0d43-4e69-8e6a-6397ed0ffc03
-  servername: fair-lunar.cdn.cachefleet.com
-  tls: true
-  flow: xtls-rprx-vision
-  client-fingerprint: random
-  reality-opts:
-    public-key: SHDdd617KLHHb0qlQFOHepeHFl_Ch2i-K7o891uyo2M
+  password: humanity
+  sni: www.ignitelimit.com
   skip-cert-verify: false
+  ws-opts:
+    path: /assignment
   udp: true
-- name: 🇺🇦烏克蘭丨yoyapai.com
-  type: vless
-  server: 104.245.242.7
+- name: 🇨🇦CA加拿大丨yoyapai.com_4
+  type: trojan
+  server: 104.18.152.225
   port: 443
-  uuid: e3e876aa-589e-1dcb-e55f-6ff56d8d80f4
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: false
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+  udp: true
+- name: 🇷🇺俄罗斯丨yoyapai.com_1
+  type: vless
+  server: 104.18.32.47
+  port: 443
+  uuid: a5a544bf-e4b3-4651-9ff4-de3461910d87
   network: xhttp
-  servername: cdn.steamstatic.com
+  servername: rus.aba-hum.store
   tls: true
   client-fingerprint: chrome
-  reality-opts:
-    public-key: 3DYkxUg9fBA6cONioJOPrsklcMQEImEsurR6air4swo
+  alpn:
+  - h3
   xhttp-opts:
     path: /
     mode: auto
-  skip-cert-verify: false
-  udp: true
-- name: 🇳🇱NL荷兰丨yoyapai.com
-  type: vless
-  server: dey.lnmarketplace.net
-  port: 443
-  uuid: 3536e1fa-0850-44d1-b123-925ce12476cf
-  network: xhttp
-  servername: dey.lnmarketplace.net
-  tls: true
-  client-fingerprint: firefox
-  alpn:
-  - h2
-  xhttp-opts:
-    path: /kavir
-    host: dey.lnmarketplace.net
-    mode: stream-one
-  skip-cert-verify: false
-  udp: true
-- name: 🇯🇵JP日本丨yoyapai.com_3
-  type: vless
-  server: 2.27.27.64
-  port: 443
-  uuid: 94d2d711-76e5-4d82-a3c9-4f06fd5558c8
-  servername: jp.musicwave.net
-  tls: true
-  flow: xtls-rprx-vision
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: qBtxq4RZxDLCJT8i48iaGMhacv8MOI0yhIFiuwYJm08
-    short-id: 825d392c67e4
   skip-cert-verify: false
   udp: true
 - name: 🇫🇷法国丨yoyapai.com
@@ -344,42 +260,6 @@ proxies:
   ws-opts:
     path: /assignment
   udp: true
-- name: 🇩🇪德國丨yoyapai.com
-  type: vless
-  server: 170.168.97.3
-  port: 443
-  uuid: 5e243126-4a2a-84b6-782a-73b14797fb5f
-  network: xhttp
-  servername: download.nvidia.com
-  tls: true
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
-  xhttp-opts:
-    path: /
-    mode: auto
-  skip-cert-verify: false
-  udp: true
-- name: 🇫🇷法国丨yoyapai.com_1
-  type: trojan
-  server: www.speedtest.org
-  port: 443
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: false
-  ws-opts:
-    path: /assignment
-  udp: true
-- name: 🇹🇷TR土耳其丨yoyapai.com
-  type: trojan
-  server: 86.38.214.205
-  port: 443
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: false
-  ws-opts:
-    path: /assignment
-  udp: true
 - name: 🇨🇦CA加拿大丨yoyapai.com_7
   type: trojan
   server: 104.18.152.140
@@ -391,6 +271,16 @@ proxies:
     path: /assignment
     headers:
       Host: www.ignitelimit.com
+  udp: true
+- name: 🇹🇷TR土耳其丨yoyapai.com
+  type: trojan
+  server: 86.38.214.205
+  port: 443
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: false
+  ws-opts:
+    path: /assignment
   udp: true
 - name: 🇨🇦CA加拿大丨yoyapai.com_6
   type: trojan
@@ -404,19 +294,6 @@ proxies:
     headers:
       Host: www.ignitelimit.com
   udp: true
-- name: 土耳其丨yoyapai.com
-  type: vless
-  server: 170.168.97.3
-  port: 993
-  uuid: e6d41d6f-d58a-7650-bba4-d7f0dde3ba4d
-  servername: download.nvidia.com
-  tls: true
-  flow: xtls-rprx-vision
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
-  skip-cert-verify: false
-  udp: true
 - name: 🇨🇦CA加拿大丨yoyapai.com_8
   type: trojan
   server: 104.16.174.44
@@ -429,9 +306,66 @@ proxies:
     headers:
       Host: www.ignitelimit.com
   udp: true
+- name: 🇫🇷法国丨yoyapai.com_1
+  type: trojan
+  server: www.speedtest.org
+  port: 443
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: false
+  ws-opts:
+    path: /assignment
+  udp: true
+- name: 🇺🇸 US美國丨yoyapai.com_1
+  type: vless
+  server: 167.82.101.251
+  port: 443
+  uuid: d27a232b-de94-4204-9bae-b0c243c6b93c
+  network: ws
+  servername: default.ssl.fastly.net
+  tls: true
+  ws-opts:
+    path: /
+    headers:
+      Host: newip.global.ssl.fastly.neT.
+  skip-cert-verify: false
+  udp: true
 - name: 🇨🇦CA加拿大丨yoyapai.com_9
   type: trojan
   server: 104.18.152.204
+  port: 443
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: false
+  ws-opts:
+    path: /assignment
+  udp: true
+- name: 🇮🇷_IR伊朗丨yoyapai.com
+  type: vless
+  server: 217.60.193.1
+  port: 443
+  uuid: 5c192fd7-ef98-4112-a20c-129108fcd7e9
+  servername: ddc-akn.astralweb.tech
+  tls: true
+  client-fingerprint: firefox
+  skip-cert-verify: false
+  udp: true
+- name: 🇳🇱 荷蘭丨yoyapai.com_1
+  type: vless
+  server: 94.102.51.218
+  port: 443
+  uuid: c28ee61d-0d43-4e69-8e6a-6397ed0ffc03
+  servername: fair-lunar.cdn.cachefleet.com
+  tls: true
+  flow: xtls-rprx-vision
+  client-fingerprint: random
+  reality-opts:
+    public-key: SHDdd617KLHHb0qlQFOHepeHFl_Ch2i-K7o891uyo2M
+  skip-cert-verify: false
+  udp: true
+- name: 🇨🇦CA加拿大丨yoyapai.com_11
+  type: trojan
+  server: 104.18.152.208
   port: 443
   password: humanity
   sni: www.ignitelimit.com
@@ -451,16 +385,6 @@ proxies:
     headers:
       Host: www.ignitelimit.com
   udp: true
-- name: 🇨🇦CA加拿大丨yoyapai.com_11
-  type: trojan
-  server: 104.18.152.208
-  port: 443
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: false
-  ws-opts:
-    path: /assignment
-  udp: true
 - name: 🇫🇷FR法國丨yoyapai.com_1
   type: trojan
   server: 104.26.15.137
@@ -471,20 +395,21 @@ proxies:
   ws-opts:
     path: /assignment
   udp: true
-- name: ❓未知丨yoyapai.com_7
+- name: 🇳🇱NL荷兰丨yoyapai.com
   type: vless
-  server: 89.35.14.34
+  server: dey.lnmarketplace.net
   port: 443
-  uuid: 2f35965a-9a9b-45fd-ba32-987296dfb6be
-  network: grpc
-  servername: md5.univesalsrv.com
+  uuid: 3536e1fa-0850-44d1-b123-925ce12476cf
+  network: xhttp
+  servername: dey.lnmarketplace.net
   tls: true
   client-fingerprint: firefox
-  grpc-opts:
-    grpc-service-name: app.v1.PushService
-  reality-opts:
-    public-key: 99MRki6b93wC-hhDHe9yq3IXE3KtPGw4RkFAnpI-8gg
-    short-id: aa9884f2982b7d3c
+  alpn:
+  - h2
+  xhttp-opts:
+    path: /kavir
+    host: dey.lnmarketplace.net
+    mode: stream-one
   skip-cert-verify: false
   udp: true
 - name: 🇫🇷FR法國丨yoyapai.com_2
@@ -519,31 +444,23 @@ proxies:
   ws-opts:
     path: /assignment
   udp: true
+- name: 🇯🇵JP日本丨yoyapai.com_3
+  type: vless
+  server: 2.27.27.64
+  port: 443
+  uuid: 94d2d711-76e5-4d82-a3c9-4f06fd5558c8
+  servername: jp.musicwave.net
+  tls: true
+  flow: xtls-rprx-vision
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: qBtxq4RZxDLCJT8i48iaGMhacv8MOI0yhIFiuwYJm08
+    short-id: 825d392c67e4
+  skip-cert-verify: false
+  udp: true
 - name: 🇨🇦CA加拿大丨yoyapai.com_14
   type: trojan
   server: 104.18.152.187
-  port: 443
-  password: humanity
-  sni: www.ignitelimit.com
-  skip-cert-verify: false
-  ws-opts:
-    path: /assignment
-  udp: true
-- name: 🇺🇸US美国丨yoyapai.com
-  type: trojan
-  server: 216.24.57.7
-  port: 443
-  password: humanity
-  sni: www.ignitelimit.com
-  alpn:
-  - http/1.1
-  skip-cert-verify: false
-  ws-opts:
-    path: /assignment
-  udp: true
-- name: 🇨🇦CA加拿大丨yoyapai.com_13
-  type: trojan
-  server: 104.18.152.229
   port: 443
   password: humanity
   sni: www.ignitelimit.com
@@ -564,6 +481,44 @@ proxies:
     headers:
       Host: pan1.global.ssl.fastly.net
   skip-cert-verify: false
+  udp: true
+- name: 🇺🇸US美国丨yoyapai.com
+  type: trojan
+  server: 216.24.57.7
+  port: 443
+  password: humanity
+  sni: www.ignitelimit.com
+  alpn:
+  - http/1.1
+  skip-cert-verify: false
+  ws-opts:
+    path: /assignment
+  udp: true
+- name: 🇺🇦烏克蘭丨yoyapai.com
+  type: vless
+  server: 104.245.242.7
+  port: 443
+  uuid: e3e876aa-589e-1dcb-e55f-6ff56d8d80f4
+  network: xhttp
+  servername: cdn.steamstatic.com
+  tls: true
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: 3DYkxUg9fBA6cONioJOPrsklcMQEImEsurR6air4swo
+  xhttp-opts:
+    path: /
+    mode: auto
+  skip-cert-verify: false
+  udp: true
+- name: 🇨🇦CA加拿大丨yoyapai.com_13
+  type: trojan
+  server: 104.18.152.229
+  port: 443
+  password: humanity
+  sni: www.ignitelimit.com
+  skip-cert-verify: false
+  ws-opts:
+    path: /assignment
   udp: true
 - name: ❓未知丨yoyapai.com_23
   type: trojan
@@ -607,22 +562,6 @@ proxies:
   ws-opts:
     path: /assignment
   udp: true
-- name: 🇩🇪DE德国丨yoyapai.com_11
-  type: vless
-  server: 151.101.69.253
-  port: 443
-  uuid: 884f23e9-caab-4775-9ed9-6a3a9cae677f
-  network: xhttp
-  servername: accaunt.fastly.com
-  tls: true
-  client-fingerprint: chrome
-  alpn:
-  - h3
-  xhttp-opts:
-    path: /Lunex
-    host: lunex.store
-  skip-cert-verify: false
-  udp: true
 - name: 🇨🇦CA加拿大丨yoyapai.com_15
   type: trojan
   server: 104.16.174.37
@@ -643,16 +582,20 @@ proxies:
   ws-opts:
     path: /assignment
   udp: true
-- name: 🇺🇸US美国丨yoyapai.com_10
+- name: 🇩🇪DE德国丨yoyapai.com_11
   type: vless
-  server: www.speedtest.net
+  server: 151.101.69.253
   port: 443
-  uuid: d4733e5a-5850-4523-942e-f28f82ebf4a9
-  network: ws
-  servername: party-5cn.pages.dev
+  uuid: 884f23e9-caab-4775-9ed9-6a3a9cae677f
+  network: xhttp
+  servername: accaunt.fastly.com
   tls: true
-  ws-opts:
-    path: /
+  client-fingerprint: chrome
+  alpn:
+  - h3
+  xhttp-opts:
+    path: /Lunex
+    host: lunex.store
   skip-cert-verify: false
   udp: true
 - name: 🇨🇦CA加拿大丨yoyapai.com_17
@@ -664,22 +607,6 @@ proxies:
   skip-cert-verify: false
   ws-opts:
     path: /assignment
-  udp: true
-- name: 🇳🇴NO挪威丨yoyapai.com
-  type: trojan
-  server: join-telegram-channel.tirexnet.kdns.fr
-  port: 443
-  password: humanity
-  sni: www.ignitelimit.com
-  alpn:
-  - h3
-  - h2
-  - http/1.1
-  skip-cert-verify: false
-  ws-opts:
-    path: /assignment
-    headers:
-      Host: www.ignitelimit.com
   udp: true
 - name: 🇺🇸US美国丨yoyapai.com_12
   type: vless
@@ -696,90 +623,32 @@ proxies:
       Host: d39333476.pages.dev
   skip-cert-verify: false
   udp: true
-- name: 🇩🇪DE德国丨yoyapai.com_9
+- name: 🇩🇪德國丨yoyapai.com
   type: vless
-  server: 169.40.42.229
+  server: 170.168.97.3
   port: 443
-  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-  servername: yahoo.com
+  uuid: 5e243126-4a2a-84b6-782a-73b14797fb5f
+  network: xhttp
+  servername: download.nvidia.com
   tls: true
-  flow: xtls-rprx-vision
-  client-fingerprint: ios
+  client-fingerprint: chrome
   reality-opts:
-    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-    short-id: c39cc7310a
+    public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
+  xhttp-opts:
+    path: /
+    mode: auto
   skip-cert-verify: false
   udp: true
-- name: 🇺🇸US美国丨yoyapai.com_13
+- name: 🇺🇸US美国丨yoyapai.com_10
   type: vless
-  server: 129.153.71.28
-  port: 28863
-  uuid: b3a15df4-c8ad-4e98-b427-7a679aee2b18
+  server: www.speedtest.net
+  port: 443
+  uuid: d4733e5a-5850-4523-942e-f28f82ebf4a9
   network: ws
-  servername: 8n9qi6t-owl.gevc9s4n60cc3wzcmwhjyezydpmbchocxp.workers.dev
+  servername: party-5cn.pages.dev
   tls: true
-  client-fingerprint: chrome
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: 8n9qi6t-owl.gevc9s4n60cc3wzcmwhjyezydpmbchocxp.workers.dev
-  skip-cert-verify: false
-  udp: true
-- name: 🇫🇮FI芬兰丨yoyapai.com
-  type: vless
-  server: 65.109.12.58
-  port: 2053
-  uuid: c7e9c591-2764-423a-afca-efbd010fd396
-  network: ws
-  servername: forfreeuse.rtqa.ru
-  tls: true
-  client-fingerprint: chrome
   ws-opts:
     path: /
-    headers:
-      Host: forfreeuse.rtqa.ru
-  skip-cert-verify: false
-  udp: true
-- name: 🇷🇺俄罗斯丨yoyapai.com_3
-  type: vless
-  server: 217.177.74.229
-  port: 443
-  uuid: 23e18cb4-9db3-4eb1-93d3-26c62095159d
-  servername: yandex.ru
-  tls: true
-  flow: xtls-rprx-vision
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: xSvlclDt9Oz7WKqoCCyuT3mEGnLwyp5ciOUClsZADH8
-    short-id: d4331052
-  skip-cert-verify: false
-  udp: true
-- name: 🇩🇪DE德国丨yoyapai.com_13
-  type: vless
-  server: 177.3.213.112
-  port: 443
-  uuid: f495298f-2bdb-4fd8-9ac9-5dd33d1b482a
-  servername: germanz.ruletka.study
-  tls: true
-  flow: xtls-rprx-vision
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
-    short-id: ff776ff77be48b88
-  skip-cert-verify: false
-  udp: true
-- name: 🇵🇱PL波兰丨yoyapai.com_5
-  type: vless
-  server: 194.93.63.246
-  port: 443
-  uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
-  servername: pl.bubahero.com
-  tls: true
-  flow: xtls-rprx-vision
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: GmZv3anSeAeHr_cMFKr-6MPLli-nyKNatnY6P3AFK00
-    short-id: 9c2378562188c3cb
   skip-cert-verify: false
   udp: true
 - name: 🇬🇧GB英國丨yoyapai.com
@@ -795,6 +664,19 @@ proxies:
     path: /
     headers:
       Host: rAyAn-007.mAxImA.DpDnS.OrG
+  skip-cert-verify: false
+  udp: true
+- name: 土耳其丨yoyapai.com
+  type: vless
+  server: 170.168.97.3
+  port: 993
+  uuid: e6d41d6f-d58a-7650-bba4-d7f0dde3ba4d
+  servername: download.nvidia.com
+  tls: true
+  flow: xtls-rprx-vision
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
   skip-cert-verify: false
   udp: true
 - name: 🇫🇮FI芬兰丨yoyapai.com_4
@@ -814,77 +696,78 @@ proxies:
     mode: auto
   skip-cert-verify: false
   udp: true
-- name: 🇩🇪DE德国丨yoyapai.com_15
+- name: 🇺🇸US美国丨yoyapai.com_13
   type: vless
-  server: 89.125.112.10
-  port: 443
-  uuid: 849252f5-b7d0-42e5-b346-0f56885e7869
-  servername: de-54a2bf7c.sishka.network
-  tls: true
-  flow: xtls-rprx-vision
-  client-fingerprint: firefox
-  skip-cert-verify: false
-  udp: true
-- name: 🇩🇪DE德国丨yoyapai.com_18
-  type: vless
-  server: pew.dianawmoon.dpdns.org
-  port: 443
-  uuid: 26769ac3-b34c-430a-87f8-e1de14619d25
-  network: xhttp
-  servername: pew.dianawmoon.dpdns.org
-  tls: true
-  client-fingerprint: random
-  alpn:
-  - h3
-  - h2
-  xhttp-opts:
-    path: /21096/noencd1ana
-    host: pew.dianawmoon.dpdns.org
-    mode: auto
-  skip-cert-verify: false
-  udp: true
-- name: 🇪🇪EE爱沙尼亚丨yoyapai.com_1
-  type: vless
-  server: 141.0.187.52
-  port: 2083
-  uuid: 8dd437e1-5f3f-446e-98fe-aa29b80057fb
+  server: 129.153.71.28
+  port: 28863
+  uuid: b3a15df4-c8ad-4e98-b427-7a679aee2b18
   network: ws
-  servername: crt.dodopanel.biz
-  tls: true
-  client-fingerprint: qq
-  ws-opts:
-    path: /vless-ws
-  alpn:
-  - http/1.1
-  skip-cert-verify: false
-  udp: true
-- name: 🇷🇺RU俄罗斯丨yoyapai.com_8
-  type: vless
-  server: 200.165.235.78
-  port: 443
-  uuid: 238e492b-bc20-4380-92b6-135d39112ca4
-  servername: api8.eaglors.com
-  tls: true
-  flow: xtls-rprx-vision
-  client-fingerprint: qq
-  reality-opts:
-    public-key: Nb9IwEEhUHEbHSc6e5uYTjxDgN4ZExhDckM3OgYhj2o
-    short-id: 52ccb3687fe0b7ec
-  skip-cert-verify: false
-  udp: true
-- name: 🇸🇬SG新加坡丨yoyapai.com_3
-  type: vless
-  server: 47.131.189.221
-  port: 443
-  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-  network: ws
-  servername: mia7.pages.dev
+  servername: 8n9qi6t-owl.gevc9s4n60cc3wzcmwhjyezydpmbchocxp.workers.dev
   tls: true
   client-fingerprint: chrome
   ws-opts:
-    path: /TG:@MiaChatChannel
+    path: /@Marisa_kristi
     headers:
-      Host: mia7.pages.dev
+      Host: 8n9qi6t-owl.gevc9s4n60cc3wzcmwhjyezydpmbchocxp.workers.dev
+  skip-cert-verify: false
+  udp: true
+- name: 🇳🇴NO挪威丨yoyapai.com
+  type: trojan
+  server: join-telegram-channel.tirexnet.kdns.fr
+  port: 443
+  password: humanity
+  sni: www.ignitelimit.com
+  alpn:
+  - h3
+  - h2
+  - http/1.1
+  skip-cert-verify: false
+  ws-opts:
+    path: /assignment
+    headers:
+      Host: www.ignitelimit.com
+  udp: true
+- name: 🇩🇪DE德国丨yoyapai.com_9
+  type: vless
+  server: 169.40.42.229
+  port: 443
+  uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+  servername: yahoo.com
+  tls: true
+  flow: xtls-rprx-vision
+  client-fingerprint: ios
+  reality-opts:
+    public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+    short-id: c39cc7310a
+  skip-cert-verify: false
+  udp: true
+- name: 🇩🇪DE德国丨yoyapai.com_13
+  type: vless
+  server: 177.3.213.112
+  port: 443
+  uuid: f495298f-2bdb-4fd8-9ac9-5dd33d1b482a
+  servername: germanz.ruletka.study
+  tls: true
+  flow: xtls-rprx-vision
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+    short-id: ff776ff77be48b88
+  skip-cert-verify: false
+  udp: true
+- name: 🇫🇮FI芬兰丨yoyapai.com
+  type: vless
+  server: 65.109.12.58
+  port: 2053
+  uuid: c7e9c591-2764-423a-afca-efbd010fd396
+  network: ws
+  servername: forfreeuse.rtqa.ru
+  tls: true
+  client-fingerprint: chrome
+  ws-opts:
+    path: /
+    headers:
+      Host: forfreeuse.rtqa.ru
   skip-cert-verify: false
   udp: true
 - name: 🇻🇳VN越南丨yoyapai.com
@@ -904,19 +787,18 @@ proxies:
     host: b33ec4a1s226.fuhuovps.xyz
   skip-cert-verify: false
   udp: true
-- name: 🇨🇦CA加拿大丨yoyapai.com_18
+- name: 🇵🇱PL波兰丨yoyapai.com_5
   type: vless
-  server: yg9.ygkkk.dpdns.org
-  port: 8443
-  uuid: 86c50e3a-5b87-40dd-bd20-03c7f2735e40
-  network: ws
-  servername: ygwp.sbbz.tech
+  server: 194.93.63.246
+  port: 443
+  uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
+  servername: pl.bubahero.com
   tls: true
+  flow: xtls-rprx-vision
   client-fingerprint: chrome
-  ws-opts:
-    path: /
-    headers:
-      Host: ygwp.sbbz.tech
+  reality-opts:
+    public-key: GmZv3anSeAeHr_cMFKr-6MPLli-nyKNatnY6P3AFK00
+    short-id: 9c2378562188c3cb
   skip-cert-verify: false
   udp: true
 - name: D🔴🇺🇸hos[🎬📺🎭🎪]_dokng.com_46f19d14
@@ -926,17 +808,30 @@ proxies:
   skip-cert-verify: true
   sni: anytls2.864106.xyz
   type: anytls
-- name: 🇮🇳IN印度丨yoyapai.com_1
+- name: 🇪🇪EE爱沙尼亚丨yoyapai.com_1
   type: vless
-  server: 151.241.166.72
+  server: 141.0.187.52
+  port: 2083
+  uuid: 8dd437e1-5f3f-446e-98fe-aa29b80057fb
+  network: ws
+  servername: crt.dodopanel.biz
+  tls: true
+  client-fingerprint: qq
+  ws-opts:
+    path: /vless-ws
+  alpn:
+  - http/1.1
+  skip-cert-verify: false
+  udp: true
+- name: 🇩🇪DE德国丨yoyapai.com_15
+  type: vless
+  server: 89.125.112.10
   port: 443
-  uuid: 4abdfe42-aec7-4b66-974d-3f891e2e8184
-  servername: pl.gaz-service.shop
+  uuid: 849252f5-b7d0-42e5-b346-0f56885e7869
+  servername: de-54a2bf7c.sishka.network
   tls: true
   flow: xtls-rprx-vision
-  client-fingerprint: edge
-  reality-opts:
-    public-key: SoMfQzFhE5QfKWMZA7ZNkYP63P5hiyWEbE9fsPIP4Go
+  client-fingerprint: firefox
   skip-cert-verify: false
   udp: true
 - alterId: 0
@@ -955,6 +850,67 @@ proxies:
     headers:
       Host: guanwang.awsno.com
     path: /hls/cctv5phd.m3u8
+- name: 🇩🇪DE德国丨yoyapai.com_18
+  type: vless
+  server: pew.dianawmoon.dpdns.org
+  port: 443
+  uuid: 26769ac3-b34c-430a-87f8-e1de14619d25
+  network: xhttp
+  servername: pew.dianawmoon.dpdns.org
+  tls: true
+  client-fingerprint: random
+  alpn:
+  - h3
+  - h2
+  xhttp-opts:
+    path: /21096/noencd1ana
+    host: pew.dianawmoon.dpdns.org
+    mode: auto
+  skip-cert-verify: false
+  udp: true
+- name: 🇷🇺俄罗斯丨yoyapai.com_3
+  type: vless
+  server: 217.177.74.229
+  port: 443
+  uuid: 23e18cb4-9db3-4eb1-93d3-26c62095159d
+  servername: yandex.ru
+  tls: true
+  flow: xtls-rprx-vision
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: xSvlclDt9Oz7WKqoCCyuT3mEGnLwyp5ciOUClsZADH8
+    short-id: d4331052
+  skip-cert-verify: false
+  udp: true
+- name: 🇸🇬SG新加坡丨yoyapai.com_3
+  type: vless
+  server: 47.131.189.221
+  port: 443
+  uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+  network: ws
+  servername: mia7.pages.dev
+  tls: true
+  client-fingerprint: chrome
+  ws-opts:
+    path: /TG:@MiaChatChannel
+    headers:
+      Host: mia7.pages.dev
+  skip-cert-verify: false
+  udp: true
+- name: 🇷🇺RU俄罗斯丨yoyapai.com_8
+  type: vless
+  server: 200.165.235.78
+  port: 443
+  uuid: 238e492b-bc20-4380-92b6-135d39112ca4
+  servername: api8.eaglors.com
+  tls: true
+  flow: xtls-rprx-vision
+  client-fingerprint: qq
+  reality-opts:
+    public-key: Nb9IwEEhUHEbHSc6e5uYTjxDgN4ZExhDckM3OgYhj2o
+    short-id: 52ccb3687fe0b7ec
+  skip-cert-verify: false
+  udp: true
 - name: A🟢🇮🇩res[🎬🤖📺🎭]_dokng.com_bf687581
   password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
   port: 1015
@@ -978,19 +934,6 @@ proxies:
       User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100
         Safari/537.36
     path: /api
-- name: ❓未知丨yoyapai.com_50
-  type: vless
-  server: 43.108.48.169
-  port: 40701
-  uuid: cdb7d825-9892-4d6f-80b8-7add83159dac
-  servername: amazon.com
-  tls: true
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: TWuVILeiSXfCSMZPsqNHtRquNALPRaW5Z51I63zdLEA
-    short-id: 7ef3a8ab2886
-  skip-cert-verify: false
-  udp: true
 - alpn:
   - h3
   - h2
@@ -1010,6 +953,78 @@ proxies:
       User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
     path: /fdip=sstp://vpn:vpn@public-vpn-200.opengw.net:443?ed=2560fp=chrome
   xudp: true
+- name: ❓未知丨yoyapai.com_50
+  type: vless
+  server: 43.108.48.169
+  port: 40701
+  uuid: cdb7d825-9892-4d6f-80b8-7add83159dac
+  servername: amazon.com
+  tls: true
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: TWuVILeiSXfCSMZPsqNHtRquNALPRaW5Z51I63zdLEA
+    short-id: 7ef3a8ab2886
+  skip-cert-verify: false
+  udp: true
+- name: 🇮🇳IN印度丨yoyapai.com_1
+  type: vless
+  server: 151.241.166.72
+  port: 443
+  uuid: 4abdfe42-aec7-4b66-974d-3f891e2e8184
+  servername: pl.gaz-service.shop
+  tls: true
+  flow: xtls-rprx-vision
+  client-fingerprint: edge
+  reality-opts:
+    public-key: SoMfQzFhE5QfKWMZA7ZNkYP63P5hiyWEbE9fsPIP4Go
+  skip-cert-verify: false
+  udp: true
+- name: 🇨🇦CA加拿大丨yoyapai.com_18
+  type: vless
+  server: yg9.ygkkk.dpdns.org
+  port: 8443
+  uuid: 86c50e3a-5b87-40dd-bd20-03c7f2735e40
+  network: ws
+  servername: ygwp.sbbz.tech
+  tls: true
+  client-fingerprint: chrome
+  ws-opts:
+    path: /
+    headers:
+      Host: ygwp.sbbz.tech
+  skip-cert-verify: false
+  udp: true
+- name: A🟢🇹🇼res[🎬🤖🎭🎪]_dokng.com_cf5d7af6
+  password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
+  port: 1001
+  server: fwj0bkq7.zf-mix.9999231.xyz
+  skip-cert-verify: true
+  sni: tw01.9999231.xyz
+  type: anytls
+  udp: true
+- name: ❓未知丨yoyapai.com_7
+  type: vless
+  server: 89.35.14.34
+  port: 443
+  uuid: 2f35965a-9a9b-45fd-ba32-987296dfb6be
+  network: grpc
+  servername: md5.univesalsrv.com
+  tls: true
+  client-fingerprint: firefox
+  grpc-opts:
+    grpc-service-name: app.v1.PushService
+  reality-opts:
+    public-key: 99MRki6b93wC-hhDHe9yq3IXE3KtPGw4RkFAnpI-8gg
+    short-id: aa9884f2982b7d3c
+  skip-cert-verify: false
+  udp: true
+- name: D🔴🇫🇷hos[🎬🤖📺🎭]_dokng.com_bafa4f5a
+  password: github.com/Alvin9999-newpac/fanqiang
+  port: 30099
+  server: ip5.934618.xyz
+  sni: ip5.934618.xyz
+  type: anytls
+  udp: true
 - name: 🇸🇬SG新加坡丨yoyapai.com_15
   type: vless
   server: 103.25.202.102
@@ -1024,6 +1039,14 @@ proxies:
     headers:
       Host: asia.csmaster.site
   skip-cert-verify: false
+  udp: true
+- name: D🔴🇸🇬hos[🎬🤖📺🎭]_dokng.com_fdfa294c
+  password: 6cdc1a00-e9e7-4ef2-8d53-541688f9324c
+  port: 1023
+  server: e7fis6ij.zf-mix.9999231.xyz
+  skip-cert-verify: true
+  sni: sg-sjy.9999231.xyz
+  type: anytls
   udp: true
 - client-fingerprint: random
   http-opts:
@@ -1043,97 +1066,6 @@ proxies:
   udp: true
   uuid: c6e3c24c-ce20-4ad5-8c8c-68cb05890ea8
   xudp: true
-- client-fingerprint: chrome
-  name: D🔴🇩🇰hos[🎬🤖📺🎭]_dokng.com_76c79447
-  password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
-  port: 1027
-  server: 3uilvi9w.zf-mix.9999231.xyz
-  sni: dk-wy.9999231.xyz
-  type: anytls
-  udp: true
-- name: D🔴🇫🇷hos[🎬🤖📺🎭]_dokng.com_bafa4f5a
-  password: github.com/Alvin9999-newpac/fanqiang
-  port: 30099
-  server: ip5.934618.xyz
-  sni: ip5.934618.xyz
-  type: anytls
-  udp: true
-- name: A🟢🇹🇼res[🎬🤖🎭🎪]_dokng.com_cf5d7af6
-  password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
-  port: 1001
-  server: fwj0bkq7.zf-mix.9999231.xyz
-  skip-cert-verify: true
-  sni: tw01.9999231.xyz
-  type: anytls
-  udp: true
-- name: 🇩🇪DE德国丨yoyapai.com_14
-  type: vless
-  server: 193.222.99.226
-  port: 8545
-  uuid: 4dc73b6c-ed9e-4d40-8f3f-ebd15d8e702e
-  servername: www.cloudflare.com
-  tls: true
-  flow: xtls-rprx-vision
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: VpalqjubUqVrLmgjSjR6lKVXDierUncli66LeIyIO0M
-    short-id: e98c63b3c1a5d204
-  skip-cert-verify: false
-  udp: true
-- name: D🔴🇸🇬hos[🎬🤖📺🎭]_dokng.com_fdfa294c
-  password: 6cdc1a00-e9e7-4ef2-8d53-541688f9324c
-  port: 1023
-  server: e7fis6ij.zf-mix.9999231.xyz
-  skip-cert-verify: true
-  sni: sg-sjy.9999231.xyz
-  type: anytls
-  udp: true
-- name: C🟠🇺🇸hos[📦]_dokng.com_c4021a16
-  password: https://xship.2fa.cat
-  port: 443
-  server: starlink-ft.251313.xyz
-  skip-cert-verify: true
-  sni: www.cloudflare.com
-  type: hysteria2
-  udp: true
-- name: A🟢🇸🇪res[🎬🤖📺🎭]_dokng.com_16751e5f
-  password: 13f0acfa-38c1-4e82-a758-583aa31740df
-  port: 60005
-  server: svip.skycon808.com
-  skip-cert-verify: true
-  sni: xjp18.2uuzhe.com
-  type: anytls
-  udp: true
-- name: C🟠🇵🇱hos[🎬🤖🎭🎪]_dokng.com_6d184c49
-  password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
-  port: 1019
-  server: q7mtpgxo.zf-mix.9999231.xyz
-  skip-cert-verify: true
-  sni: pl-house.9999231.xyz
-  type: anytls
-  udp: true
-- alterId: '0'
-  cipher: auto
-  name: C🟠🇭🇰hos[🎬📺🎭🎪]_dokng.com_3d00adb6
-  network: ws
-  port: 443
-  server: yg1.ygkkk.dpdns.org
-  servername: jmp1.907737.xyz
-  tls: true
-  type: vmess
-  uuid: b2ba4a73-3123-479e-aa96-5973a9ecd0c0
-  ws-opts:
-    headers:
-      Host: jmp1.907737.xyz
-    path: /b2ba4a73-3123-479e-aa96-5973a9ecd0c0-vm
-- name: D🔴🇸🇮hos[🎬🎭🎪✨]_dokng.com_33ff8efd
-  password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
-  port: 1040
-  server: 6ixwozox.zf-mix.9999231.xyz
-  skip-cert-verify: true
-  sni: si-wy.9999231.xyz
-  type: anytls
-  udp: true
 - name: 🇺🇸US美国丨yoyapai.com_16
   type: vless
   server: tk1.high-speed-test-56424.me
@@ -1147,25 +1079,6 @@ proxies:
     public-key: p8VhFzvFOBAhWAEAeWmwDxT3xBSRsGYixqi0qnLFnBM
     short-id: 21270a66
   skip-cert-verify: false
-  udp: true
-- client-fingerprint: chrome
-  name: D🔴🇫🇷hos[🎬🤖🎭🎪]_dokng.com_22ef3f92
-  password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
-  port: 1012
-  server: va9pr21p.zf-mix.9999231.xyz
-  sni: fr-house.9999231.xyz
-  type: anytls
-  udp: true
-- client-fingerprint: chrome
-  idle-session-check-interval: 30
-  idle-session-timeout: 30
-  name: U⚪🏳️ukn[✈️]_dokng.com_9f01a8ac
-  password: 776b4834-caaf-4006-ab21-409e958867af
-  port: 33091
-  server: 45.202.240.4
-  skip-cert-verify: true
-  sni: www.bing.com
-  type: anytls
   udp: true
 - alpn:
   - http/1.1
@@ -1186,6 +1099,83 @@ proxies:
       User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36
     path: /b0a100ee-c397-43f2-bdae-2adfb7a0d4e5
   xudp: true
+- name: C🟠🇺🇸hos[📦]_dokng.com_c4021a16
+  password: https://xship.2fa.cat
+  port: 443
+  server: starlink-ft.251313.xyz
+  skip-cert-verify: true
+  sni: www.cloudflare.com
+  type: hysteria2
+  udp: true
+- client-fingerprint: chrome
+  name: D🔴🇩🇰hos[🎬🤖📺🎭]_dokng.com_76c79447
+  password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
+  port: 1027
+  server: 3uilvi9w.zf-mix.9999231.xyz
+  sni: dk-wy.9999231.xyz
+  type: anytls
+  udp: true
+- name: A🟢🇸🇪res[🎬🤖📺🎭]_dokng.com_16751e5f
+  password: 13f0acfa-38c1-4e82-a758-583aa31740df
+  port: 60005
+  server: svip.skycon808.com
+  skip-cert-verify: true
+  sni: xjp18.2uuzhe.com
+  type: anytls
+  udp: true
+- client-fingerprint: chrome
+  name: D🔴🇫🇷hos[🎬🤖🎭🎪]_dokng.com_22ef3f92
+  password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
+  port: 1012
+  server: va9pr21p.zf-mix.9999231.xyz
+  sni: fr-house.9999231.xyz
+  type: anytls
+  udp: true
+- name: hysteria2-1709198729
+  password: my_super_password_123
+  port: 443
+  server: 158.101.148.79
+  skip-cert-verify: true
+  sni: 158.101.148.79
+  type: hysteria2
+- alterId: '0'
+  cipher: auto
+  name: C🟠🇭🇰hos[🎬📺🎭🎪]_dokng.com_3d00adb6
+  network: ws
+  port: 443
+  server: yg1.ygkkk.dpdns.org
+  servername: jmp1.907737.xyz
+  tls: true
+  type: vmess
+  uuid: b2ba4a73-3123-479e-aa96-5973a9ecd0c0
+  ws-opts:
+    headers:
+      Host: jmp1.907737.xyz
+    path: /b2ba4a73-3123-479e-aa96-5973a9ecd0c0-vm
+- name: C🟠🇵🇱hos[🎬🤖🎭🎪]_dokng.com_6d184c49
+  password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
+  port: 1019
+  server: q7mtpgxo.zf-mix.9999231.xyz
+  skip-cert-verify: true
+  sni: pl-house.9999231.xyz
+  type: anytls
+  udp: true
+- name: D🔴🇸🇮hos[🎬🎭🎪✨]_dokng.com_33ff8efd
+  password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
+  port: 1040
+  server: 6ixwozox.zf-mix.9999231.xyz
+  skip-cert-verify: true
+  sni: si-wy.9999231.xyz
+  type: anytls
+  udp: true
+- client-fingerprint: chrome
+  name: D🔴🇨🇭hos[🎬🤖📺🎭]_dokng.com_09443dc6
+  password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
+  port: 1024
+  server: sj8aycl6.zf-mix.9999231.xyz
+  sni: ch-wy.9999231.xyz
+  type: anytls
+  udp: true
 - name: A🟢🇲🇰res[🎬🤖📺🎭]_dokng.com_46970b3b
   password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
   port: 1014
@@ -1193,6 +1183,22 @@ proxies:
   skip-cert-verify: true
   sni: mk-house.9999231.xyz
   type: anytls
+  udp: true
+- name: trojan-1771649680
+  password: UX82473651
+  port: 443
+  server: 18.176.52.171
+  skip-cert-verify: true
+  sni: legible-ram.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1746591295
+  password: UX82473651
+  port: 443
+  server: 18.183.212.83
+  skip-cert-verify: false
+  sni: normal-macaque.rooster465.autos
+  type: trojan
   udp: true
 - client-fingerprint: chrome
   encryption: none
@@ -1211,67 +1217,12 @@ proxies:
       User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36
     path: /api/connect
   xudp: true
-- client-fingerprint: chrome
-  name: D🔴🇨🇭hos[🎬🤖📺🎭]_dokng.com_09443dc6
-  password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
-  port: 1024
-  server: sj8aycl6.zf-mix.9999231.xyz
-  sni: ch-wy.9999231.xyz
-  type: anytls
-  udp: true
-- name: hysteria2-1709198729
-  password: my_super_password_123
-  port: 443
-  server: 158.101.148.79
-  skip-cert-verify: true
-  sni: 158.101.148.79
-  type: hysteria2
-- client-fingerprint: chrome
-  name: D🔴🇹🇷hos[🎬🤖📺🎭]_dokng.com_6f6c026f
-  password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
-  port: 1010
-  server: skulm4yu.zf-mix.9999231.xyz
-  sni: tr-house.9999231.xyz
-  type: anytls
-  udp: true
-- name: hysteria2-1773076412
-  password: my_super_password_123
-  port: 443
-  server: open.2ml.cc.cd
-  skip-cert-verify: true
-  sni: open.2ml.cc.cd
-  type: hysteria2
-- auth: user317_windows:c70565e9-a99f-40ef-b96c-469a3949eed2
-  name: A🟢🇸🇬res[🤖📺🎪📦]_dokng.com_d6ae0d9c
-  password: user317_windows:c70565e9-a99f-40ef-b96c-469a3949eed2
-  port: 18642
-  server: s3.huhiuh.space
-  skip-cert-verify: true
-  sni: www.bing.com
-  type: hysteria2
-  udp: true
-- name: trojan-1771649680
-  password: UX82473651
-  port: 443
-  server: 18.176.52.171
-  skip-cert-verify: true
-  sni: legible-ram.rooster465.autos
-  type: trojan
-  udp: true
 - name: trojan-1740066471
   password: UX82473651
   port: 443
   server: stable-python.rooster465.autos
   skip-cert-verify: true
   sni: ''
-  type: trojan
-  udp: true
-- name: trojan-1746591295
-  password: UX82473651
-  port: 443
-  server: 18.183.212.83
-  skip-cert-verify: false
-  sni: normal-macaque.rooster465.autos
   type: trojan
   udp: true
 - client-fingerprint: random
@@ -1286,12 +1237,33 @@ proxies:
   tls: true
   type: vless
   uuid: fe0721ac-c577-4938-b7ca-8ab5f43bb8da
-- name: D🔴🇳🇴hos[🎬🤖📺🎭]_dokng.com_6f32deb2
-  password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
-  port: 1028
-  server: jxwvps2b.zf-mix.9999231.xyz
-  sni: no-wy.9999231.xyz
+- auth: user317_windows:c70565e9-a99f-40ef-b96c-469a3949eed2
+  name: A🟢🇸🇬res[🤖📺🎪📦]_dokng.com_d6ae0d9c
+  password: user317_windows:c70565e9-a99f-40ef-b96c-469a3949eed2
+  port: 18642
+  server: s3.huhiuh.space
+  skip-cert-verify: true
+  sni: www.bing.com
+  type: hysteria2
+  udp: true
+- name: hysteria2-1773076412
+  password: my_super_password_123
+  port: 443
+  server: open.2ml.cc.cd
+  skip-cert-verify: true
+  sni: open.2ml.cc.cd
+  type: hysteria2
+- client-fingerprint: chrome
+  idle-session-check-interval: 30
+  idle-session-timeout: 30
+  name: U⚪🏳️ukn[✈️]_dokng.com_9f01a8ac
+  password: 776b4834-caaf-4006-ab21-409e958867af
+  port: 33091
+  server: 45.202.240.4
+  skip-cert-verify: true
+  sni: www.bing.com
   type: anytls
+  udp: true
 - name: trojan-1665763439
   password: UX82473651
   port: 443
@@ -1324,6 +1296,12 @@ proxies:
   sni: amazed-mako.rooster465.autos
   type: trojan
   udp: true
+- name: D🔴🇳🇴hos[🎬🤖📺🎭]_dokng.com_6f32deb2
+  password: a7c5d30b-ce9b-4e34-b5cb-66f8308790ef
+  port: 1028
+  server: jxwvps2b.zf-mix.9999231.xyz
+  sni: no-wy.9999231.xyz
+  type: anytls
 - name: trojan-1759616103
   password: UX82473651
   port: 443
@@ -1348,14 +1326,6 @@ proxies:
   sni: stable-python.rooster465.autos
   type: trojan
   udp: true
-- name: trojan-1660423664
-  password: UX82473651
-  port: 443
-  server: 54.199.66.128
-  skip-cert-verify: true
-  sni: integral-rodent.rooster465.autos
-  type: trojan
-  udp: true
 - name: trojan-1749759422
   password: UX82473651
   port: 443
@@ -1372,14 +1342,6 @@ proxies:
   sni: allowed-poodle.rooster465.autos
   type: trojan
   udp: true
-- name: trojan-1745341940
-  password: UX82473651
-  port: 443
-  server: legible-ram.rooster465.autos
-  skip-cert-verify: true
-  sni: legible-ram.rooster465.autos
-  type: trojan
-  udp: true
 - name: trojan-1735131210
   password: UX82473651
   port: 443
@@ -1388,12 +1350,28 @@ proxies:
   sni: optimal-penguin.rooster465.autos
   type: trojan
   udp: true
-- name: trojan-1643520527
+- name: trojan-1660423664
   password: UX82473651
   port: 443
-  server: assuring-skink.rooster465.autos
+  server: 54.199.66.128
   skip-cert-verify: true
-  sni: assuring-skink.rooster465.autos
+  sni: integral-rodent.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1745236351
+  password: UX82473651
+  port: 443
+  server: 43.206.225.188
+  skip-cert-verify: true
+  sni: warm-krill.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1745341940
+  password: UX82473651
+  port: 443
+  server: legible-ram.rooster465.autos
+  skip-cert-verify: true
+  sni: legible-ram.rooster465.autos
   type: trojan
   udp: true
 - name: trojan-1681033269
@@ -1404,20 +1382,20 @@ proxies:
   sni: musical-terrier.rooster465.autos
   type: trojan
   udp: true
+- name: trojan-1643520527
+  password: UX82473651
+  port: 443
+  server: assuring-skink.rooster465.autos
+  skip-cert-verify: true
+  sni: assuring-skink.rooster465.autos
+  type: trojan
+  udp: true
 - name: trojan-1647915026
   password: UX82473651
   port: 443
   server: winning-marten.rooster465.autos
   skip-cert-verify: false
   sni: winning-marten.rooster465.autos
-  type: trojan
-  udp: true
-- name: trojan-1745236351
-  password: UX82473651
-  port: 443
-  server: 43.206.225.188
-  skip-cert-verify: true
-  sni: warm-krill.rooster465.autos
   type: trojan
   udp: true
 - name: trojan-1738407208
@@ -1436,12 +1414,20 @@ proxies:
   sni: organic-caribou.rooster465.autos
   type: trojan
   udp: true
-- name: trojan-1752686954
+- name: trojan-1768542585
   password: UX82473651
   port: 443
-  server: cunning-grub.rooster465.autos
+  server: 3.36.50.213
+  skip-cert-verify: false
+  sni: pure-kodiak.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1659658869
+  password: UX82473651
+  port: 443
+  server: musical-terrier.rooster465.autos
   skip-cert-verify: true
-  sni: cunning-grub.rooster465.autos
+  sni: musical-terrier.rooster465.autos
   type: trojan
   udp: true
 - name: trojan-1737442163
@@ -1452,12 +1438,12 @@ proxies:
   sni: inviting-rabbit.rooster465.autos
   type: trojan
   udp: true
-- name: trojan-1768542585
+- name: trojan-1752686954
   password: UX82473651
   port: 443
-  server: 3.36.50.213
-  skip-cert-verify: false
-  sni: pure-kodiak.rooster465.autos
+  server: cunning-grub.rooster465.autos
+  skip-cert-verify: true
+  sni: cunning-grub.rooster465.autos
   type: trojan
   udp: true
 - name: trojan-1661189388
@@ -1482,14 +1468,6 @@ proxies:
   server: 52.192.45.137
   skip-cert-verify: true
   sni: promoted-rattler.rooster465.autos
-  type: trojan
-  udp: true
-- name: trojan-1659658869
-  password: UX82473651
-  port: 443
-  server: musical-terrier.rooster465.autos
-  skip-cert-verify: true
-  sni: musical-terrier.rooster465.autos
   type: trojan
   udp: true
 - name: trojan-1744442928
@@ -1524,38 +1502,6 @@ proxies:
   sni: inviting-rabbit.rooster465.autos
   type: trojan
   udp: true
-- name: trojan-1755588921
-  password: UX82473651
-  port: 443
-  server: 3.34.192.47
-  skip-cert-verify: false
-  sni: central-jawfish.rooster465.autos
-  type: trojan
-  udp: true
-- name: trojan-1645360475
-  password: UX82473651
-  port: 443
-  server: fancy-javelin.rooster465.autos
-  skip-cert-verify: false
-  sni: ''
-  type: trojan
-  udp: true
-- name: trojan-1669884362
-  password: UX82473651
-  port: 443
-  server: brief-glider.rooster465.autos
-  skip-cert-verify: false
-  sni: ''
-  type: trojan
-  udp: true
-- name: trojan-1744360311
-  password: UX82473651
-  port: 443
-  server: glorious-lark.rooster465.autos
-  skip-cert-verify: false
-  sni: glorious-lark.rooster465.autos
-  type: trojan
-  udp: true
 - client-fingerprint: chrome
   flow: xtls-rprx-vision
   name: vless-1765221707
@@ -1570,20 +1516,28 @@ proxies:
   type: vless
   udp: true
   uuid: ee18d188-14cc-417e-beb1-70e4add6d023
-- name: trojan-1745293708
+- name: trojan-1755588921
   password: UX82473651
   port: 443
-  server: moral-basilisk.rooster465.autos
-  skip-cert-verify: true
-  sni: ''
+  server: 3.34.192.47
+  skip-cert-verify: false
+  sni: central-jawfish.rooster465.autos
   type: trojan
   udp: true
-- name: trojan-1643514790
+- name: trojan-1744360311
   password: UX82473651
   port: 443
-  server: integral-rodent.rooster465.autos
-  skip-cert-verify: true
-  sni: integral-rodent.rooster465.autos
+  server: glorious-lark.rooster465.autos
+  skip-cert-verify: false
+  sni: glorious-lark.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1669884362
+  password: UX82473651
+  port: 443
+  server: brief-glider.rooster465.autos
+  skip-cert-verify: false
+  sni: ''
   type: trojan
   udp: true
 - client-fingerprint: chrome
@@ -1600,6 +1554,30 @@ proxies:
   type: vless
   udp: true
   uuid: 05453546-201f-4e8d-97ae-fd70da0e951f
+- name: trojan-1643514790
+  password: UX82473651
+  port: 443
+  server: integral-rodent.rooster465.autos
+  skip-cert-verify: true
+  sni: integral-rodent.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1745293708
+  password: UX82473651
+  port: 443
+  server: moral-basilisk.rooster465.autos
+  skip-cert-verify: true
+  sni: ''
+  type: trojan
+  udp: true
+- name: trojan-1645360475
+  password: UX82473651
+  port: 443
+  server: fancy-javelin.rooster465.autos
+  skip-cert-verify: false
+  sni: ''
+  type: trojan
+  udp: true
 - client-fingerprint: ios
   flow: xtls-rprx-vision
   name: vless-479071125
@@ -1636,14 +1614,6 @@ proxies:
   type: vless
   udp: true
   uuid: 583cc910-b57c-4dd0-a4a7-cea51a30b032
-- name: trojan-1739822098
-  password: UX82473651
-  port: 443
-  server: rested-seahorse.rooster465.autos
-  skip-cert-verify: false
-  sni: rested-seahorse.rooster465.autos
-  type: trojan
-  udp: true
 - client-fingerprint: ios
   flow: xtls-rprx-vision
   name: vless-1275318373
@@ -1658,14 +1628,6 @@ proxies:
   type: vless
   udp: true
   uuid: 871bfce7-8440-4394-8d82-56b51f20fdad
-- name: trojan-1757243687
-  password: UX82473651
-  port: 443
-  server: intense-wildcat.rooster465.autos
-  skip-cert-verify: true
-  sni: intense-wildcat.rooster465.autos
-  type: trojan
-  udp: true
 - name: hysteria2-1515688053
   password: my_super_password_123
   port: 443
@@ -1681,12 +1643,20 @@ proxies:
   sni: live-stallion.rooster465.autos
   type: trojan
   udp: true
-- name: trojan-1765605049
+- name: trojan-1739822098
   password: UX82473651
   port: 443
-  server: 3.35.214.220
+  server: rested-seahorse.rooster465.autos
+  skip-cert-verify: false
+  sni: rested-seahorse.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1660423729
+  password: UX82473651
+  port: 443
+  server: 54.65.177.190
   skip-cert-verify: true
-  sni: glorious-lark.rooster465.autos
+  sni: winning-marten.rooster465.autos
   type: trojan
   udp: true
 - name: trojan-1651719647
@@ -1697,20 +1667,28 @@ proxies:
   sni: fancy-javelin.rooster465.autos
   type: trojan
   udp: true
+- name: trojan-1765605049
+  password: UX82473651
+  port: 443
+  server: 3.35.214.220
+  skip-cert-verify: true
+  sni: glorious-lark.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1757243687
+  password: UX82473651
+  port: 443
+  server: intense-wildcat.rooster465.autos
+  skip-cert-verify: true
+  sni: intense-wildcat.rooster465.autos
+  type: trojan
+  udp: true
 - name: trojan-1749759408
   password: UX82473651
   port: 443
   server: central-jawfish.rooster465.autos
   skip-cert-verify: false
   sni: ''
-  type: trojan
-  udp: true
-- name: trojan-1660423729
-  password: UX82473651
-  port: 443
-  server: 54.65.177.190
-  skip-cert-verify: true
-  sni: winning-marten.rooster465.autos
   type: trojan
   udp: true
 - client-fingerprint: chrome
@@ -1727,44 +1705,12 @@ proxies:
   type: vless
   udp: true
   uuid: 41a7af38-0bb1-4493-aa8d-634af0c2548b
-- client-fingerprint: chrome
-  encryption: none
-  flow: xtls-rprx-vision
-  name: A🟢🇦🇪res[📺🔍]_dokng.com_eadb9150
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: QnxkyscHouhaLDJHT47beyenVd4LHi62yfJIeRV01Ws
-    short-id: 06e00e7c
-  server: 157.228.128.59
-  servername: addons.mozilla.org
-  tls: true
-  type: vless
-  udp: true
-  uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
-  xudp: true
-- name: trojan-1740066476
-  password: UX82473651
-  port: 443
-  server: pure-kodiak.rooster465.autos
-  skip-cert-verify: true
-  sni: ''
-  type: trojan
-  udp: true
 - name: trojan-1745236361
   password: UX82473651
   port: 443
   server: 52.194.251.232
   skip-cert-verify: true
   sni: optimal-penguin.rooster465.autos
-  type: trojan
-  udp: true
-- name: trojan-1655225141
-  password: UX82473651
-  port: 443
-  server: accurate-frog.rooster465.autos
-  skip-cert-verify: true
-  sni: accurate-frog.rooster465.autos
   type: trojan
   udp: true
 - name: trojan-1752977734
@@ -1775,20 +1721,20 @@ proxies:
   sni: equipped-stingray.rooster465.autos
   type: trojan
   udp: true
+- name: trojan-1740066476
+  password: UX82473651
+  port: 443
+  server: pure-kodiak.rooster465.autos
+  skip-cert-verify: true
+  sni: ''
+  type: trojan
+  udp: true
 - name: trojan-1660423658
   password: UX82473651
   port: 443
   server: 43.207.89.91
   skip-cert-verify: true
   sni: organic-caribou.rooster465.autos
-  type: trojan
-  udp: true
-- name: trojan-1671899137
-  password: UX82473651
-  port: 443
-  server: concrete-aardvark.rooster465.autos
-  skip-cert-verify: true
-  sni: ''
   type: trojan
   udp: true
 - name: trojan-1643520494
@@ -1799,12 +1745,20 @@ proxies:
   sni: promoted-rattler.rooster465.autos
   type: trojan
   udp: true
-- name: trojan-1714777855
+- name: trojan-1671899137
   password: UX82473651
   port: 443
-  server: obliging-louse.rooster465.autos
+  server: concrete-aardvark.rooster465.autos
   skip-cert-verify: true
   sni: ''
+  type: trojan
+  udp: true
+- name: trojan-1655225141
+  password: UX82473651
+  port: 443
+  server: accurate-frog.rooster465.autos
+  skip-cert-verify: true
+  sni: accurate-frog.rooster465.autos
   type: trojan
   udp: true
 - name: trojan-1757243700
@@ -1813,6 +1767,14 @@ proxies:
   server: 52.78.42.192
   skip-cert-verify: true
   sni: working-tomcat.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1714777855
+  password: UX82473651
+  port: 443
+  server: obliging-louse.rooster465.autos
+  skip-cert-verify: true
+  sni: ''
   type: trojan
   udp: true
 - name: trojan-1643514778
@@ -1839,14 +1801,6 @@ proxies:
   sni: main-fawn.rooster465.autos
   type: trojan
   udp: true
-- name: trojan-1648313004
-  password: UX82473651
-  port: 443
-  server: kind-stork.rooster465.autos
-  skip-cert-verify: true
-  sni: kind-stork.rooster465.autos
-  type: trojan
-  udp: true
 - name: trojan-1694945388
   password: UX82473651
   port: 443
@@ -1855,14 +1809,27 @@ proxies:
   sni: accurate-frog.rooster465.autos
   type: trojan
   udp: true
-- name: trojan-1755566068
+- name: trojan-1648313004
   password: UX82473651
   port: 443
-  server: joint-ewe.rooster465.autos
+  server: kind-stork.rooster465.autos
   skip-cert-verify: true
-  sni: joint-ewe.rooster465.autos
+  sni: kind-stork.rooster465.autos
   type: trojan
   udp: true
+- client-fingerprint: chrome
+  name: vless-1221788920
+  network: tcp
+  port: 8443
+  reality-opts:
+    public-key: D3ojIs3AUKP_tV0E4TEjh90HBVJp24Nq3qMfdxD30kc
+    short-id: df8611c07d
+  server: 107.173.237.146
+  servername: updates.cdn-apple.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 1d39f715-2740-4d99-bc3b-197cc48dcee7
 - name: trojan-1766052371
   password: UX82473651
   port: 443
@@ -1877,6 +1844,14 @@ proxies:
   server: 13.229.59.187
   skip-cert-verify: false
   sni: inspired-hound.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1755566068
+  password: UX82473651
+  port: 443
+  server: joint-ewe.rooster465.autos
+  skip-cert-verify: true
+  sni: joint-ewe.rooster465.autos
   type: trojan
   udp: true
 - name: trojan-1766052361
@@ -1895,33 +1870,19 @@ proxies:
   sni: rested-seahorse.rooster465.autos
   type: trojan
   udp: true
-- client-fingerprint: chrome
-  name: vless-1221788920
+- client-fingerprint: firefox
+  name: vless-1279636589
   network: tcp
-  port: 8443
+  port: 2053
   reality-opts:
-    public-key: D3ojIs3AUKP_tV0E4TEjh90HBVJp24Nq3qMfdxD30kc
-    short-id: df8611c07d
-  server: 107.173.237.146
-  servername: updates.cdn-apple.com
+    public-key: hieuCHb3HYdDYHmTDyWw2SGqyfo36AVuA-wSiZMdU1M
+    short-id: 9922313fffed1c63
+  server: 46.250.250.149
+  servername: www.apple.com
   tls: true
   type: vless
   udp: true
-  uuid: 1d39f715-2740-4d99-bc3b-197cc48dcee7
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: vless-1490920266
-  network: tcp
-  port: 30556
-  reality-opts:
-    public-key: EcmNQqZxyW4GCEQF-7nH54w3qgBkLzsfqFSgafGjB0E
-    short-id: d082f567
-  server: 137.175.82.40
-  servername: www.lovelive-anime.jp
-  tls: true
-  type: vless
-  udp: true
-  uuid: 949d278e-6d98-4014-84e9-59f1c6c93e0e
+  uuid: b4caaf57-ad77-4948-a6f5-51b3513799bf
 - name: trojan-1663627159
   password: UX82473651
   port: 443
@@ -1938,19 +1899,6 @@ proxies:
   sni: inspired-hound.rooster465.autos
   type: trojan
   udp: true
-- client-fingerprint: firefox
-  name: vless-1279636589
-  network: tcp
-  port: 2053
-  reality-opts:
-    public-key: hieuCHb3HYdDYHmTDyWw2SGqyfo36AVuA-wSiZMdU1M
-    short-id: 9922313fffed1c63
-  server: 46.250.250.149
-  servername: www.apple.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: b4caaf57-ad77-4948-a6f5-51b3513799bf
 - client-fingerprint: chrome
   flow: xtls-rprx-vision
   name: vless-951129347
@@ -1965,20 +1913,20 @@ proxies:
   type: vless
   udp: true
   uuid: d56624b2-35bb-468c-9b2a-e0b0df7230c1
-- name: trojan-1745293717
-  password: UX82473651
-  port: 443
-  server: full-ox.rooster465.autos
-  skip-cert-verify: true
-  sni: ''
-  type: trojan
-  udp: true
 - name: trojan-1771649679
   password: UX82473651
   port: 443
   server: 54.179.60.162
   skip-cert-verify: true
   sni: intense-wildcat.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1745293717
+  password: UX82473651
+  port: 443
+  server: full-ox.rooster465.autos
+  skip-cert-verify: true
+  sni: ''
   type: trojan
   udp: true
 - client-fingerprint: chrome
@@ -1995,14 +1943,6 @@ proxies:
   type: vless
   udp: true
   uuid: ebdec762-050b-4d54-b7bf-0406ce22f734
-- name: trojan-1715532027
-  password: UX82473651
-  port: 443
-  server: 56.10.9.77
-  skip-cert-verify: true
-  sni: inviting-ferret.rooster465.autos
-  type: trojan
-  udp: true
 - name: vless-1726819195
   network: ws
   port: 443
@@ -2040,6 +1980,14 @@ proxies:
   type: vless
   udp: true
   uuid: 49c0aac1-5e05-4f04-b624-248fc59e03c4
+- name: trojan-1715532027
+  password: UX82473651
+  port: 443
+  server: 56.10.9.77
+  skip-cert-verify: true
+  sni: inviting-ferret.rooster465.autos
+  type: trojan
+  udp: true
 - client-fingerprint: ios
   name: vless-1757243532
   network: raw
@@ -2053,6 +2001,29 @@ proxies:
   type: vless
   udp: true
   uuid: cb2abff3-5fe6-4b5a-aa19-5739deb285b6
+- name: vless-656168799
+  network: ws
+  port: 443
+  server: 60.248.219.78
+  servername: ty986gfazs.cainiaohub.xyz
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  udp: true
+  uuid: c1c04450-bf71-4049-ad0c-9cf6d94d9f1f
+- client-fingerprint: chrome
+  name: vless-1769017723
+  network: grpc
+  port: 8444
+  reality-opts:
+    public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
+    short-id: ''
+  server: 147.45.60.160
+  servername: github.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
 - client-fingerprint: ios
   flow: xtls-rprx-vision
   name: vless-1275190664
@@ -2067,16 +2038,14 @@ proxies:
   type: vless
   udp: true
   uuid: 9d9a048b-3aea-4b3e-b106-1106bf301feb
-- name: vless-656168799
-  network: ws
+- name: trojan-1651470515
+  password: UX82473651
   port: 443
-  server: 60.248.219.78
-  servername: ty986gfazs.cainiaohub.xyz
-  skip-cert-verify: true
-  tls: true
-  type: vless
+  server: 54.249.36.167
+  skip-cert-verify: false
+  sni: comic-poodle.rooster465.autos
+  type: trojan
   udp: true
-  uuid: c1c04450-bf71-4049-ad0c-9cf6d94d9f1f
 - alterId: 0
   cipher: auto
   name: vmess-1776761855
@@ -2103,27 +2072,20 @@ proxies:
   type: vless
   udp: true
   uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
-- name: trojan-1651470515
-  password: UX82473651
-  port: 443
-  server: 54.249.36.167
-  skip-cert-verify: false
-  sni: comic-poodle.rooster465.autos
-  type: trojan
-  udp: true
-- client-fingerprint: chrome
-  name: vless-1769017723
-  network: grpc
-  port: 8444
+- client-fingerprint: firefox
+  flow: xtls-rprx-vision
+  name: vless-1532587898
+  network: tcp
+  port: 8443
   reality-opts:
-    public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
-    short-id: ''
-  server: 147.45.60.160
-  servername: github.com
+    public-key: ribQDOlZ69PzvZ1EDF0EcmMvbq_T5RQrVRBSGUU2riU
+    short-id: 35cd899f8de04801
+  server: 23.95.222.127
+  servername: www.apple.com
   tls: true
   type: vless
   udp: true
-  uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
+  uuid: 352ff568-f971-4613-bf48-92997a5d44ed
 - name: trojan-1696475240
   password: UX82473651
   port: 443
@@ -2132,14 +2094,19 @@ proxies:
   sni: noted-cougar.rooster465.autos
   type: trojan
   udp: true
-- name: trojan-1671592403
-  password: UX82473651
+- client-fingerprint: chrome
+  name: vless-1631955737
+  network: ws
   port: 443
-  server: 3.39.225.215
-  skip-cert-verify: false
-  sni: kind-stork.rooster465.autos
-  type: trojan
+  reality-opts:
+    public-key: 6l-Yq_zkVrnExw8AVv85VwoYnfNc8-dRSpoj_AA-fxY
+    short-id: c5cde18f
+  server: 45.32.69.110
+  servername: itunes.apple.com
+  tls: true
+  type: vless
   udp: true
+  uuid: 1572b9c5-d741-46eb-b4a2-a5d23958dfbe
 - name: trojan-1643520495
   password: UX82473651
   port: 443
@@ -2156,63 +2123,6 @@ proxies:
   sni: simple-molly.rooster465.autos
   type: trojan
   udp: true
-- name: trojan-1746322862
-  password: UX82473651
-  port: 443
-  server: glorious-glider.rooster465.autos
-  skip-cert-verify: true
-  sni: glorious-glider.rooster465.autos
-  type: trojan
-  udp: true
-- name: trojan-1744442915
-  password: UX82473651
-  port: 443
-  server: brave-tomcat.rooster465.autos
-  skip-cert-verify: true
-  sni: brave-tomcat.rooster465.autos
-  type: trojan
-  udp: true
-- client-fingerprint: firefox
-  flow: xtls-rprx-vision
-  name: vless-1532587898
-  network: tcp
-  port: 8443
-  reality-opts:
-    public-key: ribQDOlZ69PzvZ1EDF0EcmMvbq_T5RQrVRBSGUU2riU
-    short-id: 35cd899f8de04801
-  server: 23.95.222.127
-  servername: www.apple.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 352ff568-f971-4613-bf48-92997a5d44ed
-- client-fingerprint: chrome
-  name: vless-1631955737
-  network: ws
-  port: 443
-  reality-opts:
-    public-key: 6l-Yq_zkVrnExw8AVv85VwoYnfNc8-dRSpoj_AA-fxY
-    short-id: c5cde18f
-  server: 45.32.69.110
-  servername: itunes.apple.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 1572b9c5-d741-46eb-b4a2-a5d23958dfbe
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: vless-1364541330
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: StPbcmBuzpuYUfa4oZ5SI3Bq1OSF_-oU1vp2AcyvQVE
-    short-id: 19296c9f1bf9c7b1
-  server: 195.123.240.65
-  servername: www.cloudflare.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: ce18d0eb-5c71-41f9-96e5-1632e22456e4
 - client-fingerprint: random
   flow: xtls-rprx-vision
   name: vless-700289121
@@ -2227,6 +2137,14 @@ proxies:
   type: vless
   udp: true
   uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+- name: trojan-1746322862
+  password: UX82473651
+  port: 443
+  server: glorious-glider.rooster465.autos
+  skip-cert-verify: true
+  sni: glorious-glider.rooster465.autos
+  type: trojan
+  udp: true
 - client-fingerprint: chrome
   name: vless-1664557987
   network: ws
@@ -2240,14 +2158,20 @@ proxies:
   type: vless
   udp: true
   uuid: 45d51389-0c38-4843-8ae8-cffb94e97a72
-- name: trojan-1765605046
-  password: UX82473651
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: vless-1364541330
+  network: tcp
   port: 443
-  server: 13.212.35.242
-  skip-cert-verify: true
-  sni: ace-liger.rooster465.autos
-  type: trojan
+  reality-opts:
+    public-key: StPbcmBuzpuYUfa4oZ5SI3Bq1OSF_-oU1vp2AcyvQVE
+    short-id: 19296c9f1bf9c7b1
+  server: 195.123.240.65
+  servername: www.cloudflare.com
+  tls: true
+  type: vless
   udp: true
+  uuid: ce18d0eb-5c71-41f9-96e5-1632e22456e4
 - client-fingerprint: chrome
   name: vless-1636626764
   network: ws
@@ -2274,14 +2198,32 @@ proxies:
   type: vless
   udp: true
   uuid: 2a9ab69b-26e7-44d0-a325-e5056d849900
-- name: trojan-1744442935
+- name: trojan-1744442915
   password: UX82473651
   port: 443
-  server: fond-mammoth.rooster465.autos
+  server: brave-tomcat.rooster465.autos
   skip-cert-verify: true
-  sni: fond-mammoth.rooster465.autos
+  sni: brave-tomcat.rooster465.autos
   type: trojan
   udp: true
+- name: trojan-1671592403
+  password: UX82473651
+  port: 443
+  server: 3.39.225.215
+  skip-cert-verify: false
+  sni: kind-stork.rooster465.autos
+  type: trojan
+  udp: true
+- name: vless-1724759772
+  network: ws
+  port: 8443
+  server: 170.114.46.6
+  servername: primelinelk.me
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: ba9ba1d3-19c8-4792-9d3f-ddd2cdcc2e65
 - client-fingerprint: chrome
   name: vless-1663154502
   network: ws
@@ -2295,16 +2237,6 @@ proxies:
   type: vless
   udp: true
   uuid: 30b98a28-ed4e-46eb-8548-54c25f4db53c
-- name: vless-1724759772
-  network: ws
-  port: 8443
-  server: 170.114.46.6
-  servername: primelinelk.me
-  skip-cert-verify: false
-  tls: true
-  type: vless
-  udp: true
-  uuid: ba9ba1d3-19c8-4792-9d3f-ddd2cdcc2e65
 - client-fingerprint: chrome
   flow: xtls-rprx-vision
   name: vless-945745881
@@ -2319,12 +2251,48 @@ proxies:
   type: vless
   udp: true
   uuid: cb2dbb6a-a1ea-4023-9ace-6466cee57241
-- name: trojan-1653307129
+- client-fingerprint: random
+  flow: xtls-rprx-vision
+  name: vless-918226874
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: 8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To
+    short-id: a3a578ab
+  server: 185.95.231.156
+  servername: www.apple.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 1f8cf47a-b66a-4916-979f-26edfcf44eea
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: vless-861328155
+  network: tcp
+  port: 28190
+  reality-opts:
+    public-key: ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno
+    short-id: ''
+  server: 159.89.87.21
+  servername: aws.amazon.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 14c80e0e-f7ce-4991-94fc-99a1db4a9b1e
+- name: trojan-1765605046
   password: UX82473651
   port: 443
-  server: delicate-buck.rooster465.autos
+  server: 13.212.35.242
   skip-cert-verify: true
-  sni: delicate-buck.rooster465.autos
+  sni: ace-liger.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1744442935
+  password: UX82473651
+  port: 443
+  server: fond-mammoth.rooster465.autos
+  skip-cert-verify: true
+  sni: fond-mammoth.rooster465.autos
   type: trojan
   udp: true
 - client-fingerprint: chrome
@@ -2341,33 +2309,6 @@ proxies:
   type: vless
   udp: true
   uuid: f8681dba-d368-4bab-a3c2-a8dc712ba368
-- client-fingerprint: random
-  flow: xtls-rprx-vision
-  name: vless-918226874
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: 8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To
-    short-id: a3a578ab
-  server: 185.95.231.156
-  servername: www.apple.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 1f8cf47a-b66a-4916-979f-26edfcf44eea
-- client-fingerprint: random
-  name: vless-1293637742
-  network: tcp
-  port: 2053
-  reality-opts:
-    public-key: F6C33iIbfmt1mUsuLTarIC8ygdHKMqsaGvrSQltyxUo
-    short-id: 429499c03d4cc8a0
-  server: 151.245.106.49
-  servername: www.cloudflare.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: a2de9567-9646-45a9-a410-7303a43bdb6c
 - client-fingerprint: chrome
   flow: xtls-rprx-vision
   name: vless-1058822113
@@ -2382,98 +2323,49 @@ proxies:
   type: vless
   udp: true
   uuid: c9fd0fb1-8251-4106-b09a-f4b426736f67
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: vless-861328155
+- client-fingerprint: random
+  name: vless-1293637742
   network: tcp
-  port: 28190
+  port: 2053
   reality-opts:
-    public-key: ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno
-    short-id: ''
-  server: 159.89.87.21
-  servername: aws.amazon.com
+    public-key: F6C33iIbfmt1mUsuLTarIC8ygdHKMqsaGvrSQltyxUo
+    short-id: 429499c03d4cc8a0
+  server: 151.245.106.49
+  servername: www.cloudflare.com
   tls: true
   type: vless
   udp: true
-  uuid: 14c80e0e-f7ce-4991-94fc-99a1db4a9b1e
+  uuid: a2de9567-9646-45a9-a410-7303a43bdb6c
+- name: trojan-1653307129
+  password: UX82473651
+  port: 443
+  server: delicate-buck.rooster465.autos
+  skip-cert-verify: true
+  sni: delicate-buck.rooster465.autos
+  type: trojan
+  udp: true
+- client-fingerprint: chrome
+  encryption: none
+  flow: xtls-rprx-vision
+  name: A🟢🇦🇪res[📺🔍]_dokng.com_eadb9150
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: QnxkyscHouhaLDJHT47beyenVd4LHi62yfJIeRV01Ws
+    short-id: 06e00e7c
+  server: 157.228.128.59
+  servername: addons.mozilla.org
+  tls: true
+  type: vless
+  udp: true
+  uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
+  xudp: true
 - name: trojan-1739093813
   password: UX82473651
   port: 443
   server: musical-mouse.rooster465.autos
   skip-cert-verify: true
   sni: musical-mouse.rooster465.autos
-  type: trojan
-  udp: true
-- client-fingerprint: firefox
-  name: vless-1713661963
-  network: grpc
-  port: 443
-  reality-opts:
-    public-key: eZXyfQzQgQSreAbhKSorx38cgnKmGuSOiQbthBfG5k0
-    short-id: 0e903b415d812c59
-  server: nl6.bbobr.win
-  servername: nl6.bbobr.win
-  tls: true
-  type: vless
-  udp: true
-  uuid: 267b3a79-81f2-42ac-a409-c23b05b6329d
-- name: trojan-1680753288
-  password: UX82473651
-  port: 443
-  server: 176.34.5.100
-  skip-cert-verify: true
-  sni: assuring-skink.rooster465.autos
-  type: trojan
-  udp: true
-- client-fingerprint: ios
-  flow: xtls-rprx-vision
-  name: vless-1591364949
-  network: tcp
-  port: 12512
-  reality-opts:
-    public-key: sO0RBMr_l8TLtZaYBX8n3NdI9AtaugUqJpCR1szNsyA
-    short-id: e692a8250d2e2fd0
-  server: 46.137.202.178
-  servername: www.intel.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 2a6c617d-98e4-49c3-95ab-76f02fcf0150
-- client-fingerprint: firefox
-  name: vless-1279565000
-  network: raw
-  port: 2053
-  reality-opts:
-    public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
-    short-id: 9980e0609b0d3891
-  server: 194.61.31.126
-  servername: www.apple.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
-- name: trojan-1769784863
-  password: UX82473651
-  port: 443
-  server: optimum-snapper.rooster465.autos
-  skip-cert-verify: false
-  sni: ''
-  type: trojan
-  udp: true
-- name: trojan-1648313013
-  password: UX82473651
-  port: 443
-  server: pretty-rat.rooster465.autos
-  skip-cert-verify: false
-  sni: pretty-rat.rooster465.autos
-  type: trojan
-  udp: true
-- name: trojan-1660423642
-  password: UX82473651
-  port: 443
-  server: 13.125.69.162
-  skip-cert-verify: true
-  sni: engaging-toucan.rooster465.autos
   type: trojan
   udp: true
 - name: vless-1764896429
@@ -2496,14 +2388,43 @@ proxies:
   type: vless
   udp: true
   uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
-- name: trojan-1766052357
+- name: trojan-1769784863
   password: UX82473651
   port: 443
-  server: 3.1.252.137
-  skip-cert-verify: true
-  sni: brave-tomcat.rooster465.autos
+  server: optimum-snapper.rooster465.autos
+  skip-cert-verify: false
+  sni: ''
   type: trojan
   udp: true
+- name: trojan-1680753288
+  password: UX82473651
+  port: 443
+  server: 176.34.5.100
+  skip-cert-verify: true
+  sni: assuring-skink.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1648313013
+  password: UX82473651
+  port: 443
+  server: pretty-rat.rooster465.autos
+  skip-cert-verify: false
+  sni: pretty-rat.rooster465.autos
+  type: trojan
+  udp: true
+- client-fingerprint: firefox
+  name: vless-1713661963
+  network: grpc
+  port: 443
+  reality-opts:
+    public-key: eZXyfQzQgQSreAbhKSorx38cgnKmGuSOiQbthBfG5k0
+    short-id: 0e903b415d812c59
+  server: nl6.bbobr.win
+  servername: nl6.bbobr.win
+  tls: true
+  type: vless
+  udp: true
+  uuid: 267b3a79-81f2-42ac-a409-c23b05b6329d
 - name: trojan-1737442166
   password: UX82473651
   port: 443
@@ -2512,22 +2433,20 @@ proxies:
   sni: alert-titmouse.rooster465.autos
   type: trojan
   udp: true
-- name: trojan-1644338024
-  password: UX82473651
-  port: 443
-  server: main-fawn.rooster465.autos
-  skip-cert-verify: false
-  sni: main-fawn.rooster465.autos
-  type: trojan
+- client-fingerprint: ios
+  flow: xtls-rprx-vision
+  name: vless-1591364949
+  network: tcp
+  port: 12512
+  reality-opts:
+    public-key: sO0RBMr_l8TLtZaYBX8n3NdI9AtaugUqJpCR1szNsyA
+    short-id: e692a8250d2e2fd0
+  server: 46.137.202.178
+  servername: www.intel.com
+  tls: true
+  type: vless
   udp: true
-- name: trojan-1769683864
-  password: UX82473651
-  port: 443
-  server: 18.141.136.8
-  skip-cert-verify: true
-  sni: musical-mouse.rooster465.autos
-  type: trojan
-  udp: true
+  uuid: 2a6c617d-98e4-49c3-95ab-76f02fcf0150
 - client-fingerprint: chrome
   name: vless-1665784892
   network: ws
@@ -2541,12 +2460,12 @@ proxies:
   type: vless
   udp: true
   uuid: c512dcbd-1847-40a2-9c99-989c8bfe4717
-- name: trojan-1698571991
+- name: trojan-1660423642
   password: UX82473651
   port: 443
-  server: 3.34.131.153
-  skip-cert-verify: false
-  sni: pretty-rat.rooster465.autos
+  server: 13.125.69.162
+  skip-cert-verify: true
+  sni: engaging-toucan.rooster465.autos
   type: trojan
   udp: true
 - client-fingerprint: chrome
@@ -2590,20 +2509,41 @@ proxies:
   type: vless
   udp: true
   uuid: 52919204-4ed9-42c8-97a0-0f01d007f898
-- name: trojan-1696475224
+- client-fingerprint: firefox
+  name: vless-1279565000
+  network: raw
+  port: 2053
+  reality-opts:
+    public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
+    short-id: 9980e0609b0d3891
+  server: 194.61.31.126
+  servername: www.apple.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
+- name: trojan-1766052357
   password: UX82473651
   port: 443
-  server: 43.201.100.203
-  skip-cert-verify: false
-  sni: optimum-snapper.rooster465.autos
+  server: 3.1.252.137
+  skip-cert-verify: true
+  sni: brave-tomcat.rooster465.autos
   type: trojan
   udp: true
-- name: trojan-1661189387
+- name: trojan-1644338024
   password: UX82473651
   port: 443
-  server: pet-antelope.rooster465.autos
-  skip-cert-verify: true
-  sni: pet-antelope.rooster465.autos
+  server: main-fawn.rooster465.autos
+  skip-cert-verify: false
+  sni: main-fawn.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1698571991
+  password: UX82473651
+  port: 443
+  server: 3.34.131.153
+  skip-cert-verify: false
+  sni: pretty-rat.rooster465.autos
   type: trojan
   udp: true
 - client-fingerprint: chrome
@@ -2619,12 +2559,34 @@ proxies:
   type: vless
   udp: true
   uuid: dc620cd6-a9d8-4a0f-8f18-006b895db77e
-- name: trojan-1670007025
+- name: trojan-1769683864
   password: UX82473651
   port: 443
-  server: engaging-toucan.rooster465.autos
+  server: 18.141.136.8
+  skip-cert-verify: true
+  sni: musical-mouse.rooster465.autos
+  type: trojan
+  udp: true
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: vless-1490920266
+  network: tcp
+  port: 30556
+  reality-opts:
+    public-key: EcmNQqZxyW4GCEQF-7nH54w3qgBkLzsfqFSgafGjB0E
+    short-id: d082f567
+  server: 137.175.82.40
+  servername: www.lovelive-anime.jp
+  tls: true
+  type: vless
+  udp: true
+  uuid: 949d278e-6d98-4014-84e9-59f1c6c93e0e
+- name: trojan-1696475224
+  password: UX82473651
+  port: 443
+  server: 43.201.100.203
   skip-cert-verify: false
-  sni: ''
+  sni: optimum-snapper.rooster465.autos
   type: trojan
   udp: true
 - alterId: 0
@@ -2639,12 +2601,47 @@ proxies:
   type: vmess
   udp: true
   uuid: 5504eaa8-1395-402f-8e0e-75ecd762e627
-- name: trojan-1755587914
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: vless-1771506803
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: BSTnEthBXhb_UyuWpLBDxg82-C-wcpU2_kOD5ohS12g
+    short-id: 3a697adb4c58d495
+  server: 95.111.212.241
+  servername: www.samsung.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 924fe46b-b6e0-479e-ae7f-a3661680e706
+- client-fingerprint: chrome
+  name: vless-1703671280
+  network: tcp
+  port: 2053
+  reality-opts:
+    public-key: Uk5b-Wh_uxeCc7R8NS9iWE40xc0h9wWC04rSB9yhgAw
+    short-id: b5d625695ec82c7e
+  server: 198.251.78.29
+  servername: www.cloudflare.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: c423cc1b-f88e-421c-9a16-c480d84da20f
+- name: trojan-1661189387
   password: UX82473651
   port: 443
-  server: ace-liger.rooster465.autos
+  server: pet-antelope.rooster465.autos
+  skip-cert-verify: true
+  sni: pet-antelope.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1670007025
+  password: UX82473651
+  port: 443
+  server: engaging-toucan.rooster465.autos
   skip-cert-verify: false
-  sni: ace-liger.rooster465.autos
+  sni: ''
   type: trojan
   udp: true
 - client-fingerprint: ios
@@ -2674,63 +2671,6 @@ proxies:
   type: vless
   udp: true
   uuid: 75cc7568-abb0-46a8-88be-8137d3c647d4
-- client-fingerprint: chrome
-  name: vless-1703671280
-  network: tcp
-  port: 2053
-  reality-opts:
-    public-key: Uk5b-Wh_uxeCc7R8NS9iWE40xc0h9wWC04rSB9yhgAw
-    short-id: b5d625695ec82c7e
-  server: 198.251.78.29
-  servername: www.cloudflare.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: c423cc1b-f88e-421c-9a16-c480d84da20f
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: vless-1549147674
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s
-    short-id: b19b017d6f453873
-  server: 23.81.34.204
-  servername: speed.cloudflare.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
-- name: trojan-1657559632
-  password: UX82473651
-  port: 443
-  server: inviting-ferret.rooster465.autos
-  skip-cert-verify: false
-  sni: inviting-ferret.rooster465.autos
-  type: trojan
-  udp: true
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: vless-1771506803
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: BSTnEthBXhb_UyuWpLBDxg82-C-wcpU2_kOD5ohS12g
-    short-id: 3a697adb4c58d495
-  server: 95.111.212.241
-  servername: www.samsung.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 924fe46b-b6e0-479e-ae7f-a3661680e706
-- name: trojan-1698111020
-  password: UX82473651
-  port: 443
-  server: 52.78.203.191
-  skip-cert-verify: true
-  sni: delicate-buck.rooster465.autos
-  type: trojan
-  udp: true
 - client-fingerprint: firefox
   flow: xtls-rprx-vision
   name: vless-1003491287
@@ -2745,14 +2685,27 @@ proxies:
   type: vless
   udp: true
   uuid: ca52e2b6-fb9f-4dac-b6dc-49da9923f251
-- name: trojan-1696475229
-  password: UX82473651
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: vless-1549147674
+  network: tcp
   port: 443
-  server: meet-goshawk.rooster465.autos
-  skip-cert-verify: false
-  sni: meet-goshawk.rooster465.autos
-  type: trojan
+  reality-opts:
+    public-key: J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s
+    short-id: b19b017d6f453873
+  server: 23.81.34.204
+  servername: speed.cloudflare.com
+  tls: true
+  type: vless
   udp: true
+  uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
+- name: hysteria2-24391
+  password: dongtaiwang.com
+  port: 22000
+  server: 62.210.124.146
+  skip-cert-verify: true
+  sni: www.microsoft.com
+  type: hysteria2
 - name: vless-1459596948
   network: ws
   port: 443
@@ -2763,77 +2716,44 @@ proxies:
   type: vless
   udp: true
   uuid: 06e177f7-240d-4687-bd85-235505801a5e
-- name: hysteria2-24391
-  password: dongtaiwang.com
-  port: 22000
-  server: 62.210.124.146
-  skip-cert-verify: true
-  sni: www.microsoft.com
-  type: hysteria2
-- client-fingerprint: random
-  flow: xtls-rprx-vision
-  name: vless-864234270
-  network: tcp
-  port: 19825
-  reality-opts:
-    public-key: GvvkY8xYb9QjvwvzYq_uNC4tOGd0DCxRnz6770-xgkI
-    short-id: 6ba85179e30d4fc2
-  server: sg2-8sb.6121999.dpdns.org
-  servername: sg2-8sb.6121999.dpdns.org
-  tls: true
-  type: vless
-  udp: true
-  uuid: 2d1ad594-80a4-4bfb-87a6-038e39701f51
-- client-fingerprint: chrome
-  name: vless-1413435162
-  network: grpc
-  port: 35108
-  reality-opts:
-    public-key: X_lOw5Zz4SJBa1cRHV4dAq5msYE-ClY5-WNcBmBWRxg
-    short-id: 52add08b86a5ccea
-  server: 152.228.139.33
-  servername: www.nvidia.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 81dc0b61-f9fe-4ad6-8b4e-b8c067b73712
-- name: trojan-1647915022
+- name: trojan-1755587914
   password: UX82473651
   port: 443
-  server: real-cardinal.rooster465.autos
+  server: ace-liger.rooster465.autos
   skip-cert-verify: false
-  sni: real-cardinal.rooster465.autos
+  sni: ace-liger.rooster465.autos
   type: trojan
   udp: true
-- name: vless-1709221957
-  network: ws
-  port: 2096
-  server: 139.162.27.96
-  servername: free-server.techsonic.dev
+- name: trojan-1698111020
+  password: UX82473651
+  port: 443
+  server: 52.78.203.191
+  skip-cert-verify: true
+  sni: delicate-buck.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1696475229
+  password: UX82473651
+  port: 443
+  server: meet-goshawk.rooster465.autos
   skip-cert-verify: false
-  tls: true
-  type: vless
+  sni: meet-goshawk.rooster465.autos
+  type: trojan
   udp: true
-  uuid: 6e59d5c5-7aa3-4c36-a4c4-e3b899525ed2
-- client-fingerprint: firefox
-  name: vless-1345603902
-  network: raw
-  port: 2053
-  reality-opts:
-    public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
-    short-id: 4cc9dc65f7770115
-  server: 46.250.240.80
-  servername: www.cloudflare.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
 - name: trojan-1747827233
   password: UX82473651
   port: 443
   server: pro-mako.rooster465.autos
   skip-cert-verify: false
   sni: pro-mako.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1657559632
+  password: UX82473651
+  port: 443
+  server: inviting-ferret.rooster465.autos
+  skip-cert-verify: false
+  sni: inviting-ferret.rooster465.autos
   type: trojan
   udp: true
 - name: vless-1777134005
@@ -2847,27 +2767,6 @@ proxies:
   udp: true
   uuid: 8895be79-9817-4011-b81a-14a35a3d328e
 - client-fingerprint: chrome
-  name: vless-335163332
-  network: tcp
-  port: 40443
-  reality-opts:
-    public-key: MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ
-    short-id: a8ae
-  server: 194.76.154.31
-  servername: deepl.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
-- name: trojan-1772544968
-  password: UX82473651
-  port: 443
-  server: 16.144.66.136
-  skip-cert-verify: false
-  sni: alert-titmouse.rooster465.autos
-  type: trojan
-  udp: true
-- client-fingerprint: chrome
   name: vless-1759812608
   network: raw
   port: 443
@@ -2880,6 +2779,19 @@ proxies:
   type: vless
   udp: true
   uuid: 9d0395c0-016f-453e-b0be-fc66f1ee1d80
+- client-fingerprint: chrome
+  name: vless-1413435162
+  network: grpc
+  port: 35108
+  reality-opts:
+    public-key: X_lOw5Zz4SJBa1cRHV4dAq5msYE-ClY5-WNcBmBWRxg
+    short-id: 52add08b86a5ccea
+  server: 152.228.139.33
+  servername: www.nvidia.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 81dc0b61-f9fe-4ad6-8b4e-b8c067b73712
 - client-fingerprint: random
   name: vless-1775576610
   network: tcp
@@ -2893,6 +2805,59 @@ proxies:
   type: vless
   udp: true
   uuid: d6d58f01-b5ce-4d47-bce0-b8a806155852
+- name: vless-1709221957
+  network: ws
+  port: 2096
+  server: 139.162.27.96
+  servername: free-server.techsonic.dev
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: 6e59d5c5-7aa3-4c36-a4c4-e3b899525ed2
+- name: trojan-1772544968
+  password: UX82473651
+  port: 443
+  server: 16.144.66.136
+  skip-cert-verify: false
+  sni: alert-titmouse.rooster465.autos
+  type: trojan
+  udp: true
+- name: trojan-1647915022
+  password: UX82473651
+  port: 443
+  server: real-cardinal.rooster465.autos
+  skip-cert-verify: false
+  sni: real-cardinal.rooster465.autos
+  type: trojan
+  udp: true
+- client-fingerprint: chrome
+  name: vless-335163332
+  network: tcp
+  port: 40443
+  reality-opts:
+    public-key: MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ
+    short-id: a8ae
+  server: 194.76.154.31
+  servername: deepl.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: vless-1186765700
+  network: tcp
+  port: 4443
+  reality-opts:
+    public-key: 321Ii2xbCoyll6WJ0Qm1Sh8qcC0kxXvUaZhe3kyasD8
+    short-id: a1b2c3d4e5f6a7b8
+  server: 45.159.79.71
+  servername: sentry.io
+  tls: true
+  type: vless
+  udp: true
+  uuid: 20dd9433-389e-4573-ba7b-689619cf13da
 - client-fingerprint: firefox
   flow: xtls-rprx-vision
   name: vless-1593680567
@@ -2907,6 +2872,14 @@ proxies:
   type: vless
   udp: true
   uuid: 1c5ed2e1-56da-41ab-9a78-159d9892ec17
+- name: trojan-1674479710
+  password: UX82473651
+  port: 443
+  server: 34.220.15.24
+  skip-cert-verify: false
+  sni: guided-ferret.rooster465.autos
+  type: trojan
+  udp: true
 - name: trojan-1766052376
   password: UX82473651
   port: 443
@@ -2915,6 +2888,24 @@ proxies:
   sni: fond-mammoth.rooster465.autos
   type: trojan
   udp: true
+- name: trojan-1720683542
+  password: UX82473651
+  port: 443
+  server: guided-ferret.rooster465.autos
+  skip-cert-verify: true
+  sni: guided-ferret.rooster465.autos
+  type: trojan
+  udp: true
+- name: vless-1777136651
+  network: ws
+  port: 443
+  server: epam.com
+  servername: wallweb-4r0.pages.dev
+  skip-cert-verify: false
+  tls: true
+  type: vless
+  udp: true
+  uuid: e53eacb6-cd30-4964-a57c-febcb5151b98
 - name: trojan-985518754
   password: HOrViv
   port: 28106
@@ -2923,27 +2914,6 @@ proxies:
   sni: download.windowsupdate.com
   type: trojan
   udp: true
-- name: trojan-1698503414
-  password: UX82473651
-  port: 443
-  server: 52.221.218.179
-  skip-cert-verify: false
-  sni: real-cardinal.rooster465.autos
-  type: trojan
-  udp: true
-- client-fingerprint: chrome
-  name: vless-1201186311
-  network: raw
-  port: 2053
-  reality-opts:
-    public-key: 7Y6Xb5Ql_03K25x8yKUSOKI2JTOMyv2nyCcFza90uxk
-    short-id: 29e8dcd2b37aaa7f
-  server: 212.227.235.66
-  servername: www.apple.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
 - client-fingerprint: firefox
   flow: xtls-rprx-vision
   name: vless-1751612276
@@ -2959,99 +2929,26 @@ proxies:
   udp: true
   uuid: b9bfa54d-bc44-4592-a6d6-89a9665d286f
 - client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: vless-1186765700
-  network: tcp
-  port: 4443
-  reality-opts:
-    public-key: 321Ii2xbCoyll6WJ0Qm1Sh8qcC0kxXvUaZhe3kyasD8
-    short-id: a1b2c3d4e5f6a7b8
-  server: 45.159.79.71
-  servername: sentry.io
-  tls: true
-  type: vless
-  udp: true
-  uuid: 20dd9433-389e-4573-ba7b-689619cf13da
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: vless-89464982
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: vnjp7zIK2H3CGdjSis_79KXqS6IG-opmpbETPUD-EC8
-    short-id: 15affa0af66dfc79
-  server: 130.12.242.106
-  servername: deepl.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: bc058e69-0444-4c7b-98da-bd67f0b143da
-- name: trojan-1674479710
-  password: UX82473651
-  port: 443
-  server: 34.220.15.24
-  skip-cert-verify: false
-  sni: guided-ferret.rooster465.autos
-  type: trojan
-  udp: true
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: vless-1750214712
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: XTarABsaaFbjYNk6lRKnUzGavHzeqMIP7B8dZGNCvkE
-    short-id: 0fa4a0e2493392
-  server: defrnode.xyy123.bid
-  servername: p-y3-www-amazon-com-kalias.amazon.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 8af93649-403b-46d8-9966-923d4c58402c
-- name: trojan-1720683542
-  password: UX82473651
-  port: 443
-  server: guided-ferret.rooster465.autos
-  skip-cert-verify: true
-  sni: guided-ferret.rooster465.autos
-  type: trojan
-  udp: true
-- client-fingerprint: chrome
-  name: vless-1298542551
-  network: tcp
+  name: vless-1201186311
+  network: raw
   port: 2053
   reality-opts:
-    public-key: g63cT3uI0Y5iUtj3m__RYz7nmR1eIK4AYikdnZCl63w
-    short-id: bfe58beb41f1d09f
-  server: 51.77.217.70
+    public-key: 7Y6Xb5Ql_03K25x8yKUSOKI2JTOMyv2nyCcFza90uxk
+    short-id: 29e8dcd2b37aaa7f
+  server: 212.227.235.66
   servername: www.apple.com
   tls: true
   type: vless
   udp: true
-  uuid: bf16ee0c-8b3c-41e4-ab3a-8b48033c404e
-- name: vless-1777136651
-  network: ws
+  uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
+- name: trojan-1698503414
+  password: UX82473651
   port: 443
-  server: epam.com
-  servername: wallweb-4r0.pages.dev
+  server: 52.221.218.179
   skip-cert-verify: false
-  tls: true
-  type: vless
+  sni: real-cardinal.rooster465.autos
+  type: trojan
   udp: true
-  uuid: e53eacb6-cd30-4964-a57c-febcb5151b98
-- client-fingerprint: random
-  name: vless-703656408
-  network: tcp
-  port: 2053
-  reality-opts:
-    public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
-    short-id: 5b8a942318178e7b
-  server: 57.131.38.163
-  servername: www.apple.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
 - client-fingerprint: random
   name: vless-1776921634
   network: tcp
@@ -3067,6 +2964,54 @@ proxies:
   uuid: 25eec897-580f-4e5c-9d8e-9abde6059a56
 - client-fingerprint: chrome
   flow: xtls-rprx-vision
+  name: vless-89464982
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: vnjp7zIK2H3CGdjSis_79KXqS6IG-opmpbETPUD-EC8
+    short-id: 15affa0af66dfc79
+  server: 130.12.242.106
+  servername: deepl.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: bc058e69-0444-4c7b-98da-bd67f0b143da
+- client-fingerprint: chrome
+  name: vless-1298542551
+  network: tcp
+  port: 2053
+  reality-opts:
+    public-key: g63cT3uI0Y5iUtj3m__RYz7nmR1eIK4AYikdnZCl63w
+    short-id: bfe58beb41f1d09f
+  server: 51.77.217.70
+  servername: www.apple.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: bf16ee0c-8b3c-41e4-ab3a-8b48033c404e
+- client-fingerprint: random
+  name: vless-703656408
+  network: tcp
+  port: 2053
+  reality-opts:
+    public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+    short-id: 5b8a942318178e7b
+  server: 57.131.38.163
+  servername: www.apple.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+- name: trojan-1772545975
+  password: UX82473651
+  port: 443
+  server: 54.72.130.222
+  skip-cert-verify: false
+  sni: adapting-basilisk.rooster465.autos
+  type: trojan
+  udp: true
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
   name: vless-1272976717
   network: raw
   port: 443
@@ -3080,6 +3025,20 @@ proxies:
   udp: true
   uuid: dc2259c4-388e-4285-ba18-df619b6672b6
 - client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: vless-1750214712
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: XTarABsaaFbjYNk6lRKnUzGavHzeqMIP7B8dZGNCvkE
+    short-id: 0fa4a0e2493392
+  server: defrnode.xyy123.bid
+  servername: p-y3-www-amazon-com-kalias.amazon.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8af93649-403b-46d8-9966-923d4c58402c
+- client-fingerprint: chrome
   name: vless-1755587923
   network: tcp
   port: 443
@@ -3092,14 +3051,6 @@ proxies:
   type: vless
   udp: true
   uuid: 5e517b94-e207-47ee-be3c-3020a57594e8
-- name: trojan-1772545975
-  password: UX82473651
-  port: 443
-  server: 54.72.130.222
-  skip-cert-verify: false
-  sni: adapting-basilisk.rooster465.autos
-  type: trojan
-  udp: true
 - name: trojan-1742280160
   password: UX82473651
   port: 443
@@ -3108,27 +3059,20 @@ proxies:
   sni: master-possum.rooster465.autos
   type: trojan
   udp: true
-- client-fingerprint: qq
-  name: vless-1343080799
-  network: grpc
-  port: 2443
+- client-fingerprint: random
+  flow: xtls-rprx-vision
+  name: vless-1635596350
+  network: tcp
+  port: 443
   reality-opts:
-    public-key: h85e28MxBgNyT9d9cNeOLVtWfHq6cT_1_oxZOTajtTg
-    short-id: 92c32de179e5d908
-  server: hydra.yokkastars.com
-  servername: deepl.com
+    public-key: fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI
+    short-id: db04ce8bdb8900f1
+  server: 31.77.114.114
+  servername: api.vk.me
   tls: true
   type: vless
   udp: true
-  uuid: 5e679ccd-1586-4d5f-b87b-48251046cad8
-- name: trojan-1680753285
-  password: UX82473651
-  port: 443
-  server: 52.192.217.187
-  skip-cert-verify: true
-  sni: evolving-platypus.rooster465.autos
-  type: trojan
-  udp: true
+  uuid: adc11f30-e4cb-4985-bf5e-f9ded69c019f
 - client-fingerprint: random
   name: vless-1776546218
   network: grpc
@@ -3150,20 +3094,32 @@ proxies:
   sni: enabling-snipe.rooster465.autos
   type: trojan
   udp: true
-- client-fingerprint: random
-  flow: xtls-rprx-vision
-  name: vless-1635596350
+- client-fingerprint: chrome
+  name: vless-1595948408
   network: tcp
   port: 443
   reality-opts:
-    public-key: fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI
-    short-id: db04ce8bdb8900f1
-  server: 31.77.114.114
-  servername: api.vk.me
+    public-key: ClG6fvriBTK8donGsTlKusJ0dwRCgVDDTAGzAtZzJDY
+    short-id: 82c2b7d5e70ff000
+  server: 162.35.242.252
+  servername: nl.aksay.pro
   tls: true
   type: vless
   udp: true
-  uuid: adc11f30-e4cb-4985-bf5e-f9ded69c019f
+  uuid: e3e9805a-6c8b-4edd-8ee8-621df79806eb
+- client-fingerprint: qq
+  name: vless-1343080799
+  network: grpc
+  port: 2443
+  reality-opts:
+    public-key: h85e28MxBgNyT9d9cNeOLVtWfHq6cT_1_oxZOTajtTg
+    short-id: 92c32de179e5d908
+  server: hydra.yokkastars.com
+  servername: deepl.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 5e679ccd-1586-4d5f-b87b-48251046cad8
 - client-fingerprint: edge
   flow: xtls-rprx-vision
   name: vless-1769600953
@@ -3178,86 +3134,6 @@ proxies:
   type: vless
   udp: true
   uuid: 5e57c327-d4b9-4732-a6a4-2ce2770cecb7
-- client-fingerprint: chrome
-  name: vless-1595948408
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: ClG6fvriBTK8donGsTlKusJ0dwRCgVDDTAGzAtZzJDY
-    short-id: 82c2b7d5e70ff000
-  server: 162.35.242.252
-  servername: nl.aksay.pro
-  tls: true
-  type: vless
-  udp: true
-  uuid: e3e9805a-6c8b-4edd-8ee8-621df79806eb
-- client-fingerprint: firefox
-  name: vless-1757243541
-  network: grpc
-  port: 8443
-  reality-opts:
-    public-key: QzFNQqkvBnDKIyjXUHJQe9jruaw9G5AV44vDC-qvnlo
-    short-id: ''
-  server: 122.8.45.3
-  servername: www.hp.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 8ff8938c-49b6-b22f-a934-b55e91154ca3
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: vless-1770611554
-  network: raw
-  port: 443
-  reality-opts:
-    public-key: DsTVLCehsKvfFGtNZU5leKOLTlEp28qeifHYtRKOFwg
-    short-id: f8b695e5c59d028c
-  server: pl.golangwikito.cfd
-  servername: pl.golangwikito.cfd
-  tls: true
-  type: vless
-  udp: true
-  uuid: f8d52ece-fad4-478d-875d-df6eed3befa7
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: vless-1598019934
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: ZNmuzIn-zyJi2C0sWRpL9fsMYCgYauXpJElXTqY_LEE
-    short-id: d7de3a6ff4018957
-  server: 31.70.111.146
-  servername: www.apple.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 84ed0e09-6803-4ef9-a977-74b657d971e5
-- client-fingerprint: firefox
-  flow: xtls-rprx-vision
-  name: vless-1361919261
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: KvA_7sxZDOMVLEvh64rAKk8jn5XiC-zV47zJIqny2nY
-    short-id: fbc37648292d5393
-  server: 185.253.96.117
-  servername: www.datadoghq.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: aa923621-7ac0-482b-9ae8-e5dbb2ecae26
-- alterId: 0
-  cipher: auto
-  name: vmess-663902657
-  network: tcp
-  port: 1234
-  server: 159.223.13.109
-  servername: supervpn.super.com
-  skip-cert-verify: true
-  tls: true
-  type: vmess
-  udp: true
-  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
 - name: 🇺🇸 United States/San Francisco [GH:Surfboardv2ra]
   type: vless
   server: 172.64.149.54
@@ -3271,6 +3147,27 @@ proxies:
     path: /eyJqdW5rIjoiQ3dmV1d4OUFQdSIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=
     headers:
       Host: late-lab-d6a2.ciwoda8715.workers.dev
+- client-fingerprint: firefox
+  name: vless-1757243541
+  network: grpc
+  port: 8443
+  reality-opts:
+    public-key: QzFNQqkvBnDKIyjXUHJQe9jruaw9G5AV44vDC-qvnlo
+    short-id: ''
+  server: 122.8.45.3
+  servername: www.hp.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 8ff8938c-49b6-b22f-a934-b55e91154ca3
+- name: trojan-1680753285
+  password: UX82473651
+  port: 443
+  server: 52.192.217.187
+  skip-cert-verify: true
+  sni: evolving-platypus.rooster465.autos
+  type: trojan
+  udp: true
 - client-fingerprint: random
   flow: xtls-rprx-vision
   name: vless-1182528378
@@ -3285,13 +3182,6 @@ proxies:
   type: vless
   udp: true
   uuid: 975fc322-6e38-434b-a53c-d39fed49b9a9
-- name: hysteria2-1713718589
-  password: c-E0lamG8OnEj9M_uh3oJPmIXqYIVGctO-NHELF1TmNYs7Jl
-  port: 443
-  server: cz.h2.cleanersaz.help
-  skip-cert-verify: false
-  sni: cz.h2.cleanersaz.help
-  type: hysteria2
 - name: 🇺🇸 United States/San Francisco [TG]
   type: vless
   server: 104.21.6.186
@@ -3305,33 +3195,18 @@ proxies:
     path: /vl/nOBmhwrWYZ5IucFYa
     headers:
       Host: zhclj7kx6wq0le6w-onnwueonk1hftn4.imanbieng27.workers.dev
-- client-fingerprint: qq
-  flow: xtls-rprx-vision
-  name: vless-1350531169
+- alterId: 0
+  cipher: auto
+  name: vmess-663902657
   network: tcp
-  port: 443
-  reality-opts:
-    public-key: W-9zyiOq287RtXVTZlTFbSDJ0Mx8joyBLJoA7ZE7eBw
-    short-id: ef1d3554c652a436
-  server: 87.199.205.28
-  servername: vkvd754.okcdn.ru
+  port: 1234
+  server: 159.223.13.109
+  servername: supervpn.super.com
+  skip-cert-verify: true
   tls: true
-  type: vless
+  type: vmess
   udp: true
-  uuid: 501a2da5-cb22-4a3f-915e-e3b821d1d62d
-- client-fingerprint: firefox
-  name: vless-1293658710
-  network: raw
-  port: 2053
-  reality-opts:
-    public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
-    short-id: 50ba05992b05c1c3
-  server: 54.37.136.194
-  servername: www.cloudflare.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
+  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
 - name: '🇺🇸 United States/San Francisco [TG] #2'
   type: vless
   server: 172.67.130.187
@@ -3359,6 +3234,68 @@ proxies:
     path: /eyJqdW5rIjoiV0lISkpXU0trWFI4OGdUIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcmVmaXgiLCJwYW5lbElQcyI6WyJbMjYwMjpmYzU5OjExOjY0OjpdIl19
     headers:
       Host: biyapain.biyapainbache.workers.dev
+- name: hysteria2-1713718589
+  password: c-E0lamG8OnEj9M_uh3oJPmIXqYIVGctO-NHELF1TmNYs7Jl
+  port: 443
+  server: cz.h2.cleanersaz.help
+  skip-cert-verify: false
+  sni: cz.h2.cleanersaz.help
+  type: hysteria2
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: vless-1598019934
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: ZNmuzIn-zyJi2C0sWRpL9fsMYCgYauXpJElXTqY_LEE
+    short-id: d7de3a6ff4018957
+  server: 31.70.111.146
+  servername: www.apple.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 84ed0e09-6803-4ef9-a977-74b657d971e5
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: vless-1770611554
+  network: raw
+  port: 443
+  reality-opts:
+    public-key: DsTVLCehsKvfFGtNZU5leKOLTlEp28qeifHYtRKOFwg
+    short-id: f8b695e5c59d028c
+  server: pl.golangwikito.cfd
+  servername: pl.golangwikito.cfd
+  tls: true
+  type: vless
+  udp: true
+  uuid: f8d52ece-fad4-478d-875d-df6eed3befa7
+- client-fingerprint: firefox
+  flow: xtls-rprx-vision
+  name: vless-1361919261
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: KvA_7sxZDOMVLEvh64rAKk8jn5XiC-zV47zJIqny2nY
+    short-id: fbc37648292d5393
+  server: 185.253.96.117
+  servername: www.datadoghq.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: aa923621-7ac0-482b-9ae8-e5dbb2ecae26
+- client-fingerprint: firefox
+  name: vless-1345603902
+  network: raw
+  port: 2053
+  reality-opts:
+    public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
+    short-id: 4cc9dc65f7770115
+  server: 46.250.240.80
+  servername: www.cloudflare.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
 - name: trojan-1765580112
   password: UX82473651
   port: 443
@@ -3368,18 +3305,18 @@ proxies:
   type: trojan
   udp: true
 - client-fingerprint: firefox
-  name: vless-1757243577
+  name: vless-1293658710
   network: raw
-  port: 443
+  port: 2053
   reality-opts:
-    public-key: dcox8XXfkOCmKn3kgrloj6wY5o1_0brJOi2mczYmAT4
-    short-id: 5ced03e42cc31aab
-  server: 34.35.189.111
+    public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
+    short-id: 50ba05992b05c1c3
+  server: 54.37.136.194
   servername: www.cloudflare.com
   tls: true
   type: vless
   udp: true
-  uuid: 4758aee6-6d1a-4306-b460-2398b5af4e35
+  uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
 - name: 🇺🇸 United States/Manassas [TG]
   type: trojan
   server: 152.53.80.195
@@ -3387,6 +3324,34 @@ proxies:
   password: 600421cf-11d7-429f-a65b-c30397f1bc03
   udp: true
   sni: abr2.freeguard.org
+- client-fingerprint: qq
+  flow: xtls-rprx-vision
+  name: vless-1350531169
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: W-9zyiOq287RtXVTZlTFbSDJ0Mx8joyBLJoA7ZE7eBw
+    short-id: ef1d3554c652a436
+  server: 87.199.205.28
+  servername: vkvd754.okcdn.ru
+  tls: true
+  type: vless
+  udp: true
+  uuid: 501a2da5-cb22-4a3f-915e-e3b821d1d62d
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: vless-1775806959
+  network: tcp
+  port: 35193
+  reality-opts:
+    public-key: d_pn_DMaIxhCkNh80h0Mc7nP94hrlN--I8liOIREDxE
+    short-id: e8daed2d
+  server: hk3n.wxgqlfx.vip
+  servername: www.apple.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 35cbae61-ee10-4cb9-abb8-4950b35e9851
 - name: trojan-1597015224
   password: UX82473651
   port: 443
@@ -3409,20 +3374,33 @@ proxies:
   type: vless
   udp: true
   uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: vless-1775806959
-  network: tcp
-  port: 35193
+- client-fingerprint: firefox
+  name: vless-1757243577
+  network: raw
+  port: 443
   reality-opts:
-    public-key: d_pn_DMaIxhCkNh80h0Mc7nP94hrlN--I8liOIREDxE
-    short-id: e8daed2d
-  server: hk3n.wxgqlfx.vip
-  servername: www.apple.com
+    public-key: dcox8XXfkOCmKn3kgrloj6wY5o1_0brJOi2mczYmAT4
+    short-id: 5ced03e42cc31aab
+  server: 34.35.189.111
+  servername: www.cloudflare.com
   tls: true
   type: vless
   udp: true
-  uuid: 35cbae61-ee10-4cb9-abb8-4950b35e9851
+  uuid: 4758aee6-6d1a-4306-b460-2398b5af4e35
+- client-fingerprint: random
+  flow: xtls-rprx-vision
+  name: vless-864234270
+  network: tcp
+  port: 19825
+  reality-opts:
+    public-key: GvvkY8xYb9QjvwvzYq_uNC4tOGd0DCxRnz6770-xgkI
+    short-id: 6ba85179e30d4fc2
+  server: sg2-8sb.6121999.dpdns.org
+  servername: sg2-8sb.6121999.dpdns.org
+  tls: true
+  type: vless
+  udp: true
+  uuid: 2d1ad594-80a4-4bfb-87a6-038e39701f51
 proxy-groups:
 - name: 🚀 节点选择
   type: select
